@@ -43,4 +43,31 @@ function econ_breadcrumb($variables) {
   }
 }
 
+function _econ_page_class() {
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $node = node_load(arg(1));
+      switch ($node->type) {
+
+        case "news":
+          return "page concrete-".$node->type; 
+        break;
+      } 
+      return "page ".$node->type;
+  }
+  return "page";
+}
+
+function econ_preprocess_page(&$vars, $hook) {
+  //drupal_set_message("<pre>".print_r($vars['page']['content']['system_main'],1)."</pre>");
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $node = node_load(arg(1)); 
+    if (isset($node->field_leadimage['und'][0])) {
+      $vars['leadimage'] = theme('image_style', array('style_name' => 'leadimage', 'path' => $node->field_leadimage['und'][0]['uri'], 'alt'=>$node->title)); 
+
+    }
+    //drupal_set_message("<pre>".print_r($node,1)."</pre>");
+
+  }
+}
+
 

@@ -150,15 +150,21 @@
     <div class="container main-content"> 
         <div class="row">
             <!--  end header --> 
-            <div class="container page">
+            <div class="container <?php print _econ_page_class();?>">
                 <div class="row">
                     <main class="col-sm-12 col-md-9 no-paddings">
+
+
                         <!-- breadcumbs -->
                         <!-- main img -->
                         <?php if ($breadcrumb): ?>
                           <?php print $breadcrumb; ?>
                         <?php endif; ?>
-
+                        <?php if ($leadimage):?>
+                        <div class="page__main-image">
+                           <?php print $leadimage;?>
+                        </div>
+                        <?php endif;?>
                         <div class="page__content">
                             <?php if ($tabs): ?>
                             <div class="tabs drupal-tabs">

@@ -1,0 +1,103 @@
+<?php
+
+function econ_pages_block_info() {
+  $blocks = array();
+  $blocks['menu-aside'] = array(
+    'info' => t('Боковое меню'),
+  );
+
+  return $blocks;
+}
+
+function econ_pages_block_view($delta='') {
+  $block = array();
+ 
+  switch($delta) {
+    case 'menu-aside' :
+      $block['content'] = _econ_pages_menu_block_view('menu_block');
+    break;
+  }
+ 
+  return $block;
+}
+
+function econ_pages_submenu_tree_all_data($mlid, $menu = 'menu-econ-mainmenu') {
+  $tree = menu_tree_all_data($menu);
+  foreach ($tree as $branch) {
+    if ($branch['link']['mlid'] == $mlid and count($branch['below'])) {
+      return array_values($branch['below']);
+    }
+  }
+  return array_values($tree);
+}
+
+function _econ_pages_get_menu() {
+
+  // не могу использовать нормальну ф-цию menu_build_tree, так как есть баг (если дважды ее вызывать)
+  // see https://www.drupal.org/node/1697570  
+  // menu_tree_all_data возвращает hidden ссылки, нужно проверять 
+  
+  $active_trail = menu_get_active_trail();
+
+  if ( (count($active_trail) == 1 )  or ($active_trail[1]['menu_name'] != 'menu-econ-mainmenu')){
+    // главная или текущая страница не в главном меню 
+    $mainmenu = menu_tree_all_data('menu-econ-mainmenu', $link=$active_trail[0], $max_depth = 2);
+    return array_values($mainmenu);
+
+  }
+
+  $mainmenu = econ_pages_submenu_tree_all_data($active_trail[1]['mlid'], 'menu-econ-mainmenu');
+
+  return $mainmenu;; 
+
+}
+function _econ_pages_get_active_mlids() {
+  $active_trail = menu_get_active_trail(); 
+  $active = array();
+  foreach ($active_trail as $k=>$v) {
+    if (isset($v['mlid'])) {
+      $active[]=$v['mlid'];
+    }
+  }
+  return $active;
+}
+
+function _econ_pages_menu_block_view($template) {
+
+  $menu =  _econ_pages_get_menu() ;  
+  $active = _econ_pages_get_active_mlids();
+  
+	return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/".$template.".tpl.php", 
+    array("menu"=>$menu, "active_trail" => $active));
+}
+function _econ_pages_render_featured($i) {
+  // i - порядковый номер пункта меню
+
+  switch($i) {
+    case 1:
+      $delta = 2;
+    break;
+    case 2:
+      $delta = 3;
+    break;
+    case 3:
+      $delta = 4;
+    break;
+    case 4:
+      $delta = 5;
+    break;
+    case 5:
+      $delta = 6;
+    break;
+    case 6:
+      $delta = 7;
+    break;
+    default:
+      $delta = 2;
+    break;
+  }
+  $block = module_invoke('block', 'block_view', $delta);
+  return render($block['content']);
+}
+
+

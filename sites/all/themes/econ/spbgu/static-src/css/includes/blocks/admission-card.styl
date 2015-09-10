@@ -1,0 +1,23 @@
+.admission-card
+  margin-bottom rem(30)
+  &__link
+    display block
+    transition background .3s
+    background gray1
+    h2
+    p
+    &:hover h2
+    &:hover p
+      color gray6
+    &:hover
+      background gray2
+  &__title
+  &__text
+    padding 0 rem(15)
+  +above(sm)
+    &:first-child
+      padding-right rem(40)
+    &:nth-child(2n)
+      padding-left rem(40)
+  +between(xs,sm)
+    padding 0 rem(50)

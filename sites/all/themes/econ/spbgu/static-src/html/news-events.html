@@ -1,0 +1,44 @@
+@@include('static-src/html/partials/header.html')
+
+    <div class="container page news-event">
+        <div class="row">
+            <main class="col-sm-12 col-md-9 no-paddings">
+                <div class="breadcrumbs">
+                    <a href="#" class="breadcrumbs__link">Главная</a>
+                    <a href="#" class="breadcrumbs__link">Факультет</a>
+                    <a href="#" class="breadcrumbs__link">Кафедры Факультета</a>
+                </div>
+                <div class="page__content">
+                    <a href="#" class="spotlight">
+                        <div class="page__main-image spotlight__image">
+                            <img src="./img/temp/spotlight.png" alt="">
+                        </div>
+                        <h2 class="page__title spotlight__title">Двадцатая международная конференция молодых ученых-экономистов «Предпринимательство и реформы в России»</h2>
+                        <div class="page__lead spotlight__lead">Ученый совет и Совет молодых ученых Экономического факультета Санкт-Петербургского государственного университета объявляют о проведении 21–22 ноября 2014 г. Двадцатой международной конференции молодых ученых-экономистов «Предпринимательство и реформы в России»</div>
+                        <div class="spotlight__meta">
+                            <span class="spotlight__date">25 СЕНТЯБРЯ 2015 </span>
+                            <span class="spotlight__category">НОВОСТИ ФАКУЛЬТЕТА</span>
+                        </div>
+                    </a>
+                    <div class="common-module">
+                        @@include('static-src/html/partials/news-widget.html')
+                    </div>
+                </div>
+                <div id="common-search" class="common-search">
+                    <form action="/">
+                        <input class="common-search__input" type="search" value="" name="search" id="search" placeholder="введите слово для поиска">
+                        <input class="common-search__submit" type="submit" value="">
+                        <span class="common-search__icon">@@include('app/img/icons/search.svg')</span>
+                    </form>
+                </div>
+            </main>
+            <aside class="col-xs-12 col-md-3 no-paddings">
+                   @@include('static-src/html/partials/notice-widget.html')
+                   @@include('static-src/html/partials/events-widget.html')
+            </aside>
+        </div>
+    </div>
+
+@@include('static-src/html/partials/footer.html')
+
+

@@ -1,0 +1,24 @@
+name = Econ
+description = Faculty of Economics Site Theme
+version = VERSION
+core = 7.x
+
+stylesheets[all][] = css/bootstrap.min.css
+stylesheets[all][] = spbgu/app/css/main.css
+stylesheets[all][] = css/custom.css
+
+
+scripts[] = spbgu/app/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js
+
+regions[sidebar] = Sidebar
+regions[content] = Content
+regions[header] = Header
+regions[contacts] = Contacts
+regions[social] = Social
+
+
+
+; Information added by drupal.org packaging script on 2012-10-17
+version = "7.16"
+project = "drupal"
+datestamp = "1350508567"

@@ -1,0 +1,10 @@
+name = Econ Pages
+description = Provides custom functionality for econ site. 
+core = 7.x
+
+; 
+version = "1.0"
+core = "7.x"
+project = "econ_pages"
+datestamp = "1415122384"
+

@@ -1,0 +1,61 @@
+@@include('static-src/html/partials/header.html')
+
+    <div class="container page events">
+        <div class="row">
+            <main class="col-sm-12 col-md-9 no-paddings">
+                <div class="breadcrumbs">
+                    <a href="#" class="breadcrumbs__link">Главная</a>
+                    <a href="#" class="breadcrumbs__link">Факультет</a>
+                    <a href="#" class="breadcrumbs__link">Кафедры Факультета</a>
+                </div>
+                <div class="page__content">
+                    <a href="#" class="spotlight spotlight--event">
+                        <div class="page__main-image spotlight__image">
+                            <img src="./img/temp/spotlight.png" alt="">
+                        </div>
+                        <h2 class="page__title spotlight__title"><span class="spotlight__title__date">25 Сентября</span>
+                        Двадцатая международная конференция молодых ученых-экономистов «Предпринимательство и реформы в России»</h2>
+                        <div class="page__lead spotlight__lead">Ученый совет и Совет молодых ученых Экономического факультета Санкт-Петербургского государственного университета объявляют о проведении 21–22 ноября 2014 г. Двадцатой международной конференции молодых ученых-экономистов «Предпринимательство и реформы в России»</div>
+                    </a>
+                <div id="events-widget" class="events-widget">
+                    <a href="#" class="events-widget__event">
+                        <div class="events-widget__date">11—12 сентября 2015</div>
+                        <div class="events-widget__text">Встреча с известным тележурналистом, автором и ведущим программы «Нужное подчеркнуть» Валерием Татаровым </div>
+                    </a>
+                    <a href="#" class="events-widget__event">
+                        <div class="events-widget__date">15 октября 2015</div>
+                        <div class="events-widget__text">Встреча с Валерием Татаровым, автором и ведущим программы «Нужное подчеркнуть»</div>
+                    </a>
+                    <a href="#" class="events-widget__event events-widget__event--md-hidden">
+                        <!-- <img src="./img/temp/events-widget__image2.jpg" class="events-widget__image"> -->
+                        <div class="events-widget__date">15 октября 2015</div>
+                        <div class="events-widget__text">Встреча с Валерием Татаровым, автором и ведущим программы «Нужное подчеркнуть»</div>
+                    </a>
+                    <a href="#" class="events-widget__event">
+                        <div class="events-widget__date">15 октября 2015</div>
+                        <div class="events-widget__text">Встреча с Валерием Татаровым, автором и ведущим программы «Нужное подчеркнуть»</div>
+                    </a>
+                    <a href="#" class="events-widget__event events-widget__event--md-hidden">
+                        <div class="events-widget__date">15 октября 2015</div>
+                        <div class="events-widget__text">Встреча с Валерием Татаровым, автором и ведущим программы «Нужное подчеркнуть»</div>
+                    </a>
+                    <a href="#" class="big-btn">Все события</a>
+                </div>
+                </div>
+                <div id="common-search" class="common-search">
+                    <form action="/">
+                        <input class="common-search__input" type="search" value="" name="search" id="search" placeholder="введите слово для поиска">
+                        <input class="common-search__submit" type="submit" value="">
+                        <span class="common-search__icon">@@include('app/img/icons/search.svg')</span>
+                    </form>
+                </div>
+            </main>
+            <aside class="col-xs-12 col-md-3 no-paddings">
+                @@include('static-src/html/partials/events-filter.html')
+            </aside>
+        </div>
+    </div>
+
+@@include('static-src/html/partials/footer.html')
+
+

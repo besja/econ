@@ -1,0 +1,221 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru-RU"> <!--<![endif]-->
+    <head>
+        <title>СПбГУ | Экономический факультет</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Lora:400,500,700|Roboto:400,300,500,700,900&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        @@include('static-src/html/partials/mobile-menu.html')
+        <div id="wrapper" class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <!--[if lt IE 8]>
+                        <p class="browserupgrade">Вы используете слишком <strong>старый</strong> браузер. Пожалуйста <a href="http://browsehappy.com/">смените его</a> и все станет красиво.</p>
+                    <![endif]-->
+                    <div class="header-spbgu col-xs-3 col-sm-2">
+                        <div class="header-spbgu__slide">
+                            <div class="header-spbgu__frontside">
+                                <div class="header-spbgu__gerb">
+                                    @@include('app/img/common/gerb.svg')
+                                </div>
+                                <div class="header-spbgu__title">
+                                    <span class="visible-xs visible-sm">СПБГУ</span>
+                                    <span class="hidden-xs hidden-sm">САНКТ-ПЕТЕРБУРГСКИЙ<br>ГОСУДАРСТВЕННЫЙ<br> УНИВЕРСИТЕТ</span>
+                                </div>
+                            </div>
+                            <a href="#" class="header-spbgu__backside">
+                                <div class="header-spbgu__arrow">@@include('app/img/common/arrow.svg')</div>
+                                <div class="header-spbgu__title">
+                                    <span class="visible-xs visible-sm">ПОРТАЛ <br>СПБГУ</span>
+                                    <span class="hidden-xs hidden-sm">ПЕРЕЙТИ НА <br>ПОРТАЛ СПБГУ</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                  <div class="col-xs-9 col-sm-10">
+                        <div class="row">
+                            <div class="header-econ cf col-xs-12 col-md-5">
+                                <a a href="./index.html"> <!-- линк на главную -->
+                                    <div class="header-econ__logo">@@include('app/img/common/logo.svg')</div>
+                                    <div class="header-econ__title uppercase">Экономический<br>Факультет</div>
+                                </a>
+                            </div>
+                            <div class="shortcuts-menu col-xs-12 col-md-7 hidden-xs hidden-sm">
+                                <ul class="shortcuts-menu__list cf">
+                                    <li class="shortcuts-menu__item"><a href="#" class="shortcuts-menu__link">Расписание СПбГУ</a></li>
+                                    <li class="shortcuts-menu__item"><a href="#" class="shortcuts-menu__link">Инфраструктура</a></li>
+                                    <li class="shortcuts-menu__item"><a href="#" class="shortcuts-menu__link">Вестник</a></li>
+                                    <li class="shortcuts-menu__item"><a href="#" class="shortcuts-menu__link">Документы</a></li>
+                                    <li class="shortcuts-menu__item"><a href="./contacts.html" class="shortcuts-menu__link">Контакты</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div id="main-menu" class="main-menu col-md-10 visible-md visible-lg">
+                                <ul role="tablist" class="main-menu__list cf">
+                                    <li data-tab="1" class="main-menu__item">
+                                        <a href="#main-menu-1" role="tab" id="main-menu-tab-1" data-toggle="tab" aria-controls="#main-menu-1" aria-expanded="true" class="main-menu__link">Факультет</a>
+                                    </li>
+                                    <li class="main-menu__item current">
+                                        <a  href="#main-menu-2" role="tab" id="main-menu-tab-2" data-toggle="tab" aria-controls="#main-menu-2" aria-expanded="true" class="main-menu__link">Поступающим</a>
+                                    </li>
+                                    <li class="main-menu__item">
+                                        <a  href="#main-menu-3" role="tab" id="main-menu-tab-3" data-toggle="tab" aria-controls="#main-menu-3" aria-expanded="true" class="main-menu__link">Студентам</a>
+                                    </li>
+                                    <li class="main-menu__item">
+                                        <a  href="#main-menu-4" role="tab" id="main-menu-tab-4" data-toggle="tab" aria-controls="#main-menu-4" aria-expanded="true" class="main-menu__link">Наука</a>
+                                    </li>
+                                    <li class="main-menu__item">
+                                        <a  href="#main-menu-5" role="tab" id="main-menu-tab-5" data-toggle="tab" aria-controls="#main-menu-5" aria-expanded="true" class="main-menu__link">Новости и события</a>
+                                    </li>
+                                    <li class="main-menu__item">
+                                        <a  href="#main-menu-6" role="tab" id="main-menu-tab-6" data-toggle="tab" aria-controls="#main-menu-6" aria-expanded="true" class="main-menu__link">Персоналии</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="header-search" class="header-search">
+                                <form action="/">
+                                    <input class="header-search__input" type="search" value="" name="search" id="search" placeholder="введите слово для поиска">
+                                    <input class="header-search__submit" type="submit" value="">
+                                    <span class="header-search__icon">@@include('app/img/icons/search.svg')</span>
+                                </form>
+                            </div>
+                            <div class="header-lang"><a class="header-lang__link" href="#">EN</a></div>
+                            <a id="mobile-menu-button" href="#" class="mobile-menu-button visible-xs visible-sm" data-effect="st-effect-4">@@include('app/img/icons/burger.svg')</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="full-menu" class="row tab-content full-menu">
+                    <div id="main-menu-1"  role="tabpanel" class="full-menu__tab-pane tab-pane fade active">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="full-menu__list">
+                                        <li class="full-menu__item current"><a href="#" class="full-menu__item__link">Руководство</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Структурные подразделения ректората</a></li>
+                                        <li class="full-menu__item"><a href="./template.html" class="full-menu__item__link">Кафедры факультета</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Экспертная деятельность</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Партнеры</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Инфраструктура</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="full-menu__list">
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Международная деятельность</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Социальная жизнь</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Выпускникам</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">История факультета</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Документы</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Телефоны и адреса</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="./template.html" class="full-menu__featured col-md-5">
+                            <div class="row">
+                                <div class="full-menu__featured__image col-md-3"><img src="./img/temp/full-menu__featured.jpg" alt=""></div>
+                                <div class="full-menu__featured__text col-md-9">
+                                    <h3 class="full-menu__featured__header">Основан в 1940 году</h3>
+                                    Подготовка практически по всем экономическим специальностям впервые началась именно на экономическом факультете СПбГУ
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div id="main-menu-2"  role="tabpanel" class="full-menu__tab-pane tab-pane fade">
+                       <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="full-menu__list">
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Международная деятельность</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Социальная жизнь</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Выпускникам</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">История факультета</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Документы</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Телефоны и адреса</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="full-menu__list">
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Руководство</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Структурные подразделения ректората</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Кафедры факультета</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Экспертная деятельность</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Партнеры</a></li>
+                                        <li class="full-menu__item"><a href="#" class="full-menu__item__link">Инфраструктура</a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="full-menu__featured col-md-5">
+                            <div class="row">
+                                <div class="full-menu__featured__image col-md-3"><img src="./img/temp/full-menu__featured4.jpg" alt=""></div>
+                                <div class="full-menu__featured__text col-md-9">
+                                    <h4 class="full-menu__featured__header">Почему наш факультет</h4>
+                                    Факультет является признанным лидером в подготовке высококвалифицированных специалистов
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div id="main-menu-3"  role="tabpanel" class="full-menu__tab-pane tab-pane fade">
+                        <a href="#" class="full-menu__featured col-md-offset-7 col-md-5">
+                            <div class="row">
+                                <div class="full-menu__featured__image col-md-3"><img src="./img/temp/full-menu__featured2.jpg" alt=""></div>
+                                <div class="full-menu__featured__text col-md-9">
+                                    <h4 class="full-menu__featured__header">Студенческая жизнь</h4>
+                                    Увлекательный учебный процесс, лучшая команда КВН, регулярные спортивные и развлекательные мероприятия
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="main-menu-4"  role="tabpanel" class="full-menu__tab-pane tab-pane fade">
+                            <a href="#" class="full-menu__featured col-md-offset-7 col-md-5">
+                            <div class="row">
+                                <div class="full-menu__featured__image col-md-3"><img src="./img/temp/full-menu__featured1.jpg" alt=""></div>
+                                <div class="full-menu__featured__text col-md-9">
+                                    <h4 class="full-menu__featured__header">Научная деятельность</h4>
+                                    Бережно сохранив и преумножив традиции экономической школы, заложенные ещё в ХIХ веке великими учеными-экономистами, сегодня экономический факультет - ведущий центр научной деятельности
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="main-menu-5"  role="tabpanel" class="full-menu__tab-pane tab-pane fade">
+                       <!--   <a href="#" class="full-menu__featured col-md-offset-7 col-md-5">
+                            <div class="row">
+                                <div class="full-menu__featured__image col-md-3"><img src="./img/temp/full-menu__featured.jpg" alt=""></div>
+                                <div class="full-menu__featured__text col-md-9">
+                                    <h4 class="full-menu__featured__header">Научная деятельность</h4>
+                                    Бережно сохранив и преумножив традиции экономической школы, заложенные ещё в ХIХ веке великими учеными-экономистами, сегодня экономический факультет - ведущий центр научной деятельности
+                                </div>
+                            </div>
+                        </a> -->
+                    </div>
+                    <div id="main-menu-6"  role="tabpanel" class="full-menu__tab-pane tab-pane fade">
+                        <a href="./persons.html" class="full-menu__featured col-md-offset-7 col-md-5">
+                            <div class="row">
+                                <div class="full-menu__featured__image col-md-3"><img src="./img/temp/full-menu__featured3.jpg" alt=""></div>
+                                <div class="full-menu__featured__text col-md-9">
+                                    <h4 class="full-menu__featured__header">Персоналии</h4>
+                                    Подготовка практически по всем экономическим специальностям впервые началась именно на экономическом факультете СПбГУ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container main-content">
+            <div class="row">

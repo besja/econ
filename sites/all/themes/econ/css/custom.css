@@ -1,0 +1,24 @@
+.page__content ul.primary li::before {
+	background: none;
+}
+.breadcrumbs__link:last-child::after {
+	display: inline-block;
+}
+
+.aside-menu__header i a {
+	display: inline;
+} 
+
+li a.active {
+    color: inherit;
+}
+/* reset from redix_layouts.css */
+.container .container {
+    margin-left: auto;
+    margin-right: auto;
+    width: inherit;
+}
+
+.aside-menu__link.current {
+  background: #2694ee;
+}

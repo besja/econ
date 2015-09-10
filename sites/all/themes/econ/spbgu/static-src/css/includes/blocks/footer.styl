@@ -1,0 +1,65 @@
+// footer
+.footer
+  position: relative
+  z-index: 101
+  margin-top -1px
+  &__container
+    padding rem(30)
+    background gray6
+    color white
+    position relative
+  &__gerb
+    margin-bottom rem(20)
+    svg
+      max-height rem(60)
+      +below(md)
+        max-height rem(60)
+      g
+        fill white
+  &__header
+    font-size rem(14)
+    line-height rem(20)
+    letter-spacing rem(.5)
+    margin-bottom rem(10)
+    font-weight 700
+    &--econ
+      font-weight 500
+      font-family font-sans
+      font-size rem(15)
+  &__menu
+    &__item
+      margin-bottom rem(10)
+    &__link
+      font-family font-sans
+      font-size rem(12)
+      letter-spacing rem(1)
+      text-transform uppercase
+      color white
+    +between(sm,md)
+      margin-bottom rem(30)
+
+  &__econ
+    &-logo
+      margin-bottom rem(20)
+      display block
+      +below(md)
+        margin-top rem(20)
+      svg
+        height rem(60)
+        g
+          fill white
+
+  &__copy
+    font-size rem(12)
+    color gray3
+    padding-top rem(20)
+    padding-bottom rem(30)
+    font-family font-sans
+    &--whitescape
+      font-weight 500
+      color gray2
+  a:hover
+    color light-blue
+  a:focus
+    color white
+

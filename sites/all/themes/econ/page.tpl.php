@@ -1,4 +1,4 @@
-<?php  global $theme_path;?>
+<?php  global $theme_path;  global $base_url; ?>
 <?php
     $shortcuts = menu_build_tree("menu-shortcatmenu");
     $mainmenu = menu_build_tree("menu-econ-mainmenu");
@@ -38,7 +38,7 @@
               <div class="col-xs-9 col-sm-10">
                     <div class="row">
                         <div class="header-econ cf col-xs-12 col-md-5">
-                            <a href="/panopoly-7.x-1.25"> <!-- линк на главную -->
+                            <a href="<?php print $base_url;?>"> <!-- линк на главную -->
                                 <div class="header-econ__logo">
                                     <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/common/logo.svg');?>
                                  </div>

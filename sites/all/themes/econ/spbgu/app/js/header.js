@@ -16,15 +16,15 @@ $('#main-menu li').click(function (e) {
 
 function closeFullMenu() {
   $(document).mouseup(function (e){
-      var container = $("#full-menu");
-      if (!container.is(e.target) && container.has(e.target).length === 0)
-      {
-          container.removeClass("full-menu--open");
-          $("#main-menu li").removeClass("active");
-          setTimeout(function () {
-            $(document).unbind("mouseup");
-          },100)
-      }
+    var container = $("#full-menu, #main-menu li");
+    if (!container.is(e.target) && container.has(e.target).length === 0)
+    {
+        container.removeClass("full-menu--open");
+        $("#main-menu li").removeClass("active");
+        setTimeout(function () {
+          $(document).unbind("mouseup");
+        },100)
+    }
   });
 }
 

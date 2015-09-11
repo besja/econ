@@ -71,4 +71,15 @@ function econ_preprocess_page(&$vars, $hook) {
   }
 }
 
+function _econ_news_categories($node) {
+  $tags = array();
+  if (isset($node->field_news_category['und'])) {
+    foreach($node->field_news_category['und'] as $k=>$v) {
+      //drupal_Set_message(print_R($v,1));
+      $tags[] = $v['taxonomy_term']->name; 
+    }
+    return implode(", ", $tags);
+  }
+}
+
 

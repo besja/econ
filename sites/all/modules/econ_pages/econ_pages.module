@@ -32,23 +32,24 @@ function econ_pages_submenu_tree_all_data($mlid, $menu = 'menu-econ-mainmenu') {
 }
 
 function _econ_pages_get_menu() {
-
+  
+  $mainmenu = array();
   // не могу использовать нормальну ф-цию menu_build_tree, так как есть баг (если дважды ее вызывать)
   // see https://www.drupal.org/node/1697570  
   // menu_tree_all_data возвращает hidden ссылки, нужно проверять 
   
   $active_trail = menu_get_active_trail();
 
-  if ( (count($active_trail) == 1 )  or ($active_trail[1]['menu_name'] != 'menu-econ-mainmenu')){
+  if ( (count($active_trail) == 1 )  or (isset($active_trail[1]['menu_name']) && ($active_trail[1]['menu_name'] != 'menu-econ-mainmenu'))){
     // главная или текущая страница не в главном меню 
     $mainmenu = menu_tree_all_data('menu-econ-mainmenu', $link=$active_trail[0], $max_depth = 2);
     return array_values($mainmenu);
 
   }
-
-  $mainmenu = econ_pages_submenu_tree_all_data($active_trail[1]['mlid'], 'menu-econ-mainmenu');
-
-  return $mainmenu;; 
+  if (isset($active_trail[1]['mlid'])) {
+    $mainmenu = econ_pages_submenu_tree_all_data($active_trail[1]['mlid'], 'menu-econ-mainmenu');
+  }
+  return $mainmenu; 
 
 }
 function _econ_pages_get_active_mlids() {

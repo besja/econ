@@ -59,6 +59,7 @@ function _econ_page_class() {
 
 function econ_preprocess_page(&$vars, $hook) {
   //drupal_set_message("<pre>".print_r($vars['page']['content']['system_main'],1)."</pre>");
+  $vars['leadimage'] = "";
   if (arg(0) == 'node' && is_numeric(arg(1))) {
     $node = node_load(arg(1)); 
     if (isset($node->field_leadimage['und'][0])) {

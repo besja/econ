@@ -1,5 +1,15 @@
 <?php
 
+function econ_pages_menu() {
+  $items['news-events/news'] = array(
+      'page callback' => 'econ_pages_news_page',
+      'page arguments' => array('20'),
+      'access arguments' => array('access content'), 
+       'type' => MENU_LOCAL_TASK,
+    );  
+  return $items;
+}
+
 function econ_pages_block_info() {
   $blocks = array();
   $blocks['menu-aside'] = array(
@@ -101,4 +111,46 @@ function _econ_pages_render_featured($i) {
   return render($block['content']);
 }
 
+function _econ_pages_featured_news() {
+  //$result = db_query("SELECT * FROM node n WHERE n.type='news' and n.status = 1 and n.stiky = 1");
+  return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/featured_news.tpl.php", 
+    array());
+}
+
+function econ_pages_news_page() {
+  drupal_set_title("Новости"); 
+
+  //featured news
+
+  $query = "SELECT * FROM node n WHERE n.type='news' and n.status = 1 and n.sticky = 1 ORDER BY n.created DESC LIMIT 0,1"; 
+  $result = db_query($query);
+  $featured = $result->fetchObject();
+
+  $limit = 1;
+  if (isset($_REQUEST['page'])) {
+    $start = $_REQUEST['page'] * $limit;
+  } else {
+    $start = 0;
+  }
+  if ($featured) {
+    $exclude = " and n.nid <> ".$featured->nid;
+  }
+  $query = "SELECT * FROM node n WHERE n.type='news' and n.status = 1 ".$exclude." ORDER BY n.created DESC"; 
+  $query_count = "SELECT count(*) as total FROM node n WHERE n.type='news' and n.status = 1 ".$exclude." ORDER BY n.created"; 
+  $count_result = db_query($query_count);
+  $query_items = db_query_range($query,$start,$limit);
+
+
+  while($row=$query_items->fetchObject()) {  
+    $nodes[] = $row->nid;
+  }
+  
+  pager_default_initialize($count_result->fetchObject()->total, $limit, $element = 0);
+  $pager = theme('pager',array("quantity"=>5));
+
+
+  return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/news.tpl.php", 
+    array("featured"=>$featured, "nodes"=>$nodes ,"pager"=>$pager));
+
+}
 

@@ -58,7 +58,6 @@ function _econ_page_class() {
 }
 
 function econ_preprocess_page(&$vars, $hook) {
-  //drupal_set_message("<pre>".print_r($vars['page']['content']['system_main'],1)."</pre>");
   $vars['leadimage'] = "";
   if (arg(0) == 'node' && is_numeric(arg(1))) {
     $node = node_load(arg(1)); 
@@ -66,8 +65,6 @@ function econ_preprocess_page(&$vars, $hook) {
       $vars['leadimage'] = theme('image_style', array('style_name' => 'leadimage', 'path' => $node->field_leadimage['und'][0]['uri'], 'alt'=>$node->title)); 
 
     }
-    //drupal_set_message("<pre>".print_r($node,1)."</pre>");
-
   }
 }
 
@@ -75,8 +72,12 @@ function _econ_news_categories($node) {
   $tags = array();
   if (isset($node->field_news_category['und'])) {
     foreach($node->field_news_category['und'] as $k=>$v) {
-      //drupal_Set_message(print_R($v,1));
-      $tags[] = $v['taxonomy_term']->name; 
+      if (isset($v['taxonomy_term'])) {
+        $tags[] = $v['taxonomy_term']->name; 
+      } else {
+        $term =taxonomy_term_load($v['tid']); 
+        $tags[] = $term->name;
+      }
     }
     return implode(", ", $tags);
   }

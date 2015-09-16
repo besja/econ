@@ -22,3 +22,78 @@ li a.active {
 .aside-menu__link.current {
   background: #2694ee;
 }
+
+.page__content ul.pager li::before  {
+	background: none;
+	position: relative;
+	top:0;
+	left:0;
+	width:0;
+}
+.page__content ul.pager li {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+.item-list .pager{
+  margin-bottom: 0.625rem;
+  width: 100%;
+  text-align: center;
+}
+.page__content ul.pager li a {
+  margin-bottom: 0.625rem;
+  display: inline-block;
+  font-family: Roboto, Helvetica, Arial, Sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 0.3125rem 0.625rem;
+  transition: background 0.3s, border-color 0.3s;
+  letter-spacing: 0.05rem;
+}
+.page__content ul.pager li.pager-current {
+  margin-bottom: 0.625rem;
+  display: inline-block;
+  font-family: Roboto, Helvetica, Arial, Sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 0.3125rem 0.625rem;
+  transition: background 0.3s, border-color 0.3s;
+  letter-spacing: 0.05rem;
+  color: #2d2d2d;
+  background: #2694ee;
+  border-color: #2694ee;
+}
+/* reset drupal default */
+
+.pager li > a, .pager li > span {
+	background-color: transparent;
+    border: none;
+    border-radius: 0 !important;
+    display: inline-block;
+    padding: 0;
+}
+
+.page__content ul.pager li a:hover,
+.page__content ul.pager li a:active,
+.page__content ul.pager li a:focus {
+  color: #2d2d2d;
+  background: #2694ee;
+  border-color: #2694ee;
+  border-radius: 0;
+}
+
+.page__content .pager li.pager-next a, 
+.page__content .pager li.pager-last a,
+.page__content .pager li.pager-first a,
+.page__content .pager li.pager-previous a{
+  background-color: #454545;
+  text-transform: uppercase;
+  color: #fff !important;
+  text-align: center;
+  font-family: Roboto, Helvetica, Arial, Sans-serif;
+  font-weight: 500;
+  height: auto;
+  transition: background-color 0.3s;
+  text-decoration: none !important;
+}

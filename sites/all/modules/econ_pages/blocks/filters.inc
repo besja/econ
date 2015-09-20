@@ -113,7 +113,7 @@ function _econ_pages_news_filter() {
       $current_year = $years[0];
     } 
   }
-  
+
   $months = _econ_pages_news_filter_get_months($current_year, $term_subquery);
   if (!in_array($current_month, $months)) {
     $current_month = "";
@@ -128,5 +128,57 @@ function _econ_pages_news_filter() {
   return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/news_filter.tpl.php", 
     array("years"=>$years, "data"=>$data ,"current_month"=>$current_month, "current_year" =>$current_year, "terms"=>$terms, "current_term"=>$current_term));
 
+}
 
+function _econ_pages_events_filter() {
+
+  $parameters = drupal_get_query_parameters();
+
+  // формируем календарь
+  // по умолчанию текущий год, месяц не задан
+
+  if (isset($parameters['year']) && is_numeric($parameters['year'])){
+    $current_year = $parameters['year']; 
+  } else {
+    $current_year = date('Y', time());
+  }
+
+  $current_month = ''; 
+  if (isset($parameters['month']) && is_numeric($parameters['month'])){
+    $current_month = $parameters['month']; 
+  } 
+
+  $years = array(); 
+ 
+  $result = db_query("SELECT YEAR(d.field_event_date_value) as event_year 
+    FROM node n  
+    INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
+    where n.type='event' and n.status = 1 
+    GROUP BY event_year ORDER BY d.field_event_date_value DESC");
+
+  while($row=$result->fetchObject()) {  
+    $years[] = $row->event_year; 
+  }
+
+  $data = array(); 
+ 
+  $result = db_query("
+    SELECT 
+    YEAR(d.field_event_date_value) as event_year, 
+    DATE_FORMAT (d.field_event_date_value, '%m') as event_month, 
+    count(n.nid) as total 
+    FROM node n  
+    INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
+    where n.type='event' and n.status = 1 and YEAR(d.field_event_date_value) = ".$current_year." 
+    GROUP BY event_month ORDER BY d.field_event_date_value DESC");
+
+  while($row=$result->fetchObject()) {  
+    $month_names = _econ_pages_month_names_normal() ;
+    $row->month_name = $month_names[$row->event_month][0];
+    $data[] = $row; 
+  }
+
+
+  return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/events_filter.tpl.php", 
+    array("years"=>$years, "data"=>$data ,"current_month"=>$current_month, "current_year" =>$current_year));
 }

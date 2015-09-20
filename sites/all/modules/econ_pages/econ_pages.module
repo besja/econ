@@ -19,7 +19,9 @@ function econ_pages_block_info() {
   $blocks['news-filter'] = array(
     'info' => t('Фильтр новостей'),
   );
-
+  $blocks['news-search'] = array(
+    'info' => t('Поиск по новостям и событиям'),
+  );
   return $blocks;
 }
 
@@ -33,6 +35,10 @@ function econ_pages_block_view($delta='') {
     case 'news-filter' :
       module_load_include('inc', 'econ_pages', 'blocks/filters');
       $block['content'] = _econ_pages_news_filter();
+    break;
+    case 'news-search' :
+      module_load_include('inc', 'econ_pages', 'blocks/search');
+      $block['content'] = _econ_pages_search_block_view();
     break;
   }
  

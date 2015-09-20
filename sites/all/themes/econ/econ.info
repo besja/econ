@@ -15,6 +15,7 @@ regions[content] = Content
 regions[header] = Header
 regions[contacts] = Contacts
 regions[social] = Social
+regions[bottom] = Bottom
 
 
 

@@ -175,6 +175,11 @@
                             <?php print $messages; ?>
                             <?php print render($page['content']); ?>
                         </div>
+                           <!-- news search --> 
+                            <?php if ($page['bottom']):?>
+                                <?php print render($page['bottom']);?>
+                            <?php endif;?>
+                           <!-- news search --> 
                     </main>
                    <!-- sidebar --> 
                     <?php if ($page['sidebar']):?>

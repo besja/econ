@@ -58,6 +58,9 @@ function _econ_page_class() {
 
       } 
       return "page ".$node->type;
+  } else {
+    $arg = arg();
+    return "page ".array_pop($arg); 
   }
   return "page";
 }

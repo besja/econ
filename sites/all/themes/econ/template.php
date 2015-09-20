@@ -51,6 +51,11 @@ function _econ_page_class() {
         case "news":
           return "page concrete-".$node->type; 
         break;
+
+        case "event":
+          return "page concrete-".$node->type; 
+        break;
+
       } 
       return "page ".$node->type;
   }
@@ -83,6 +88,27 @@ function _econ_news_categories($node) {
   }
 }
 
+function _econ_event_date($node) {
+  if (isset($node->field_event_date['und'][0]['value2']) && ($node->field_event_date['und'][0]['value2'] != $node->field_event_date['und'][0]['value'])) {
+    $start = date_create_from_format("Y-m-d H:i:s", $node->field_event_date['und'][0]['value']);
+    $end = date_create_from_format("Y-m-d H:i:s", $node->field_event_date['und'][0]['value2']); 
+    if ($start->format('Y') != $end->format('Y'))  {
+      // 25 сентября 2015 - 26 сентября 2016
+      return format_date($start->getTimestamp(), $type="custom", $format = "d F Y") .' - '. format_date($end->getTimestamp(), $type="custom", $format = "d F Y");
+    } elseif ($start->format('m') != $end->format('m')) {
+      // 25 сентября - 25 октября 2015 
+      return format_date($start->getTimestamp(), $type="custom", $format = "d F") .' - '. format_date($end->getTimestamp(), $type="custom", $format = "d F Y");
+    } else {
+      // 25-26 сентября 2015 
+       return format_date($start->getTimestamp(), $type="custom", $format = "d") .' - '. format_date($end->getTimestamp(), $type="custom", $format = "d F Y");
+    }
+    
+  } else {
+
+    $start = date_create_from_format("Y-m-d H:i:s", $node->field_event_date['und'][0]['value']);
+    return format_date($start->getTimestamp(), $type="custom", $format = "d F Y");
+  }
+}
 
 
 

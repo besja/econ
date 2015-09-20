@@ -8,6 +8,13 @@ function econ_pages_menu() {
       'file' => 'pages/news.inc', 
       'type' => MENU_LOCAL_TASK,
     );  
+  $items['news-events/events'] = array(
+    'page callback' => 'econ_pages_events_page',
+    'page arguments' => array('20'),
+    'access arguments' => array('access content'), 
+    'file' => 'pages/events.inc', 
+    'type' => MENU_LOCAL_TASK,
+  );  
   return $items;
 }
 

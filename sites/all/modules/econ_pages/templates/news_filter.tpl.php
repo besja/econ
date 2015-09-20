@@ -5,7 +5,7 @@
     <ul class="tag-selector">
         <li class="tag-selector__item  <?php if (!$current_term):?>tag-selector__item--current<?php endif;?>">
             <a href="<?php print url('news-events/news', 
-                    array('query'=>array('year'=>$current_year, 'month'=>$current_month, 'term'=>'')));?>" class="tag-selector__link">
+                    array('query'=>array('term'=>'')));?>" class="tag-selector__link">
                     все
             </a>
         </li>
@@ -13,7 +13,7 @@
         <li class="tag-selector__item <?php if ($current_term && $current_term == $term->tid):?>tag-selector__item--current<?php endif;?>">
 
             <a href="<?php print url('news-events/news', 
-                    array('query'=>array('year'=>$current_year, 'month'=>$current_month, 'term'=>$term->tid)));?>" class="tag-selector__link">
+                    array('query'=>array('term'=>$term->tid)));?>" class="tag-selector__link">
                     <?php print $term->name;?>
             </a>
         </li> 

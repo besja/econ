@@ -30,13 +30,15 @@ $monthAr = array(
   );
   return $monthAr ;
 }
-function _econ_pages_news_filter_get_months($year) {
+function _econ_pages_news_filter_get_data($year, $term_subquery) {
   $data = array();
 
   $result = db_query("SELECT FROM_UNIXTIME(n.created, '%m') as news_month, 
     FROM_UNIXTIME(n.created, '%Y') as news_year, 
     count(n.nid) as total, n.created 
-    FROM node n where n.type='news' and n.status = 1 and FROM_UNIXTIME(n.created, '%Y') = ".$year."
+    FROM node n 
+    ".$term_subquery."  
+    where n.type='news' and n.status = 1 and FROM_UNIXTIME(n.created, '%Y') = ".$year."
     GROUP BY news_month
     ORDER BY news_month ASC");
 
@@ -49,6 +51,28 @@ function _econ_pages_news_filter_get_months($year) {
 
   return $data; 
 
+}
+function _econ_pages_news_filter_get_years($current_year, $term_subquery) {
+  $years = array(); 
+ 
+  $result = db_query("SELECT FROM_UNIXTIME(n.created, '%Y') as news_year 
+    FROM node n ".$term_subquery." 
+    where n.type='news' and n.status = 1 
+    GROUP BY news_year ORDER BY news_year DESC");
+
+  while($row=$result->fetchObject()) {  
+    $years[] = $row->news_year; 
+  }
+
+  return $years;
+}
+function _econ_pages_news_filter_get_months($year, $term_subquery) {
+  $months = array();
+  $data = _econ_pages_news_filter_get_data($year, $term_subquery);
+  foreach ($data as $row) {
+    $months[] = $row->news_month;
+  }
+  return $months;
 }
 function _econ_pages_news_filter() {
 
@@ -71,29 +95,35 @@ function _econ_pages_news_filter() {
     $current_month = $parameters['month']; 
   } 
 
-  $years = array(); 
- 
-  $result = db_query("SELECT FROM_UNIXTIME(n.created, '%Y') as news_year FROM node n where n.type='news' and n.status = 1 GROUP BY news_year ORDER BY news_year DESC");
-
-  while($row=$result->fetchObject()) {  
-    $years[] = $row->news_year; 
-  }
-
-  if (!in_array($current_year, $years)) {
-    //если в текущем годе нет новостей
-    $current_year = $years[0];
-  }
-
-  $data = _econ_pages_news_filter_get_months($current_year); 
-
-  //формируем теги
-
-  $terms = taxonomy_get_tree(2); 
-
   $current_term = "";
   if (isset($parameters['term']) && is_numeric($parameters['term'])){
     $current_term = $parameters['term']; 
   }
+
+  $term_subquery = "";
+  if ($current_term) {
+    $term_subquery = " INNER JOIN field_data_field_news_category c ON c.entity_id = n.nid and c.field_news_category_tid = ".$current_term;
+  }
+
+  $years = _econ_pages_news_filter_get_years($current_year, $term_subquery); 
+  
+  if (!in_array($current_year, $years)) {
+    //если в текущем годе нет новостей
+    if (count($years)) {
+      $current_year = $years[0];
+    } 
+  }
+  
+  $months = _econ_pages_news_filter_get_months($current_year, $term_subquery);
+  if (!in_array($current_month, $months)) {
+    $current_month = "";
+  }
+
+  $data = _econ_pages_news_filter_get_data($current_year, $term_subquery); 
+
+  //формируем теги
+
+  $terms = taxonomy_get_tree(2); 
  
   return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/news_filter.tpl.php", 
     array("years"=>$years, "data"=>$data ,"current_month"=>$current_month, "current_year" =>$current_year, "terms"=>$terms, "current_term"=>$current_term));

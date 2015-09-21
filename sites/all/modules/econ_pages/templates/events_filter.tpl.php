@@ -22,7 +22,7 @@
     </div>
     <ul class="month-selector">
         <?php foreach ($data as $row):?>
-            <li class="month-selector__item <?php if ($current_month && $current_month == $row->news_month):?> month-selector__item--current <?php endif;?>">
+            <li class="month-selector__item <?php if ($current_month && $current_month == $row->event_month):?> month-selector__item--current <?php endif;?>">
                 <a href="<?php print url('news-events/events', 
                         array('query'=>array('year'=>$row->event_year, 'month'=>$row->event_month)));?>" class="month-selector__link">
                         <?php

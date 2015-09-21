@@ -2,7 +2,7 @@
 <?php if ($teaser) :?>
 <a href="<?php print url('node/'.$node->nid);?>" class="events-widget__event events-widget__event--md-hidden">
   <?php if (isset($node->field_leadimage['und'][0]['uri'])):?>
-  <div class="events-widget__image" style="background-image: url(<?php print image_style_url('leadimage', $node->field_leadimage['und'][0]['uri']); ?>)"></div> 
+  <div class="news-widget__image" style="background-image: url(<?php print image_style_url('leadimage', $node->field_leadimage['und'][0]['uri']); ?>)"></div> 
   <?php endif;?>
   <div class="events-widget__date"> <?php print _econ_event_date($node);?></div>
   <div class="events-widget__text"><?php print $node->title;?></div>

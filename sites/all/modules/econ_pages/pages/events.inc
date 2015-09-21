@@ -16,11 +16,15 @@ function econ_pages_events_page() {
     $current_month = $parameters['month']; 
   } 
 
+  $month_subquery = "";
+  if ($current_month) {
+    $month_subquery = " and DATE_FORMAT (d.field_event_date_value, '%m') = ".$current_month;
+  }
   //featured event
-
+  
   $query = "SELECT * FROM node n 
         INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
-        AND n.type='event' and n.status = 1 and n.sticky = 1 ORDER BY d.field_event_date_value DESC LIMIT 0,1"; 
+        AND n.type='event' and n.status = 1 and n.sticky = 1 and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery. " ORDER BY d.field_event_date_value DESC LIMIT 0,1"; 
 
   $result = db_query($query);
   $featured = $result->fetchObject();
@@ -38,12 +42,12 @@ function econ_pages_events_page() {
 
   $query = "SELECT * FROM node n 
             INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
-            and n.type='event' and n.status = 1 ".$exclude." 
-            ORDER BY d.field_event_date_value DESC"; 
+            and n.type='event' and n.status = 1 ".$exclude."  and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery." 
+             ORDER BY d.field_event_date_value DESC"; 
 
   $query_count =  "SELECT count(*) as total FROM node n 
             INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
-            and n.type='event' and n.status = 1 ".$exclude." 
+            and n.type='event' and n.status = 1 ".$exclude." and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery. " 
             ORDER BY d.field_event_date_value DESC"; 
   $count_result = db_query($query_count);
   $query_items = db_query_range($query,$start,$limit);

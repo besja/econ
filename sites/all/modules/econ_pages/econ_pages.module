@@ -32,6 +32,9 @@ function econ_pages_block_info() {
   $blocks['news-search'] = array(
     'info' => t('Поиск по новостям и событиям'),
   );
+  $blocks['adverts-last'] = array(
+    'info' => t('Послендние объявления'),
+  );
   return $blocks;
 }
 
@@ -54,6 +57,10 @@ function econ_pages_block_view($delta='') {
     case 'news-search' :
       module_load_include('inc', 'econ_pages', 'blocks/search');
       $block['content'] = _econ_pages_search_block_view();
+    break;
+    case 'adverts-last' :
+      module_load_include('inc', 'econ_pages', 'blocks/adverts');
+      $block['content'] = _econ_pages_adverts_last_block_view();
     break;
   }
  

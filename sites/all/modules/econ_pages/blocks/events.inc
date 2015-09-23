@@ -10,8 +10,7 @@ function _econ_pages_events_last_block_view(){
 	while($row=$result->fetchObject()) {
 		$nodes[] = $row->nid;
 	}
-drupal_set_message(theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/events.tpl.php", 
-    array("featured"=>"", "nodes"=>$nodes ,"pager"=>"")));
+
   	return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/events.tpl.php", 
-    array("featured"=>"", "nodes"=>$nodes ,"pager"=>""));
+    array("featured"=>"", "nodes"=>$nodes ,"pager"=>"", "allevents"=>true));
 }

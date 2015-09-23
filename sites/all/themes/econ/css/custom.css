@@ -97,3 +97,7 @@ li a.active {
   transition: background-color 0.3s;
   text-decoration: none !important;
 }
+
+.events-widget .news-widget__image {
+  display: block;
+}

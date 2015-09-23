@@ -2,7 +2,7 @@
 
 function econ_pages_news_events_page() {
 
-	drupal_set_title("Новости и события"); 
+	drupal_set_title("Новости и события");
 	//последние 10 новостей + featured, остальное выводим в блоках
 
   	$query = "SELECT * FROM node n  

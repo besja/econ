@@ -22,6 +22,8 @@
 		print render($render);
 		?>
 	<?php endforeach;?>
-
 	<?php print $pager;?>
+    <?php if (isset($allevents)):?>
+        <?php print l("Все события", "news-events/events", array("attributes"=>array("class"=>array("big-btn"))));?>
+    <?php endif;?>
 </div>

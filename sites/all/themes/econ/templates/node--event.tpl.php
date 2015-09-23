@@ -1,6 +1,6 @@
 
 <?php if ($teaser) :?>
-<a href="<?php print url('node/'.$node->nid);?>" class="events-widget__event events-widget__event--md-hidden">
+<a href="<?php print url('node/'.$node->nid);?>" class="events-widget__event">
   <?php if (isset($node->field_leadimage['und'][0]['uri'])):?>
   <div class="news-widget__image" style="background-image: url(<?php print image_style_url('leadimage', $node->field_leadimage['und'][0]['uri']); ?>)"></div> 
   <?php endif;?>

@@ -16,3 +16,12 @@ function _econ_pages_adverts_last_block_view() {
     }
     return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/adverts_last.tpl.php", array("nodes"=>$nodes));
 }
+
+function _econ_pages_adverts_last_slider_block_view() {
+	$result = db_query("SELECT * FROM node n WHERE n.type='advert' AND n.status = 1 ORDER by n.created DESC LIMIT 0,3");
+    $nodes = array();
+    while($row=$result->fetchObject()) {   
+    	$nodes[] = node_load($row->nid);
+    }
+    return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/adverts_last_slider.tpl.php", array("nodes"=>$nodes));
+}

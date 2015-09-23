@@ -1,6 +1,13 @@
 <?php
 
 function econ_pages_menu() {
+  $items['news-events'] = array(
+      'page callback' => 'econ_pages_news_events_page',
+      'page arguments' => array('20'),
+      'access arguments' => array('access content'), 
+      'file' => 'pages/news-events.inc', 
+      'type' => MENU_LOCAL_TASK,
+    );
   $items['news-events/news'] = array(
       'page callback' => 'econ_pages_news_page',
       'page arguments' => array('20'),
@@ -29,11 +36,17 @@ function econ_pages_block_info() {
   $blocks['events-filter'] = array(
     'info' => t('Фильтр событий'),
   );
+  $blocks['events-last'] = array(
+    'info' => t('Последние события'),
+  );
   $blocks['news-search'] = array(
     'info' => t('Поиск по новостям и событиям'),
   );
   $blocks['adverts-last'] = array(
-    'info' => t('Послендние объявления'),
+    'info' => t('Последние объявления'),
+  );
+  $blocks['adverts-last-slider'] = array(
+    'info' => t('Последние объявления (слайдер)'),
   );
   return $blocks;
 }
@@ -54,6 +67,12 @@ function econ_pages_block_view($delta='') {
       module_load_include('inc', 'econ_pages', 'blocks/filters');
       $block['content'] = _econ_pages_events_filter();
     break;
+
+    case 'events-last' :
+      module_load_include('inc', 'econ_pages', 'blocks/events');
+      $block['content'] = _econ_pages_events_last_block_view();
+    break;
+
     case 'news-search' :
       module_load_include('inc', 'econ_pages', 'blocks/search');
       $block['content'] = _econ_pages_search_block_view();
@@ -61,6 +80,10 @@ function econ_pages_block_view($delta='') {
     case 'adverts-last' :
       module_load_include('inc', 'econ_pages', 'blocks/adverts');
       $block['content'] = _econ_pages_adverts_last_block_view();
+    break;
+    case 'adverts-last-slider' :
+      module_load_include('inc', 'econ_pages', 'blocks/adverts');
+      $block['content'] = _econ_pages_adverts_last_slider_block_view();
     break;
   }
  

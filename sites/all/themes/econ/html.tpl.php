@@ -45,6 +45,7 @@
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/page.js"></script>
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/map-settings.js"></script>
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/footer.js"></script>
+<script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/modules.js"></script>
 </body>
 </html>
 

@@ -60,6 +60,12 @@ function _econ_page_class() {
       return "page ".$node->type;
   } else {
     $arg = arg();
+
+    $type = array_pop($arg);
+
+    if ($type == "news-events") {
+      return "page news-event";
+    }
     return "page ".array_pop($arg); 
   }
   return "page";

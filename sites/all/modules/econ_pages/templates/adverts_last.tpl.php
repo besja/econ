@@ -7,6 +7,7 @@
         ?>
             <div class="notice-widget__text"><?php print $node->title;?></div>
         </a>
-     <?php endforeach;?>
+        <?php endforeach;?>
     </div>
 </div>
+<?php print l("Все объявления", "news-events/adverts", array("attributes"=>array("class"=>array("big-btn"))));?>

@@ -1,5 +1,4 @@
 
-
 <?php if ($block_html_id == "block-econ-pages-menu-aside"):?>
 	<?php print $content ?>
 <?php else:?>

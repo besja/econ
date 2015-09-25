@@ -29,7 +29,7 @@ function econ_pages_news_events_page() {
   	}
 
   	return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/news.tpl.php", 
-    array("featured"=>$featured, "nodes"=>$nodes ,"pager"=>""));
+    array("featured"=>$featured, "nodes"=>$nodes ,"pager"=>"", "all"=>true));
 
 
 }

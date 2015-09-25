@@ -48,6 +48,9 @@ function econ_pages_block_info() {
   $blocks['adverts-last-slider'] = array(
     'info' => t('Последние объявления (слайдер)'),
   );
+  $blocks['news-last'] = array(
+    'info' => t('Последние новости'),
+  );
   return $blocks;
 }
 
@@ -84,6 +87,10 @@ function econ_pages_block_view($delta='') {
     case 'adverts-last-slider' :
       module_load_include('inc', 'econ_pages', 'blocks/adverts');
       $block['content'] = _econ_pages_adverts_last_slider_block_view();
+    break;
+    case 'news-last' :
+      module_load_include('inc', 'econ_pages', 'blocks/news');
+      $block['content'] = _econ_pages_news_last_block_view();
     break;
   }
  

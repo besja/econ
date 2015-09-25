@@ -22,7 +22,7 @@
 </a>
 <?php endif;?>
 <div id="news-widget" class="news-widget">
-	<div id="news-widget__inner" class="news-widget__inner cf">
+	<!-- <div id="news-widget__inner" class="news-widget__inner cf"> -->
 		<?php foreach($nodes as $nid):?>
 			<?php 
 			$node = node_load($nid);
@@ -30,6 +30,9 @@
 			print render($render);
 			?>
 		<?php endforeach;?>
-	</div>
+	<!-- </div> -->
 	<?php print $pager;?>
+    <?php if (isset($all)):?>
+        <?php print l("Все новости", "news-events/news", array("attributes"=>array("class"=>array("big-btn"))));?>
+    <?php endif;?>
 </div>

@@ -61,7 +61,6 @@
                         </div>
                     </div>
                     <div class="row">
-
                         <div id="main-menu" class="main-menu col-md-10 visible-md visible-lg">
                             <ul role="tablist" class="main-menu__list cf">
                                 <?php $i = 1;?>
@@ -152,40 +151,67 @@
             <!--  end header --> 
             <div class="container <?php print _econ_page_class();?>">
                 <div class="row">
-                    <main class="col-sm-12 col-md-9 no-paddings">
+                    <?php if (!$is_front):?>
+                        <main class="col-sm-12 col-md-9 no-paddings">
 
-
-                        <!-- breadcumbs -->
-                        <!-- main img -->
-                        <?php if ($breadcrumb): ?>
-                          <?php print $breadcrumb; ?>
-                        <?php endif; ?>
-                        <?php if ($leadimage):?>
-                        <div class="page__main-image">
-                           <?php print $leadimage;?>
-                        </div>
-                        <?php endif;?>
-                        <div class="page__content">
-                            <?php if ($tabs): ?>
-                            <div class="tabs drupal-tabs">
-                                    <?php print render($tabs); ?>
-                            </div>
+                            <?php if ($breadcrumb): ?>
+                              <?php print $breadcrumb; ?>
                             <?php endif; ?>
-                            <h1 class="page__title"><?php print $title;?></h1>
-                            <?php print $messages; ?>
-                            <?php print render($page['content']); ?>
-                        </div>
+
+                            <?php if ($leadimage):?>
+                            <div class="page__main-image">
+                               <?php print $leadimage;?>
+                            </div>
+                            <?php endif;?>
+
+                            <div class="page__content">
+                                <?php if ($tabs): ?>
+                                <div class="tabs drupal-tabs">
+                                        <?php print render($tabs); ?>
+                                </div>
+                                <?php endif; ?>
+                                <h1 class="page__title"><?php print $title;?></h1>
+                                <?php print $messages; ?>
+                                <?php print render($page['content']); ?>
+                            </div>
                            <!-- news search --> 
                             <?php if ($page['bottom']):?>
                                 <?php print render($page['bottom']);?>
                             <?php endif;?>
                            <!-- news search --> 
-                    </main>
-                   <!-- sidebar --> 
-                    <?php if ($page['sidebar']):?>
-                        <?php print render($page['sidebar']);?>
+                        </main>
+                       <!-- sidebar --> 
+                        <?php if ($page['sidebar']):?>
+                            <?php print render($page['sidebar']);?>
+                        <?php endif;?>
+                       <!-- end sidebar --> 
+                    <?php else:?>
+                        <div id="index-page" class="index-page">
+                            <div class="col-sm-12 col-md-7 no-paddings">
+                                <main>
+                                    <!--intro--> 
+                                </main>
+                            </div>
+                            <div class="col-xs-12 col-md-3 no-paddings">
+                                <?php $block = module_invoke("econ_pages", "block_view", "events-last");?>
+                                <?php print $block['content'];?>
+                            </div>
+                            <div class="col-xs-12 col-md-2">
+                                <aside class="row">
+                                    <div class="col-xs-12 no-paddings">
+                                        <?php $block = module_invoke("econ_pages", "block_view", "adverts-last-slider");?>
+                                        <?php print $block['content'];?>
+                                        <!--adverts-->
+                                    </div>
+                                    <div class="col-xs-12 no-paddings">
+                                        <?php $block = module_invoke("econ_pages", "block_view", "news-last");?>
+                                        <?php print $block['content'];?>
+                                        <!-- news -->
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
                     <?php endif;?>
-                   <!-- end sidebar --> 
                 </div>
             </div>
         </div> <!-- row -->

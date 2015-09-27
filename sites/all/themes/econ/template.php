@@ -122,6 +122,23 @@ function _econ_event_date($node) {
   }
 }
 
+// возвращает список подразделений с которым связана персоналия
+function _econ_pages_load_structures($nid) {
 
+  $links= array(); 
+  $query = "SELECT n.nid, n.title FROM field_data_field_perston_structures s 
+  INNER JOIN field_data_field_struct_ref r ON s.field_perston_structures_value = r.entity_id 
+  INNER JOIN node n ON n.nid = r.field_struct_ref_nid 
+  WHERE s.entity_id = ".$nid." and n.status = 1 ORDER BY s.delta"; 
+
+  $result = db_query($query);
+
+  while($row = $result->fetchObject()) {
+    $links[] = l($row->title, "node/".$row->nid, array("attributes"=>array("class"=>array("common-tabs__tab")))); 
+  }  
+  return implode("", $links);
+
+  
+}
 
 

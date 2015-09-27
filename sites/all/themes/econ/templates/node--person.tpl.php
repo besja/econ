@@ -2,7 +2,7 @@
 <?php if ($teaser) :?>
 
 <?php else:?>
-	<?php drupal_set_message(print_r($node->field_files, 1));?>
+
 <div class="common-module row">
     <div class="col-xs-6  col-sm-3 col-md-3">
 	  <?php if (isset($node->field_image['und'][0]['uri'])):?>
@@ -64,4 +64,12 @@
 		<?php endforeach;?>
 	</div>
 <?php endif;?>
+
+<?php $links = _econ_pages_load_structures($node->nid);?> 
+	<?php if ($links):?>
+		 <div class="common-module common-tabs">
+		 	<?php print $links;?>
+		 </div>
+	<?php endif;?>
+<?php print l("Все персоналии", "people", array("attributes"=>array("class"=>array("common-module", "big-btn"))));?>
 <?php endif;?>

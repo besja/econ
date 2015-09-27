@@ -19,6 +19,10 @@ li a.active {
     width: inherit;
 }
 
+tbody {
+  border-top:none;
+}
+
 .aside-menu__link.current {
   background: #2694ee;
 }

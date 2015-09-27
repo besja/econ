@@ -73,11 +73,14 @@ function _econ_page_class() {
 
 function econ_preprocess_page(&$vars, $hook) {
   $vars['leadimage'] = "";
+  $vars['show_title'] = true;
   if (arg(0) == 'node' && is_numeric(arg(1))) {
     $node = node_load(arg(1)); 
     if (isset($node->field_leadimage['und'][0])) {
       $vars['leadimage'] = theme('image_style', array('style_name' => 'leadimage', 'path' => $node->field_leadimage['und'][0]['uri'], 'alt'=>$node->title)); 
-
+    }
+    if ($node->type == 'person') {
+      $vars['show_title'] = false;
     }
   }
 }

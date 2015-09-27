@@ -170,7 +170,9 @@
                                         <?php print render($tabs); ?>
                                 </div>
                                 <?php endif; ?>
+                                <?php if ($show_title):?>
                                 <h1 class="page__title"><?php print $title;?></h1>
+                                <?php endif;?>
                                 <?php print $messages; ?>
                                 <?php print render($page['content']); ?>
                             </div>

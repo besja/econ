@@ -11,5 +11,5 @@ function _econ_pages_news_last_block_view() {
 	    $nodes[] = $row->nid;
 	}
 	return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/news.tpl.php", 
-    array("featured"=>$featured, "nodes"=>$nodes ,"pager"=>"", "all"=>true));
+    array("featured"=>"", "nodes"=>$nodes ,"pager"=>"", "all"=>true));
 }

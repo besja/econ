@@ -101,3 +101,15 @@ li a.active {
 .events-widget .news-widget__image {
   display: block;
 }
+.intro__banner p {
+  padding: 0 1.875rem 1.875rem;
+  font-size: 1.3125rem;
+  font-family: Roboto, Helvetica, Arial, Sans-serif;
+}
+
+.intro .intro__banner--orange:hover {
+  background: #e55d2a;
+}
+.intro .intro__banner--blue:hover {
+  background: #09518d;
+}

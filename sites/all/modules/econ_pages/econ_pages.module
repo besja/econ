@@ -51,6 +51,9 @@ function econ_pages_block_info() {
   $blocks['news-last'] = array(
     'info' => t('Последние новости'),
   );
+  $blocks['intro'] = array(
+    'info' => t('Слайдер на главной'),
+  );
   return $blocks;
 }
 
@@ -91,6 +94,10 @@ function econ_pages_block_view($delta='') {
     case 'news-last' :
       module_load_include('inc', 'econ_pages', 'blocks/news');
       $block['content'] = _econ_pages_news_last_block_view();
+    break;
+    case 'intro' :
+      module_load_include('inc', 'econ_pages', 'blocks/intro');
+      $block['content'] = _econ_pages_intro_block_view();
     break;
   }
  

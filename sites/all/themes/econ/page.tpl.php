@@ -189,7 +189,8 @@
                         <div id="index-page" class="index-page">
                             <div class="col-sm-12 col-md-7 no-paddings">
                                 <main>
-                                    <!--intro--> 
+                                    <?php $block = module_invoke("econ_pages", "block_view", "intro");?>
+                                    <?php print $block['content'];?>
                                 </main>
                             </div>
                             <div class="col-xs-12 col-md-3 no-paddings">

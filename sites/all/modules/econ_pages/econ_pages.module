@@ -22,6 +22,20 @@ function econ_pages_menu() {
     'file' => 'pages/events.inc', 
     'type' => MENU_LOCAL_TASK,
   );  
+  $items['people'] = array(
+    'page callback' => 'econ_pages_people_abc_page',
+    'page arguments' => array('20'),
+    'access arguments' => array('access content'), 
+    'file' => 'pages/people.inc', 
+    'type' => MENU_LOCAL_TASK,
+  );  
+  $items['people/%'] = array(
+    'page callback' => 'econ_pages_people_structure_page',
+    'page arguments' => array('20'),
+    'access arguments' => array('access content'), 
+    'file' => 'pages/people.inc', 
+    'type' => MENU_LOCAL_TASK,
+  );  
   return $items;
 }
 

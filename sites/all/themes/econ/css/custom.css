@@ -117,3 +117,7 @@ tbody {
 .intro .intro__banner--blue:hover {
   background: #09518d;
 }
+.empty {
+  text-align: center;
+  margin: 1em 0;
+}

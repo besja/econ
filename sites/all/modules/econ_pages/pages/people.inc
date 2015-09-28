@@ -2,7 +2,40 @@
 
 
 function econ_pages_people_structure_page() {
-	return _econ_pages_people_header(); 
+
+	$header = _econ_pages_people_header(); 
+
+	$parameters = drupal_get_query_parameters();
+
+	$current_structure = ""; 
+
+	if (isset($parameters['structure']) && is_numeric($parameters['structure'])){
+		$current_structure = $parameters['structure']; 
+	} 
+
+	if ($current_structure) {	 
+		// выбрано подразделение
+
+		$query = "SELECT n.nid, n.title FROM field_data_field_struct_ref r 
+		INNER JOIN field_data_field_perston_structures s ON s.field_perston_structures_value = r.entity_id  AND r.field_struct_ref_nid = ".$current_structure." 
+		INNER JOIN node n ON n.nid = s.entity_id AND n.type = 'person' AND n.status = 1 GROUP BY n.nid ORDER by n.title"; 
+
+		$result = db_query($query); 
+
+		$nodes = array();
+
+		while($row=$result->fetchObject()) {
+			$nodes[] = $row; 		
+		}
+		$content  = theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/people.tpl.php", 
+    	array("nodes"=>$nodes));
+	}else {
+		//выбрана категория подразделений
+		$content="";
+	}
+	return $header.$content;
+	
+
 }
 function econ_pages_people_abc_page() {
 
@@ -98,7 +131,7 @@ function _econ_pages_people_header() {
 
 		$type = $paths[$k];
 
-		$query = "SELECT * FROM node n INNER JOIN field_data_field_structure_type t ON t.entity_id = n.nid AND n.status = 1 AND t.field_structure_type_value  =  ".$k." ORDER BY n.created "; 
+		$query = "SELECT * FROM node n INNER JOIN field_data_field_structure_type t ON t.entity_id = n.nid AND n.status = 1 AND t.field_structure_type_value  =  ".$k." ORDER BY n.title "; 
 		$result = db_query($query); 
 		
 		$is_active_link_header = false; 
@@ -122,10 +155,7 @@ function _econ_pages_people_header() {
   	return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/people_header.tpl.php", 
     	array("abc_data"=>$abc_data, "struct_data"=>$struct_data, "current_type" => $current_type));
 }
-function _econ_pages_get_people_path() {
-	$paths = array("1"=>"kafedri", "2"=>"centri", "3"=>"administracia");
-	return $paths; 
-} 
+
 function str_split_unicode($str, $l = 0) {
     if ($l > 0) {
         $ret = array();

@@ -126,18 +126,23 @@ function _econ_event_date($node) {
 function _econ_pages_load_structures($nid) {
 
   $links= array(); 
-  $query = "SELECT n.nid, n.title FROM field_data_field_perston_structures s 
+  $query = "SELECT n.nid, n.title, t.field_structure_type_value as struct_type FROM field_data_field_perston_structures s 
   INNER JOIN field_data_field_struct_ref r ON s.field_perston_structures_value = r.entity_id 
   INNER JOIN node n ON n.nid = r.field_struct_ref_nid 
+  INNER JOIN field_data_field_structure_type t ON t.entity_id = n.nid 
   WHERE s.entity_id = ".$nid." and n.status = 1 ORDER BY s.delta"; 
 
   $result = db_query($query);
 
+  $paths = _econ_pages_get_people_path(); 
   while($row = $result->fetchObject()) {
-    $links[] = l($row->title, "node/".$row->nid, array("attributes"=>array("class"=>array("common-tabs__tab")))); 
+    $path = "people";
+    if (isset($paths[$row->struct_type])) {
+      $path = "people/".$paths[$row->struct_type]; 
+    }
+    $links[] = l($row->title, $path, array("attributes"=>array("class"=>array("common-tabs__tab")), "query"=>array("structure"=>$row->nid))); 
   }  
   return implode("", $links);
-
   
 }
 

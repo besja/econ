@@ -28,6 +28,7 @@ function econ_pages_menu() {
     'access arguments' => array('access content'), 
     'file' => 'pages/people.inc', 
     'type' => MENU_LOCAL_TASK,
+    'menu_name' => 'menu-econ-mainmenu'
   );  
   $items['people/%'] = array(
     'page callback' => 'econ_pages_people_structure_page',
@@ -120,35 +121,61 @@ function econ_pages_block_view($delta='') {
 
 function econ_pages_submenu_tree_all_data($mlid, $menu = 'menu-econ-mainmenu') {
   $tree = menu_tree_all_data($menu);
+
   foreach ($tree as $branch) {
     if ($branch['link']['mlid'] == $mlid and count($branch['below'])) {
+
       return array_values($branch['below']);
     }
   }
   return array_values($tree);
 }
+function _econ_pages_get_current_mlid() {
+  $mlid = array();
+  $q = current_path();
+  $menu_info = db_select('menu_links' , 'ml')
+    ->condition('ml.link_path' , $q)
+    ->condition('ml.menu_name', 'menu-econ-mainmenu')
+    ->fields('ml', array('mlid', 'plid'))
+    ->execute()
+    ->fetchAll();
 
+  foreach($menu_info as $key => $value) {
+    $mlid[] = $menu_info[$key]->mlid;
+  }
+
+  if (count($mlid)) {
+    return $mlid[0];
+  } else {
+    // не в меню 
+    return 0;
+  }
+}
 function _econ_pages_get_menu() {
   
   $mainmenu = array();
   // не могу использовать нормальну ф-цию menu_build_tree, так как есть баг (если дважды ее вызывать)
   // see https://www.drupal.org/node/1697570  
   // menu_tree_all_data возвращает hidden ссылки, нужно проверять 
-  
-  $active_trail = menu_get_active_trail();
 
-  if ( (count($active_trail) == 1 )  or (isset($active_trail[1]['menu_name']) && ($active_trail[1]['menu_name'] != 'menu-econ-mainmenu'))){
-    // главная или текущая страница не в главном меню 
-    $mainmenu = menu_tree_all_data('menu-econ-mainmenu', $link=$active_trail[0], $max_depth = 2);
-    return array_values($mainmenu);
+  $current_mlid = _econ_pages_get_current_mlid();
 
+
+  $parents = token_menu_link_load_all_parents($current_mlid); 
+
+  if (count($parents) == 0) {
+      //1 уровень 
+
+      return $mainmenu = econ_pages_submenu_tree_all_data(0, 'menu-econ-mainmenu');
   }
-  if (isset($active_trail[1]['mlid'])) {
-    $mainmenu = econ_pages_submenu_tree_all_data($active_trail[1]['mlid'], 'menu-econ-mainmenu');
-  }
-  return $mainmenu; 
-
+  if (count($parents) >= 1) {
+      //2 уровень
+      $keys = array_keys($parents) ;
+      return $mainmenu = econ_pages_submenu_tree_all_data($keys[0], 'menu-econ-mainmenu');
+  } 
+  return $mainmenu;
 }
+// todo заменить на parents
 function _econ_pages_get_active_mlids() {
   $active_trail = menu_get_active_trail(); 
   $active = array();

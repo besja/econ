@@ -56,6 +56,9 @@ function _econ_page_class() {
           return "page concrete-".$node->type; 
         break;
 
+        case "graduate":
+          return "page concrete-".$node->type; 
+        break;
       } 
       return "page ".$node->type;
   } else {
@@ -79,7 +82,7 @@ function econ_preprocess_page(&$vars, $hook) {
     if (isset($node->field_leadimage['und'][0])) {
       $vars['leadimage'] = theme('image_style', array('style_name' => 'leadimage', 'path' => $node->field_leadimage['und'][0]['uri'], 'alt'=>$node->title)); 
     }
-    if ($node->type == 'person') {
+    if ($node->type == 'person' or $node->type == 'graduate') {
       $vars['show_title'] = false;
     }
   }

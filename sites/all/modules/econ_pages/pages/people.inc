@@ -1,6 +1,27 @@
 <?php
 
+function econ_pages_people_graduated_page() {
+	global $language;
 
+	$header = _econ_pages_people_header(); 
+
+	$query = "SELECT *  
+	FROM node n WHERE n.type = 'graduate' 
+	and n.status = 1 
+	AND n.language IN ('und', '".$language->language."') 
+	ORDER BY n.title ASC";
+
+	$result = db_query($query); 
+
+	$nodes = array(); 
+	while($row=$result->fetchObject()) {
+		$nodes[] = $row; 
+	}
+	$content  =  '<h2 class="page__subheader">Выпускники</h2>'.theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/people.tpl.php", 
+	array("nodes"=>$nodes));
+
+	return $header.$content; 
+}
 function econ_pages_people_structure_page() {
 
 	global $language;
@@ -141,6 +162,10 @@ function _econ_pages_people_header() {
     	$paths_flip = array_flip($paths);
     	if (isset($paths_flip[$args[1]])) {
     		$current_type = $paths_flip[$args[1]]; 
+    	} else {
+    		if ($args[1] == "graduated") {
+    			$current_type = "graduated";
+    		}
     	} 	
     }
 

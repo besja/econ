@@ -18,7 +18,8 @@
 
     <div class="panel persons-filter__panel">
         <h4 class="persons-filter__header">
-            <a href="#">Выпускники</a>
+
+            <a href="<?php print url('people/graduated');?>" <?php if ($current_type == 'graduated'):?> aria-expanded="true" <?php endif?>>Выпускники</a>
         </h4>
     </div>
     <div class="panel persons-filter__panel">

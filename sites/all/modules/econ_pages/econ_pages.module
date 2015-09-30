@@ -121,6 +121,7 @@ function econ_pages_block_view($delta='') {
 
 function econ_pages_submenu_tree_all_data($mlid, $menu = 'menu-econ-mainmenu') {
   $tree = menu_tree_all_data($menu);
+  $tree = i18n_menu_localize_tree($tree);
 
   foreach ($tree as $branch) {
     if ($branch['link']['mlid'] == $mlid and count($branch['below'])) {
@@ -131,11 +132,13 @@ function econ_pages_submenu_tree_all_data($mlid, $menu = 'menu-econ-mainmenu') {
   return array_values($tree);
 }
 function _econ_pages_get_current_mlid() {
+  global $language; 
   $mlid = array();
   $q = current_path();
   $menu_info = db_select('menu_links' , 'ml')
     ->condition('ml.link_path' , $q)
     ->condition('ml.menu_name', 'menu-econ-mainmenu')
+    ->condition('ml.language', array("und", $language->language), "IN")
     ->fields('ml', array('mlid', 'plid'))
     ->execute()
     ->fetchAll();
@@ -160,7 +163,6 @@ function _econ_pages_get_menu() {
 
   $current_mlid = _econ_pages_get_current_mlid();
 
-
   $parents = token_menu_link_load_all_parents($current_mlid); 
 
   if (count($parents) == 0) {
@@ -177,19 +179,19 @@ function _econ_pages_get_menu() {
 }
 // todo заменить на parents
 function _econ_pages_get_active_mlids() {
-  $active_trail = menu_get_active_trail(); 
-  $active = array();
-  foreach ($active_trail as $k=>$v) {
-    if (isset($v['mlid'])) {
-      $active[]=$v['mlid'];
-    }
-  }
+  $current_mlid = _econ_pages_get_current_mlid();
+
+  $parents = token_menu_link_load_all_parents($current_mlid); 
+
+  $active = array_keys($parents) ;
+  $active[] = $current_mlid;
   return $active;
 }
 
 function _econ_pages_menu_block_view($template) {
 
   $menu =  _econ_pages_get_menu() ;  
+
   $active = _econ_pages_get_active_mlids();
   
 	return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/".$template.".tpl.php", 
@@ -230,7 +232,14 @@ function _econ_pages_get_people_path() {
   $paths = array("1"=>"administracia", "2"=>"kafedri", "3"=>"centri");
   return $paths; 
 } 
+function _econ_pages_remove_hidden(&$menu) {
+  foreach ($menu as $k=>$m) {
+    if ($m['link']['hidden']==1) {
+      unset($menu[$k]);
+    }
+   }
 
+}
 
 
 

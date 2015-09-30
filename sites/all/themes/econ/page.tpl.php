@@ -1,7 +1,10 @@
-<?php  global $theme_path;  global $base_url; ?>
+<?php  global $theme_path;  global $base_url;  global $language; ?>
 <?php
     $shortcuts = menu_build_tree("menu-shortcatmenu");
-    $mainmenu = menu_build_tree("menu-econ-mainmenu");
+    $shortcuts = i18n_menu_localize_tree($shortcuts); 
+
+    $mainmenu = econ_pages_submenu_tree_all_data(0, $menu = "menu-econ-mainmenu");
+
 ?>
 <?php 
     print _econ_pages_menu_block_view("menu_mobile_block"); 
@@ -65,17 +68,20 @@
                             <ul role="tablist" class="main-menu__list cf">
                                 <?php $i = 1;?>
                                 <?php foreach ($mainmenu as $m):?>
+                                <?php if (!$m['link']['hidden']):?>
                                 <li <?php if ($i==1):?> data-tab="1" <?php endif;?> class="main-menu__item 
                                     <?php if ($m['link']['in_active_trail']):?> current <?php endif;?>">
+
                                     <a href="#main-menu-<?php print $i;?>" role="tab" id="main-menu-tab-<?php print $i;?>" 
                                         data-toggle="tab" 
                                         aria-controls="#main-menu-<?php print $i;?>" 
                                         aria-expanded="true" 
                                         class="main-menu__link">
-                                            <?php print $m['link']['title'];?>
+                                     <?php print $m['link']['title'];?>
                                     </a>
                                  </li>
                                 <?php $i++;?>
+                                <?php endif;?>
                                 <?php endforeach;?>
                             </ul>
                         </div>
@@ -98,34 +104,35 @@
             <div id="full-menu" class="row tab-content full-menu">
                 <?php $i = 1;?>
                  <?php foreach ($mainmenu as $m):?>
+                 <?php if (!$m['link']['hidden']):?>
                     <?php 
-
                         $children = array_values($m['below']);
+                        _econ_pages_remove_hidden($children);
                         ?>                   
                         <div id="main-menu-<?php print $i;?>"  role="tabpanel" 
                             class="full-menu__tab-pane tab-pane fade active">
                         <div class="col-md-7">
                             <div class="row">
                                 <?php if (count($children)):?>
-                                            <?php 
-                                                $total = 7;
-                                                $colums = ceil(count($children)/$total);
-                                            ?>
-                                                <?php for ($j=0; $j<$colums; $j++):?>
-                                                    <div class="col-md-6">
-                                                        <ul class="full-menu__list">
-                                                            <?php for ($k=$total*$j; $k<$total*$j + $total ; $k++) :?>
-                                                                <?php if (isset($children[$k])):?>
-                                                                <li class="full-menu__item">
-                                                                    <?php print l($children[$k]['link']['link_title'],
-                                                                     $children[$k]['link']['link_path'], 
-                                                                     array("attributes"=>array("class"=>array("full-menu__item__link"))));?>
-                                                                </li>
-                                                                <?php endif;?>
-                                                            <?php endfor;?>
-                                                        </ul>
-                                                    </div>
+                                    <?php 
+                                    $total = 7;
+                                    $colums = ceil(count($children)/$total);
+                                    ?>
+                                    <?php for ($j=0; $j<$colums; $j++):?>
+                                        <div class="col-md-6">
+                                            <ul class="full-menu__list">
+                                                <?php for ($k=$total*$j; $k<$total*$j + $total ; $k++) :?>
+                                                    <?php if (isset($children[$k])):?>
+                                                    <li class="full-menu__item">
+                                                        <?php print l($children[$k]['link']['link_title'],
+                                                         $children[$k]['link']['link_path'], 
+                                                         array("attributes"=>array("class"=>array("full-menu__item__link"))));?>
+                                                    </li>
+                                                    <?php endif;?>
                                                 <?php endfor;?>
+                                            </ul>
+                                        </div>
+                                    <?php endfor;?>
                                 <?php endif;?>
                             </div>
                         </div>
@@ -138,9 +145,10 @@
                                 </div>
                             </div>
                         <?php endif;?>
-                        </div>
+                    </div>
 
                  <?php $i++;?>
+                <?php endif;?>
                 <?php endforeach;?>
 
             </div>

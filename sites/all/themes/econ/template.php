@@ -28,15 +28,9 @@ function _econ_get_menu_children($path) {
 function econ_breadcrumb($variables) {
   $breadcrumb = $variables ['breadcrumb'];
 
-  //pattern to find all title="anything-inside-double-quote"
-  $pattern = "/href=/";
-
-  foreach($breadcrumb as $k => $value){
-        //replace with nothing so title won't print
-       $breadcrumb[$k] = preg_replace($pattern, 'class="breadcrumbs__link" href=', $value);
-  }
-
   if (!empty($breadcrumb)) {
+
+    $breadcrumb[] = drupal_get_title();
 
     $output = '<div class="breadcrumbs">' . implode('', $breadcrumb) . '</div>';
     return $output;

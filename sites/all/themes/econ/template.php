@@ -149,4 +149,94 @@ function _econ_pages_load_structures($nid) {
   
 }
 
+// возвращает список людей с которым связано подразделени
+function _econ_pages_load_people($nid) {
+  global $language;
+  $links= array(); 
+  $query = "SELECT n.nid, n.title, pr.field_person_role_value as role  
+  FROM field_data_field_perston_structures s
+  INNER JOIN field_data_field_struct_ref r ON s.field_perston_structures_value = r.entity_id 
+  INNER JOIN  field_data_field_show_on_page op ON s.field_perston_structures_value = op.entity_id 
+  LEFT JOIN field_data_field_person_role pr ON s.field_perston_structures_value = pr.entity_id 
+
+  INNER JOIN node n ON n.nid = s.entity_id AND n.type = 'person' 
+  AND n.language IN ('und', '".$language->language."') AND n.status = 1 
+  AND r.field_struct_ref_nid = ".$nid." 
+  ORDER BY n.title "; 
+
+  $result = db_query($query);
+
+  $nodes = array(); 
+  while($row = $result->fetchObject()) {
+   $nodes[] = $row; 
+  }  
+  return $nodes; 
+}
+
+//возвращает список программ, реализуемых кафедрой 
+function _econ_pages_load_programms($nid) {
+  global $language;
+  $links= array(); 
+  $query = "SELECT n.nid, n.title 
+  FROM field_data_field_struct_ref r 
+  INNER JOIN node n ON n.nid = r.entity_id AND r.bundle='programm' AND n.type = 'programm' 
+  AND n.language IN ('und', '".$language->language."') AND n.status = 1 
+  AND r.field_struct_ref_nid = ".$nid." 
+  ORDER BY n.title"; 
+  $result = db_query($query);
+
+  $nodes = array(); 
+  while($row = $result->fetchObject()) {
+   $nodes[] = $row; 
+  }  
+  return $nodes; 
+}
+
+
+function _econ_pages_get_sublinks() {
+
+  global $language; 
+
+  $current_mlid = _econ_pages_get_current_mlid(); 
+
+  $current_link = menu_link_load($current_mlid); 
+
+  menu_build_tree('menu-econ-mainmenu');
+
+  $parameters = array(
+    'active_trail' => array( $current_link['plid']),
+    'only_active_trail' => FALSE,
+    'min_depth' =>  $current_link['depth']+1,
+    'max_depth' =>  $current_link['depth']+1,
+    'conditions' => array('plid' =>  $current_link['mlid']),
+  );
+  $children = menu_build_tree($current_link['menu_name'], $parameters);
+
+  //Reset menu cache since 'menu_build_tree' will cause trouble later on after 
+  //you call pathauto to update paths as it can only be called once. 
+  //Check: https://www.drupal.org/node/1697570
+  
+  menu_reset_static_cache();
+
+  if (count($children)) {
+    foreach ($children as $value) {
+      $path = explode("/", $value['link']['link_path']); 
+
+      $value['img_uri']= '';
+      if (count($path) == 2 && $path[0]=='node' && is_numeric($path[1])) {
+        $node = node_load($path[1]);
+
+        if (isset($node->field_leadimage['und'][0]['uri'])) {
+          $value['img_uri']= $node->field_leadimage['und'][0]['uri']; 
+        }
+      } 
+
+      $data[] = $value;
+    }
+  }
+
+  return theme_render_template(drupal_get_path('theme', 'econ')."/templates/econ-contents.tpl.php", 
+    array("data"=>$data));
+
+}
 

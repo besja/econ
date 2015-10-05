@@ -129,3 +129,6 @@ tbody {
     display: inline-block;
     padding: 0 0.3125rem;
 }
+.inline-manage {
+  font-size:0.7rem;
+}

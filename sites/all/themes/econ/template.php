@@ -233,4 +233,42 @@ function _econ_pages_get_sublinks() {
     array("data"=>$data));
 
 }
+function _econ_get_rating($nid) {
 
+  $parameters = drupal_get_query_parameters();
+
+  if (isset($parameters['type']) && in_array($parameters['type'], array('hirsh', 'cite'))){
+    $type = $parameters['type']; 
+  } else {
+    $type = 'hirsh'; 
+  }
+
+  if ($type == 'cite') {
+    $subquery = " ORDER BY c.field_rating_cite_value DESC "; 
+  } else {
+    $subquery = " ORDER BY i.field_rating_index_value DESC ";    
+  }
+
+  $query = "SELECT n.title, n.nid, n2.field_rating_pub_number_value as pub_number, 
+  c.field_rating_cite_value as cite_index, 
+  i.field_rating_index_value as hirsh, 
+  id.field_rating_id_value as lib_id, 
+  p.field_rating_people_value as pid   
+  FROM field_data_field_rating_people p 
+  INNER JOIN field_data_field_rating_person p2 ON p.field_rating_people_value = p2.entity_id 
+  INNER JOIN node n ON n.nid = p2.field_rating_person_nid AND n.type = 'person' AND n.status = 1 
+  INNER JOIN field_data_field_rating_pub_number n2 ON p.field_rating_people_value = n2.entity_id 
+  INNER JOIN  field_data_field_rating_cite c ON p.field_rating_people_value = c.entity_id 
+  INNER JOIN  field_data_field_rating_index i ON p.field_rating_people_value = i.entity_id 
+  INNER JOIN field_data_field_rating_id id ON p.field_rating_people_value = id.entity_id AND p.entity_id = ".$nid." 
+  ".$subquery." LIMIT 0, 50"; 
+
+  $result = db_query($query); 
+
+  $nodes = array(); 
+  while($row = $result->fetchObject()) {
+   $nodes[] = $row; 
+  }  
+  return $nodes; 
+
+}

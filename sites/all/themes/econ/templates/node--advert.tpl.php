@@ -3,7 +3,7 @@
  <a href="<?php print url('node/'.$node->nid);?>" class="news-widget__item">
   <?php if (isset($node->field_leadimage['und'][0]['uri'])):?>
 
-  <div class="news-widget__image" style="background-image: url(<?php print image_style_url('leadimage', $node->field_leadimage['und'][0]['uri']); ?>)"></div> 
+  <div class="news-widget__image" style="background-image: url(<?php print image_style_url('leadimage_preview', $node->field_leadimage['und'][0]['uri']); ?>)"></div> 
   <?php endif;?>
   <div class="news-widget__title">
     <?php print $node->title;?>

@@ -31,6 +31,7 @@
   <?php print $page_bottom; ?>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<?php print $base_path.$theme_path;?>/js/custom.js"></script>
 <script>window.jQuery || document.write('<script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/vendor/classie.js"></script>
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/vendor/bootstrap.js"></script>

@@ -38,6 +38,7 @@
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/vendor/owl.carousel.old.js"></script>
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/vendor/perfect-scrollbar.jquery.js"></script>
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/vendor/jquery.sticky-kit.min.js"></script>
+<script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/velocity.min.js"></script>
 <!-- <script src="js/vendor/jquery.nicescroll.min.js"></script> -->
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/global.js"></script>
 <script src="<?php print $base_path.$theme_path;?>/spbgu/app/js/uisearch.js"></script>

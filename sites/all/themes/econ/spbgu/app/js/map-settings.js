@@ -29,7 +29,7 @@
             var mapElement = document.getElementById('embedded-map');
             var map = new google.maps.Map(mapElement, mapOptions);
             var locations = [
-                ['Чайковского, 62', 'undefined', 'undefined', 'undefined', '#fac-place_1', 59.94658399999999, 30.366950999999972, 'https://mapbuildr.com/assets/img/markers/solid-pin-blue.png'],
+                ['Чайковского, 62', '333-33-33', 'undefined', 'undefined', '#fac-place_1', 59.94658399999999, 30.366950999999972, 'https://mapbuildr.com/assets/img/markers/solid-pin-blue.png'],
                 ['Радищева, 39', 'undefined', 'undefined', 'undefined', '#fac-place_2', 59.94279689999999, 30.364062500000045, 'https://mapbuildr.com/assets/img/markers/solid-pin-blue.png'],
                 ['Таврическая, 21', 'undefined', 'undefined', 'undefined', '#fac-place_3', 59.944833, 30.37845900000002, 'https://mapbuildr.com/assets/img/markers/solid-pin-blue.png']
             ];

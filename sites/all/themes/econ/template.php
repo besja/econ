@@ -53,6 +53,7 @@ function _econ_page_class() {
         case "graduate":
           return "page concrete-".$node->type; 
         break;
+
       } 
       return "page ".$node->type;
   } else {
@@ -76,9 +77,12 @@ function econ_preprocess_page(&$vars, $hook) {
     if (isset($node->field_leadimage['und'][0])) {
       $vars['leadimage'] = theme('image_style', array('style_name' => 'leadimage', 'path' => $node->field_leadimage['und'][0]['uri'], 'alt'=>$node->title)); 
     }
-    if ($node->type == 'person' or $node->type == 'graduate' or $node->type=='contact_item') {
+    if ($node->type == 'person' or $node->type == 'graduate' or $node->type=='contact_item' or $node->type == 'contacts') {
       $vars['show_title'] = false;
     }
+  }
+  if (arg(0)=='fakultet' && arg(1)=='contacts' && arg(2)=='phones') {
+     $vars['show_title'] = false;
   }
 }
 

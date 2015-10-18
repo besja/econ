@@ -4,7 +4,11 @@ function econ_pages_phones_page() {
 	drupal_set_title('Телефонный справочник'); 
 	$terms = taxonomy_get_tree(3); 
 
-	$data = '';
+	$data = '<div class="common-module common-tabs">
+    <a href="'.url('fakultet/contacts').'" class="common-tabs__tab common-tabs__tab--big-text">Местоположение</a>
+    <a href="'.url('fakultet/contacts/phones').'" class="common-tabs__tab common-tabs__tab--big-text current">Телефонный справочник</a>
+</div>
+<h1 class="page__title">Телефонный справочник</h1>';
 
 	foreach($terms as $term) {
 		if ($term->parents[0] == 0) {
@@ -16,6 +20,7 @@ function econ_pages_phones_page() {
 					// отделы 
 					
 					$items=array(); 
+
 					$query = "SELECT * FROM node n 
 					INNER JOIN field_data_field_contact_category c 
 					ON n.nid = c.entity_id AND c.field_contact_category_tid =  ".$child->tid." 
@@ -37,5 +42,5 @@ function econ_pages_phones_page() {
 		}
 	}
 	//drupal_set_message("<pre>".print_R($terms, 1)."</pre>");
-		return $data;
+	return $data;
 }

@@ -46,7 +46,7 @@ function econ_pages_menu() {
     'type' => MENU_LOCAL_TASK,
      'menu_name' => 'menu-econ-mainmenu'
   );  
-  $items['contacts/phones'] = array(
+  $items['fakultet/contacts/phones'] = array(
     'page callback' => 'econ_pages_phones_page',
     'page arguments' => array('20'),
     'access arguments' => array('access content'), 

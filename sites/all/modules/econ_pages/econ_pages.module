@@ -86,6 +86,9 @@ function econ_pages_block_info() {
   $blocks['intro'] = array(
     'info' => t('Слайдер на главной'),
   );
+  $blocks['kafedra'] = array(
+    'info' => t('Связанное подразделение'),
+  );
   return $blocks;
 }
 
@@ -130,6 +133,10 @@ function econ_pages_block_view($delta='') {
     case 'intro' :
       module_load_include('inc', 'econ_pages', 'blocks/intro');
       $block['content'] = _econ_pages_intro_block_view();
+    break;
+    case 'kafedra' :
+      module_load_include('inc', 'econ_pages', 'blocks/kafedra');
+      $block['content'] = _econ_pages_kafedra_block_view();
     break;
   }
  

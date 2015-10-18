@@ -25,7 +25,7 @@
 </div>
 <?php endif;?>
 
-<h2>Контакты кафедры</h2>
+<h2>Контакты</h2>
 <div class="contact">
 
     <table class="common-module common-table contacts__table">
@@ -41,6 +41,7 @@
                 <?php print $node->field_working_hours['und'][0]['value'];?>
             </td>
             <?php endif;?>
+
             <td class="common-table__cell common-table__cell--accent">
                 <span class="common-table__cell--header">Телефон<?php if (isset($node->field_fax['und'][0]['value'])):?>, факс<?php endif;?></span>
                 <a href="tel:<?php print $node->field_phone['und'][0]['value'];?>"><nobr><?php print $node->field_phone['und'][0]['value'];?></nobr></a>

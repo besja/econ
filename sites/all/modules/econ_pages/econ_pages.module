@@ -53,6 +53,13 @@ function econ_pages_menu() {
     'file' => 'pages/phones.inc', 
     'type' => MENU_LOCAL_TASK,
      'menu_name' => 'menu-econ-mainmenu'
+  ); 
+  $items['searchsite'] = array(
+    'page callback' => 'econ_pages_search_page',
+    'page arguments' => array('20'),
+    'access arguments' => array('access content'), 
+    'file' => 'pages/search.inc', 
+     'type' => MENU_LOCAL_TASK,
   );  
   return $items;
 }
@@ -265,6 +272,5 @@ function _econ_pages_remove_hidden(&$menu) {
    }
 
 }
-
 
 

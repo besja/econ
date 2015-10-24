@@ -7,6 +7,7 @@ function econ_pages_menu() {
       'access arguments' => array('access content'), 
       'file' => 'pages/news-events.inc', 
       'type' => MENU_LOCAL_TASK,
+       'menu_name' => 'menu-econ-mainmenu'
     );
   $items['news-events/news'] = array(
       'page callback' => 'econ_pages_news_page',
@@ -14,6 +15,7 @@ function econ_pages_menu() {
       'access arguments' => array('access content'), 
       'file' => 'pages/news.inc', 
       'type' => MENU_LOCAL_TASK,
+       'menu_name' => 'menu-econ-mainmenu'
     );  
   $items['news-events/events'] = array(
     'page callback' => 'econ_pages_events_page',
@@ -21,6 +23,7 @@ function econ_pages_menu() {
     'access arguments' => array('access content'), 
     'file' => 'pages/events.inc', 
     'type' => MENU_LOCAL_TASK,
+     'menu_name' => 'menu-econ-mainmenu'
   );  
   $items['people'] = array(
     'page callback' => 'econ_pages_people_abc_page',

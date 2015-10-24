@@ -4,9 +4,9 @@ function econ_pages_news_events_page() {
 
 	drupal_set_title("Новости и события");
 	//последние 10 новостей + featured, остальное выводим в блоках
-
+ global $language; 
   	$query = "SELECT * FROM node n  
-  	WHERE n.type='news' and n.status = 1 and n.sticky = 1 
+  	WHERE n.type='news' and n.status = 1 and n.sticky = 1 and n.language IN ('".$language->language."', 'und') 
   	ORDER BY n.created DESC LIMIT 0,1"; 
 
   	$result = db_query($query);
@@ -18,7 +18,7 @@ function econ_pages_news_events_page() {
   	}
 
   	$query = "SELECT * FROM node n 
-  	WHERE n.type='news' and n.status = 1 ".$exclude. " ORDER BY n.created DESC LIMIT 0,10"; 
+  	WHERE n.type='news' and n.status = 1 ".$exclude. " and n.language IN ('".$language->language."', 'und') ORDER BY n.created DESC LIMIT 0,10"; 
 
  	$result = db_query($query);
 

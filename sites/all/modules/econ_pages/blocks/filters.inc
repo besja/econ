@@ -31,6 +31,7 @@ $monthAr = array(
   return $monthAr ;
 }
 function _econ_pages_news_filter_get_data($year, $term_subquery) {
+  global $language; 
   $data = array();
 
   $result = db_query("SELECT FROM_UNIXTIME(n.created, '%m') as news_month, 
@@ -38,7 +39,7 @@ function _econ_pages_news_filter_get_data($year, $term_subquery) {
     count(n.nid) as total, n.created 
     FROM node n 
     ".$term_subquery."  
-    where n.type='news' and n.status = 1 and FROM_UNIXTIME(n.created, '%Y') = ".$year."
+    where n.type='news' and n.status = 1 and FROM_UNIXTIME(n.created, '%Y') = ".$year."  and n.language IN ('".$language->language."', 'und') 
     GROUP BY news_month
     ORDER BY news_month ASC");
 
@@ -53,11 +54,13 @@ function _econ_pages_news_filter_get_data($year, $term_subquery) {
 
 }
 function _econ_pages_news_filter_get_years($current_year, $term_subquery) {
+  global $language; 
+
   $years = array(); 
  
   $result = db_query("SELECT FROM_UNIXTIME(n.created, '%Y') as news_year 
-    FROM node n ".$term_subquery." 
-    where n.type='news' and n.status = 1 
+    FROM node n ".$term_subquery."   
+    where n.type='news' and n.status = 1 and n.language IN ('".$language->language."', 'und')  
     GROUP BY news_year ORDER BY news_year DESC");
 
   while($row=$result->fetchObject()) {  
@@ -132,6 +135,8 @@ function _econ_pages_news_filter() {
 
 function _econ_pages_events_filter() {
 
+  global $language; 
+
   $parameters = drupal_get_query_parameters();
 
   // формируем календарь
@@ -152,7 +157,7 @@ function _econ_pages_events_filter() {
  
   $result = db_query("SELECT YEAR(d.field_event_date_value) as event_year 
     FROM node n  
-    INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
+    INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid  and n.language IN ('".$language->language."', 'und')  
     where n.type='event' and n.status = 1 
     GROUP BY event_year ORDER BY d.field_event_date_value DESC");
 
@@ -168,7 +173,7 @@ function _econ_pages_events_filter() {
     DATE_FORMAT (d.field_event_date_value, '%m') as event_month, 
     count(n.nid) as total 
     FROM node n  
-    INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
+    INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid and n.language IN ('".$language->language."', 'und') 
     where n.type='event' and n.status = 1 and YEAR(d.field_event_date_value) = ".$current_year." 
     GROUP BY event_month ORDER BY d.field_event_date_value DESC");
 

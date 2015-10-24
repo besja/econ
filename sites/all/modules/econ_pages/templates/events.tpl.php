@@ -14,6 +14,7 @@
 </a>
 
 <?php endif;?>
+<?php if (count($nodes )):?>
 <div id="events-widget" class="events-widget">
 	<?php foreach($nodes as $nid):?>
 		<?php 
@@ -27,3 +28,4 @@
         <?php print l("Все события", "news-events/events", array("attributes"=>array("class"=>array("big-btn"))));?>
     <?php endif;?>
 </div>
+<?php endif;?>

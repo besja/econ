@@ -1,3 +1,4 @@
+<?php if (count($nodes )):?>
 <div id="notice-widget" class="notice-widget">
     <div class='row'>
         <?php foreach ($nodes as $node):?>
@@ -11,3 +12,4 @@
     </div>
 </div>
 <?php print l("Все объявления", "news-events/adverts", array("attributes"=>array("class"=>array("big-btn"))));?>
+<?php endif;?>

@@ -21,6 +21,7 @@
     </div>
 </a>
 <?php endif;?>
+<?php if (count($nodes)):?>
 <div id="news-widget" class="news-widget">
 	<div id="news-widget__inner" class="news-widget__inner cf">
 		<?php foreach($nodes as $nid):?>
@@ -38,3 +39,4 @@
     </div>
     <?php endif;?>
 </div>
+<?php endif;?>

@@ -1,6 +1,7 @@
 <?php 
 function econ_pages_events_page() {
   drupal_set_title("События"); 
+  global $language;
 
   // парамтеры для фильтров 
   $parameters = drupal_get_query_parameters();
@@ -23,7 +24,7 @@ function econ_pages_events_page() {
   //featured event
   
   $query = "SELECT * FROM node n 
-        INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
+        INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid  and n.language IN ('".$language->language."', 'und') 
         AND n.type='event' and n.status = 1 and n.sticky = 1 and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery. " ORDER BY d.field_event_date_value DESC LIMIT 0,1"; 
 
   $result = db_query($query);
@@ -41,12 +42,12 @@ function econ_pages_events_page() {
   }
 
   $query = "SELECT * FROM node n 
-            INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
+            INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid  and n.language IN ('".$language->language."', 'und') 
             and n.type='event' and n.status = 1 ".$exclude."  and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery." 
              ORDER BY d.field_event_date_value DESC"; 
 
   $query_count =  "SELECT count(*) as total FROM node n 
-            INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid 
+            INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid and n.language IN ('".$language->language."', 'und') 
             and n.type='event' and n.status = 1 ".$exclude." and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery. " 
             ORDER BY d.field_event_date_value DESC"; 
   $count_result = db_query($query_count);

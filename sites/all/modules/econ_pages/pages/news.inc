@@ -12,6 +12,8 @@
 function econ_pages_news_page() {
   drupal_set_title("Новости"); 
 
+  global $language;
+
   // парамтеры для фильтров 
 
   $parameters = drupal_get_query_parameters();
@@ -71,7 +73,7 @@ function econ_pages_news_page() {
 
 
   $query = "SELECT * FROM node n ". $term_subquery. " 
-  WHERE n.type='news' and n.status = 1 and n.sticky = 1 ".$month_subquery.$year_subquery."
+  WHERE n.type='news' and n.status = 1 and n.sticky = 1 and n.language IN ('".$language->language."', 'und') ".$month_subquery.$year_subquery."
   ORDER BY n.created DESC LIMIT 0,1"; 
 
   $result = db_query($query);
@@ -90,10 +92,10 @@ function econ_pages_news_page() {
   }
 
   $query = "SELECT * FROM node n ". $term_subquery. "  
-  WHERE n.type='news' and n.status = 1 ".$exclude.$month_subquery.$year_subquery. " ORDER BY n.created DESC"; 
+  WHERE n.type='news' and n.status = 1 and n.language IN ('".$language->language."', 'und')  ".$exclude.$month_subquery.$year_subquery. " ORDER BY n.created DESC"; 
 
   $query_count = "SELECT count(*) as total FROM node n ". $term_subquery. "  
-  WHERE n.type='news' and n.status = 1 ".$exclude.$month_subquery.$year_subquery. " ORDER BY n.created DESC"; 
+  WHERE n.type='news' and n.status = 1 and n.language IN ('".$language->language."', 'und')  ".$exclude.$month_subquery.$year_subquery. " ORDER BY n.created DESC"; 
 
   $count_result = db_query($query_count);
   $query_items = db_query_range($query,$start,$limit);

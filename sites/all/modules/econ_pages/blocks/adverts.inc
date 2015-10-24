@@ -2,6 +2,7 @@
 
 function _econ_pages_adverts_last_block_view() {
 
+    global $language; 
 	$exclude = "";
   	if (arg(0) == 'node' && is_numeric(arg(1))) {
     	$node = node_load(arg(1));
@@ -9,7 +10,7 @@ function _econ_pages_adverts_last_block_view() {
     		$exclude = " and n.nid <> ".$node->nid;
     	}
     }
-    $result = db_query("SELECT * FROM node n WHERE n.type='advert' ".$exclude." AND n.status = 1 ORDER by n.created DESC LIMIT 0,3");
+    $result = db_query("SELECT * FROM node n WHERE n.type='advert' ".$exclude." AND n.status = 1  and n.language IN ('".$language->language."', 'und') ORDER by n.created DESC LIMIT 0,3");
     $nodes = array();
     while($row=$result->fetchObject()) {   
     	$nodes[] = node_load($row->nid);
@@ -18,7 +19,8 @@ function _econ_pages_adverts_last_block_view() {
 }
 
 function _econ_pages_adverts_last_slider_block_view() {
-	$result = db_query("SELECT * FROM node n WHERE n.type='advert' AND n.status = 1 ORDER by n.created DESC LIMIT 0,3");
+     global $language; 
+	$result = db_query("SELECT * FROM node n WHERE n.type='advert' AND n.status = 1 and n.language IN ('".$language->language."', 'und') ORDER by n.created DESC LIMIT 0,3");
     $nodes = array();
     while($row=$result->fetchObject()) {   
     	$nodes[] = node_load($row->nid);

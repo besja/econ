@@ -41,7 +41,7 @@
               <div class="col-xs-9 col-sm-10">
                     <div class="row">
                         <div class="header-econ cf col-xs-12 col-md-5">
-                            <a href="<?php print $base_url;?>"> <!-- линк на главную -->
+                            <a href="<?php print $base_url.'/'.$language->language;?>"> <!-- линк на главную -->
                                 <div class="header-econ__logo">
                                     <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/common/logo.svg');?>
                                  </div>

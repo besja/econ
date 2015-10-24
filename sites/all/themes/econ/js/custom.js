@@ -27,7 +27,19 @@
        		html += "</div></div>";
        		$(this).replaceWith(html);
        		i++;
-       	})   
+       	})  
+
+              if ($('#common-search').length) {
+                     var region = $("#common-search").find("input[name='region']").val();
+                     $(".search-tabs a").removeClass("current");
+                     $(".search-tabs a[data-id = '"+region+"']").addClass("current");
+                     //alert(region);
+                     $(".search-tabs a").click(function() {
+                            $(".search-tabs a").removeClass("current");
+                            $(this).addClass("current"); 
+                            $("#common-search").find("input[name='region']").val($(this).attr("data-id"));
+                     })
+              } 
 
 	 })
 })(jQuery);

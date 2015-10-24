@@ -86,15 +86,16 @@
                             </ul>
                         </div>
                         <div id="header-search" class="header-search">
-                            <form action="/">
-                                <input class="header-search__input" type="search" value="" name="search" id="search" placeholder="введите слово для поиска">
-                                <input class="header-search__submit" type="submit" value="">
+                            <form action="<?php print url('searchsite');?>">
+                                <input class="header-search__input" type="search" value="" name="keys" id="search" placeholder="введите слово для поиска">
+                                <input class="header-search__submit" type="submit" name="op" value="">
                                 <span class="header-search__icon">
                                     <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/icons/search.svg');?>
                                 </span>
                             </form>
                         </div>
-                        <div class="header-lang"><a class="header-lang__link" href="#">EN</a></div>
+                        <div class="header-lang">
+                            <a class="header-lang__link" href="<?php print $base_url;?>/<?php if ($language->language=='ru'){ print 'en';}else{print 'ru';}?>"><?php if ($language->language=='ru'){ print 'EN';}else{print 'RU';}?></a></div>
                         <a id="mobile-menu-button" href="#" class="mobile-menu-button visible-xs visible-sm" data-effect="st-effect-4">
                              <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/icons/burger.svg');?>
                          </a>

@@ -1,6 +1,7 @@
 <?php 
 
 function econ_pages_search_page($module = NULL, $keys = '') {
+	drupal_set_title("Поиск по сайту"); 
   $keys  = '';
   if (isset($_REQUEST['keys'])) {
   	$keys = trim($_REQUEST['keys']);
@@ -21,29 +22,37 @@ function econ_pages_search_page($module = NULL, $keys = '') {
 
       // Collect the search results.
       $results = econ_pages_search_execute($keys, $conditions);
-
-      drupal_set_message("<pre>".print_r($results, 1)."</pre>");
     }
 
-    drupal_set_message("<pre>".print_r($keys, 1)."</pre>");
   }
   // The form may be altered based on whether the search was run.
-  $build['search_form'] = drupal_get_form('econ_pages_search_form', NULL, $keys,  NULL);
+  //$build['search_form'] = drupal_get_form('econ_pages_search_form', NULL, $keys,  NULL);
   $build['search_results'] = $results;
+  $build['pager_pager'] = array('#theme' => 'pager');
+  return theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/search.tpl.php", 
+    array("build"=>$build));
 
-  return $build;
 }
 
 function econ_pages_search_execute($keys = NULL, $conditions = NULL) {
   // Build matching conditions
-  drupal_set_message("custom");
   $query = db_select('search_index', 'i', array('target' => 'slave'))->extend('SearchQuery')->extend('PagerDefault');
   $query->join('node', 'n', 'n.nid = i.sid');
   $query
     ->condition('n.status', 1)
     ->addTag('node_access')
     ->searchExpression($keys, 'node');
+  $query->condition('n.type', array("slider_item"), 'NOT IN'); 
+  if (isset($_GET['region'])) {
+  	if ($_GET['region'] == 'news') {
+  		 $query->condition('n.type', array("news", "advert", "event"), 'IN'); 
 
+  	}
+  	if ($_GET['region'] == 'notnews') {
+  		$query->condition('n.type', array("news", "advert", "event"), 'NOT IN'); 
+  	}
+
+  }
   // Insert special keywords.
   $query->setOption('type', 'n.type');
   $query->setOption('language', 'n.language');
@@ -70,9 +79,9 @@ function econ_pages_search_execute($keys = NULL, $conditions = NULL) {
     $node->body = drupal_render($node->content);
 
     // Fetch comments for snippet.
-    $node->rendered .= ' ' . module_invoke('comment', 'node_update_index', $node);
+   // $node->rendered .= ' ' . module_invoke('comment', 'node_update_index', $node);
     // Fetch terms for snippet.
-    $node->rendered .= ' ' . module_invoke('taxonomy', 'node_update_index', $node);
+   // $node->rendered .= ' ' . module_invoke('taxonomy', 'node_update_index', $node);
 
     $extra = module_invoke_all('node_search_result', $node);
 
@@ -87,6 +96,7 @@ function econ_pages_search_execute($keys = NULL, $conditions = NULL) {
       'snippet' => search_excerpt($keys, $node->body),
     );
   }
+
   return $results;
 }
 

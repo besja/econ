@@ -65,5 +65,5 @@
     </tr>
 </table>
 
-<?php print l("Телефонный справочник", "contacts/phones", array("attributes"=>array("class"=>array("common-module", "big-btn"))));?>
+<?php print l("Телефонный справочник", "fakultet/contacts/phones", array("attributes"=>array("class"=>array("common-module", "big-btn"))));?>
 <?php endif;?>

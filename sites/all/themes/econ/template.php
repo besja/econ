@@ -84,6 +84,9 @@ function econ_preprocess_page(&$vars, $hook) {
   if (arg(0)=='fakultet' && arg(1)=='contacts' && arg(2)=='phones') {
      $vars['show_title'] = false;
   }
+  if (arg(0) == 'searchsite') {
+    $vars['show_title'] = false;
+  }
 }
 
 function _econ_news_categories($node) {

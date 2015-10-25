@@ -284,4 +284,13 @@ function _econ_pages_remove_hidden(&$menu) {
 
 }
 
+function econ_pages_wysiwyg_editor_settings_alter(&$settings, $context) {
+  global $base_url;
+  if ($context['profile']->editor == 'ckeditor') {
+    $format = $context['profile']->format;
+    $path = $base_url.'/'.drupal_get_path('module', 'econ_pages') . '/js';
+    $settings['stylesSet'] = "mycustomstyleset:$path/ckeditor_styles6.js";
+  }
+}
+
 

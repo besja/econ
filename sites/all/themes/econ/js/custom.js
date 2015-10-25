@@ -22,9 +22,9 @@
        				alt = $(this).attr('alt'); 
        			}
 
-       			html += '<div><img src="'+$(this).attr('src')+'" alt="'+$(this).attr('alt')+'"/><div class="slide-meta__title">'+title+'</div><div  class="slide-meta__name" >'+alt+'</div></div>'; 
+       			html += '<div><img src="'+$(this).attr('src')+'" alt="'+$(this).attr('alt')+'"/><div class="slide-meta"><div class="slide-meta__title">'+title+'</div><div class="slide-meta__name" >'+alt+'</div></div></div>'; 
        		}); 
-       		html += "</div></div>";
+       		html += '</div><div class="row common-slider__meta"><div class="col-xs-9 col-sm-10"><div class="common-slider__title"></div><div class="common-slider__author"><span  class="common-slider__author__name" ></span></div></div> <div class="col-xs-3 col-sm-2"><div class="common-slider__counter"><span class="common-slider__current-number"></span> / <span class="common-slider__total-slides"></span></div></div></div></div>';
        		$(this).replaceWith(html);
        		i++;
        	})  

@@ -41,7 +41,7 @@
                 <?php print $node->field_working_hours['und'][0]['value'];?>
             </td>
             <?php endif;?>
-
+            <?php if (isset($node->field_phone['und'][0]['value'])):?>
             <td class="common-table__cell common-table__cell--accent">
                 <span class="common-table__cell--header">Телефон<?php if (isset($node->field_fax['und'][0]['value'])):?>, факс<?php endif;?></span>
                 <a href="tel:<?php print $node->field_phone['und'][0]['value'];?>"><nobr><?php print $node->field_phone['und'][0]['value'];?></nobr></a>
@@ -49,6 +49,8 @@
                 , <a href="tel:<?php print $node->field_fax['und'][0]['value'];?>"><?php print $node->field_fax['und'][0]['value'];?></a>
                 <?php endif;?>
             </td>
+            <?php endif;?>
+            <?php if (isset($node->field_email['und'][0]['value'])):?>
             <td class="common-table__cell common-table__cell--accent">
                 <span class="common-table__cell--header">E-MAIL <?php if (isset($node->field_web['und'][0]['value'])):?>, WEB<?php endif;?></span>
                 <a href="mailto:<?php print $node->field_email['und'][0]['email'];?>"><?php print $node->field_email['und'][0]['email'];?></a>
@@ -56,6 +58,7 @@
                 <a href="<?php print $node->field_web['und'][0]['value'];?>"><?php print $node->field_web['und'][0]['value'];?></a>
              <?php endif;?>
             </td>
+            <?php endif;?>
         </tr>
     </table>   
 </div>

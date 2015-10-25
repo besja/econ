@@ -168,3 +168,82 @@ aside ul.menu li  {
 img {
   height: auto !important;
 }
+
+#block-system-main table {
+  margin-bottom: 1.25rem;
+}
+.common-table {
+  width:100%;
+}
+.common-table tr {
+  border-top: 1px solid #5d5d5d;
+}
+.common-table thead tr {
+  border-top:none;
+}
+.common-table td {
+  padding: 1.875rem 1.25rem 1.875rem 0;
+  border:none;
+}
+@media only screen and (max-width: 767px) {
+ #block-system-main tr {
+    display: block;
+    padding: 0.625rem 0;
+  }
+  .visible-xs.common-table tr{
+    display: table-row;
+  }
+  #block-system-main td {
+    display: block;
+    width: 100%;
+    padding: 0.3125rem 0;
+  }
+  .visible-xs.common-table td {
+    display: table-cell;
+    width: 1%;
+  }
+}
+
+.common-table th {
+  margin-bottom: 0.625rem;
+  padding: 1.875rem 1.25rem 1.875rem 0;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 0.75rem;
+  border:none;
+}
+tbody, table, thead {
+  border:none;
+}
+.page__content p a.download, a.download{
+  display: block; 
+  background: url(../spbgu/app/img/icons/download.svg);
+  background-repeat: no-repeat; 
+  background-size:25px 20px;
+  padding-left: 2.1875rem;
+  display: block;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+   color: #5d5d5d;
+   transition: color 0.3s;
+}
+
+.page__content p a.download:hover, a.download:hover, 
+.page__content p a.download:active, a.download:active{
+  color: #9b9b9b;
+  text-decoration: none;
+  outline: none;
+}
+.big {
+   font-size: 1.25rem;
+}
+.cke_show_borders table td {
+  border:1px black solid;
+}
+.transparent-table {
+  width: 100% !important;
+}
+.transparent-table tr,  .transparent-table td {
+  border:none;
+  padding-right: 1.25rem;
+}

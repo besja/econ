@@ -2380,7 +2380,7 @@ input[type="search"].spbgu-portal__search__input {
 .page .years-list__text {
   padding-bottom: 1.25rem;
 }
-.two-columns {
+p.two-columns, div.two-columns{
   -webkit-column-count: 2;
      -moz-column-count: 2;
           column-count: 2;

@@ -3,8 +3,8 @@
     <a href="<?php print url('node/'.$node->nid);?>" class="common-module staff-card row">
         <?php if (isset($node->field_image['und'][0]['uri'])):?>
             <?php 
-            print theme('image_style', array('style_name' => 'portret240', 
-                'path' => $node->field_image['und'][0]['uri'], 'alt'=>$node->title, "attributes"=>array("class"=>"col-xs-4", "col-sm-6", "staff-card__image")));
+            print theme('image_style', array('style_name' => 'portret240_grey', 
+                'path' => $node->field_image['und'][0]['uri'], 'alt'=>$node->title, "attributes"=>array("class"=>"col-xs-4 col-sm-6 staff-card__image")));
             ?> 
         <?php endif;?>
 

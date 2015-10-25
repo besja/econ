@@ -165,3 +165,6 @@ aside ul.menu li  {
 #common-search label {
   display: none;
 }
+img {
+  height: auto !important;
+}

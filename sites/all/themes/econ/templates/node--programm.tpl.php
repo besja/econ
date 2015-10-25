@@ -29,7 +29,7 @@
                 <?php $types= list_allowed_values($all_fields_on_my_website["field_programm_type"]); ?>
                 <?php print $types[$node->field_programm_type['und'][0]['value']];?>
             </td>
-
+            <?php if (isset($node->field_programm_base['und'])):?>
             <td class="common-table__cell">
                 <span class="common-table__cell--header">Основа обучения</span>
                 <?php 
@@ -42,6 +42,8 @@
                 };?>
                 <?php print implode("<br/>", $vals);?>
             </td>
+            <?php endif;?>
+            <?php if (isset($node->field_programm_form['und'])):?>
             <td class="common-table__cell">
                 <span class="common-table__cell--header">Форма обучения</span>
                 <?php 
@@ -54,6 +56,7 @@
                 };?>
                 <?php print implode("<br/>", $vals);?>
             </td>
+            <?php endif;?>
             <?php if (isset($node->field_struct_ref)):?>
             <?php $structure = node_load($node->field_struct_ref['und'][0]['nid']);?>
             <td class="common-table__cell common-table__cell--accent">
@@ -65,8 +68,8 @@
     </table>   
 </div>
 
-<?php if (isset($node->field_web)):?>
-    <a href="<?php print $node->field_web['und'][0]['value'];?>" target="_blank" class="common-module big-btn">УСЛОВИЯ ПОСТУПЛЕНИЯ НА САЙТЕ СПБГУ</a>
+<?php if (isset($node->field_web['und'])):?>
+    <a href="<?php print url('node/'.$node->nid.'/iframe');?>" class="common-module big-btn">УСЛОВИЯ ПОСТУПЛЕНИЯ НА САЙТЕ СПБГУ</a>
 <?php endif;?>
 
 <?php print render($content['body']);?>

@@ -64,9 +64,17 @@ function econ_pages_menu() {
     'file' => 'pages/search.inc', 
      'type' => MENU_LOCAL_TASK,
   );  
+  $items['node/%/iframe'] = array(
+    'page callback' => 'econ_pages_iframe_page',
+    'page arguments' => array('20'),
+    'access arguments' => array('access content'), 
+    'type' => MENU_CALLBACK,
+  ); 
   return $items;
 }
-
+function econ_pages_iframe_page() {
+  return "1";
+}
 function econ_pages_block_info() {
   $blocks = array();
   $blocks['menu-aside'] = array(

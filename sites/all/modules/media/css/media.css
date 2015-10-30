@@ -29,6 +29,8 @@
 /* Remove the default border */
 .ui-widget-content {
   border: none;
+  background: white;
+
 }
 
 /* *********************************************************** */
@@ -145,3 +147,4 @@
   margin-right: 10px;
   vertical-align: middle;
 }
+

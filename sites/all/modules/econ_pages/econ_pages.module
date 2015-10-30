@@ -293,4 +293,17 @@ function econ_pages_wysiwyg_editor_settings_alter(&$settings, $context) {
   }
 }
 
+function econ_pages_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['wysiwyg_teaser'] = array(
+    'label' => t('WYSIWYG teaser'),
+    'custom settings' => TRUE,
+  );
+}
+
+function econ_pages_preprocess_node(&$vars) {
+ // drupal_set_message(print_R($vars['view_mode'], 1));
+   if($vars['view_mode'] == 'wysiwyg_teaser') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__wysiwyg';
+  }
+}
 

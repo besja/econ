@@ -1,4 +1,5 @@
 
+
 <?php if ($teaser) :?>
     <a href="<?php print url('node/'.$node->nid);?>" class="common-module staff-card row">
         <?php if (isset($node->field_image['und'][0]['uri'])):?>
@@ -16,6 +17,7 @@
             <div class="staff-card__email"><?php print $node->field_email['und'][0]['email'];?></div>
         </div>
     </a>
+    
 <?php else:?>
 
 <div class="common-module row">

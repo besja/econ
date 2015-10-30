@@ -247,3 +247,6 @@ tbody, table, thead {
   border:none;
   padding-right: 1.25rem;
 }
+.ui-widget-content {
+  background: white;
+}

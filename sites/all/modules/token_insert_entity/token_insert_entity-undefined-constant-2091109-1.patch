@@ -1,0 +1,31 @@
+From 59f31e9e824bd8e0c6eeebf370536fbbecbedd3a Mon Sep 17 00:00:00 2001
+From: heddn <lucashedding@1463982.no-reply.drupal.org>
+Date: Tue, 17 Sep 2013 09:39:38 -0500
+Subject: Issue #2091109 by heddn: undefined constant PUB_TOKEN_INSERT_TYPE
+
+---
+ token_insert_entity.module |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/token_insert_entity.module b/token_insert_entity.module
+index 7cf70bb..14ee0a9 100644
+--- a/token_insert_entity.module
++++ b/token_insert_entity.module
+@@ -69,12 +69,12 @@ function token_insert_entity_token_info() {
+         'render' => array(
+           'name' => t('Render a piece of content'),
+           'description' => t('Render a piece of content using the pattern [@token:render:teaser:node:1].',
+-            array('@token' => PUB_TOKEN_INSERT_TYPE)),
++            array('@token' => TOKEN_INSERT_ENTITY_TYPE)),
+         ),
+         'link' => array(
+           'name' => t('Link to related item'),
+           'description' => t('Link to the related item using the pattern [@token:link:node:1]. ' .
+-            'Text overrides cannot contain spaces, use %% instead.', array('@token' => PUB_TOKEN_INSERT_TYPE)),
++            'Text overrides cannot contain spaces, use %% instead.', array('@token' => TOKEN_INSERT_ENTITY_TYPE)),
+         ),
+       ),
+     ),
+--
+1.7.10.4
+

@@ -250,3 +250,6 @@ tbody, table, thead {
 .ui-widget-content {
   background: white;
 }
+.cafedra-big__text {
+  display: block;
+}

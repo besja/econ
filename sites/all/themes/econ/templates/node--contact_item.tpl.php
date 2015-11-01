@@ -44,9 +44,11 @@
 </div>
 <table class="common-module common-table common-table--person">
     <tr class="common-table__row">
+        <?php if (isset($node->field_email['und'][0]['email'])):?>
         <td class="common-table__cell common-table__cell--accent">
             <span class="common-table__cell--header">E-MAIL</span>
             <a href="mailto:<?php print $node->field_email['und'][0]['email'];?>"><?php print $node->field_email['und'][0]['email'];?></a></td> 
+        <?php endif;?>
          <?php if (isset($node->field_phone['und'][0]['value'])):?>
         <td class="common-table__cell common-table__cell--accent">
             <span class="common-table__cell--header">Телефон</span>

@@ -267,8 +267,10 @@ function _econ_pages_render_featured($i) {
       $delta = 2;
     break;
   }
+  if ($delta) {
   $block = module_invoke('block', 'block_view', $delta);
   return render($block['content']);
+  }
 }
 /** для адресов вида people/centri/ **/
 function _econ_pages_get_people_path() {

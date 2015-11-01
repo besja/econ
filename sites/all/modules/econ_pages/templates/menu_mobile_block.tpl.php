@@ -8,7 +8,11 @@
     <ul>
     <?php foreach ($menu as $k=>$m):?>
         <?php if (!$m['link']['hidden']):?>
-        <?php if (count($m['below'])):?>
+        <?php 
+        $children = array_values($m['below']);
+        _econ_pages_remove_hidden($children);
+        ?>
+        <?php if (count($children)):?>
         <li class="aside-menu__item">
             <div class="panel">
                 <h4 class="aside-menu__header">
@@ -22,7 +26,8 @@
                 </h4>
                 <ul id="collapse-mobile-<?php print $k;?>" 
                     class="collapse <?php if (in_array($m['link']['mlid'], $active_trail)):?> in <?php endif;?>">
-                        <?php foreach ($m['below'] as $m2):?>
+                        <?php foreach ($children as $m2):?>
+                        <?php if (!$m2['link']['hidden']):?>
                         <li class="aside-menu__item <?php 
                         if (isset($m2['link']['link_path']) && ($m2['link']['link_path'] == $_GET ['q'])) :?> current <?php endif;?>">
                             <?php 
@@ -30,6 +35,7 @@
                                 $m2['link']['link_path'], 
                                 array("attributes"=>array("class"=>array("aside-menu__link"))));
                             ?>
+                        <?php endif;?>
                         <?php endforeach;?>
                 </ul>      
             </div>

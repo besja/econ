@@ -125,7 +125,7 @@
                                                 <?php for ($k=$total*$j; $k<$total*$j + $total ; $k++) :?>
                                                     <?php if (isset($children[$k])):?>
                                                     <li class="full-menu__item">
-                                                        <?php print l($children[$k]['link']['link_title'],
+                                                        <?php print l($children[$k]['link']['title'],
                                                          $children[$k]['link']['link_path'], 
                                                          array("attributes"=>array("class"=>array("full-menu__item__link"))));?>
                                                     </li>
@@ -200,6 +200,7 @@
                         <div id="index-page" class="index-page">
                             <div class="col-sm-12 col-md-7 no-paddings">
                                 <main>
+
                                     <?php $block = module_invoke("econ_pages", "block_view", "intro");?>
                                     <?php print $block['content'];?>
                                 </main>

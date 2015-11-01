@@ -5,7 +5,7 @@ function _econ_pages_kafedra_block_view() {
 	if (arg(0) == 'node' && is_numeric(arg(1))) {
 		$node = node_load(arg(1)); 
 
-		if (isset($node->field_struct_ref)) {
+		if (isset($node->field_struct_ref) && isset($node->field_struct_ref['und'][0]['node'])) {
 			// ссылка на подразделение 
 			$structure = $node->field_struct_ref['und'][0]['node']; 
 			$data = array(); 

@@ -218,7 +218,7 @@ function _econ_pages_get_sublinks() {
   //Check: https://www.drupal.org/node/1697570
   
   menu_reset_static_cache();
-
+  $data = array();
   if (count($children)) {
     foreach ($children as $value) {
       $path = explode("/", $value['link']['link_path']); 
@@ -235,9 +235,9 @@ function _econ_pages_get_sublinks() {
       $data[] = $value;
     }
   }
-
   return theme_render_template(drupal_get_path('theme', 'econ')."/templates/econ-contents.tpl.php", 
     array("data"=>$data));
+
 
 }
 function _econ_get_rating($nid) {

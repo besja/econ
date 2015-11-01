@@ -57,7 +57,7 @@
                 <?php print implode("<br/>", $vals);?>
             </td>
             <?php endif;?>
-            <?php if (isset($node->field_struct_ref)):?>
+            <?php if (isset($node->field_struct_ref) && isset ($node->field_struct_ref['und'][0]['nid'])):?>
             <?php $structure = node_load($node->field_struct_ref['und'][0]['nid']);?>
             <td class="common-table__cell common-table__cell--accent">
                 <span class="common-table__cell--header">Реализует программу</span>

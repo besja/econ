@@ -107,6 +107,9 @@ function econ_pages_block_info() {
   $blocks['kafedra'] = array(
     'info' => t('Связанное подразделение'),
   );
+  $blocks['contact_block_form'] = array(
+    'info' => t('Contact Form'),
+    );
   return $blocks;
 }
 
@@ -155,6 +158,12 @@ function econ_pages_block_view($delta='') {
     case 'kafedra' :
       module_load_include('inc', 'econ_pages', 'blocks/kafedra');
       $block['content'] = _econ_pages_kafedra_block_view();
+    break;
+    case 'contact_block_form':
+      $block['subject'] = t('Контакт');
+      // Load contact pages inc as the form definition sits there.
+      module_load_include('inc', 'contact', 'contact.pages');
+      $block['content'] = drupal_get_form('contact_site_form');
     break;
   }
  
@@ -308,4 +317,11 @@ function econ_pages_preprocess_node(&$vars) {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__wysiwyg';
   }
 }
+function econ_pages_form_contact_site_form_alter(&$form, &$form_state, $form_id) {
+  $form['#submit'][]  = 'econ_pages__contact_form_blocks_submit';
+}
 
+/* Extra form submission handler */
+function econ_pages__contact_form_blocks_submit($form, &$form_state) {
+  $form_state['redirect'] = current_path(); // you could replace 'node/246' by the page you want to be redirected to.
+}

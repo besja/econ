@@ -40,6 +40,15 @@
                             $("#common-search").find("input[name='region']").val($(this).attr("data-id"));
                      })
               } 
+              if ($("#contact-site-form").length) {
+                     $('#contact-site-form .form-type-textfield label').each(function() {
+                            $(this).find('span').replaceWith('');
+                            var txt = $(this).text();
+                            $(this).siblings('input').attr('placeholder', txt);
+                            $(this).hide();
+                           // alert(txt);
+                     })
+              }
 
 	 })
 })(jQuery);

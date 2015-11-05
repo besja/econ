@@ -69,12 +69,12 @@ function token_insert_entity_token_info() {
         'render' => array(
           'name' => t('Render a piece of content'),
           'description' => t('Render a piece of content using the pattern [@token:render:teaser:node:1].',
-            array('@token' => PUB_TOKEN_INSERT_TYPE)),
+            array('@token' => TOKEN_INSERT_ENTITY_TYPE)),
         ),
         'link' => array(
           'name' => t('Link to related item'),
           'description' => t('Link to the related item using the pattern [@token:link:node:1]. ' .
-            'Text overrides cannot contain spaces, use %% instead.', array('@token' => PUB_TOKEN_INSERT_TYPE)),
+            'Text overrides cannot contain spaces, use %% instead.', array('@token' => TOKEN_INSERT_ENTITY_TYPE)),
         ),
       ),
     ),

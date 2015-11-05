@@ -18,6 +18,7 @@
 <?php print $node->field_leadtext['und'][0]['value'];?>
 </div>
 <?php endif;?>
+
 <?php if (isset($node->field_show_content['und']) && $node->field_show_content['und'][0]['value'] == '1'):?>
 <?php print _econ_pages_get_sublinks();?> 
 <?php endif;?>
@@ -43,5 +44,15 @@
 		</a>
 		<?php endforeach;?>
 	</div>
+<?php endif;?>
+
+<?php if (isset($node->field_show_contact_form['und']) && $node->field_show_contact_form['und'][0]['value'] == '1'):?>
+<?php  module_load_include('inc', 'contact', 'contact.pages');
+      $form = drupal_get_form('contact_site_form');
+      ?>
+      <h2 class="page__subheader">Задать вопрос</h2>
+<?php 
+      print render($form); 
+?>
 <?php endif;?>
 <?php endif;?>

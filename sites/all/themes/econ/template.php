@@ -183,7 +183,9 @@ function _econ_pages_load_programms($nid) {
   INNER JOIN node n ON n.nid = r.entity_id AND r.bundle='programm' AND n.type = 'programm' 
   AND n.language IN ('und', '".$language->language."') AND n.status = 1 
   AND r.field_struct_ref_nid = ".$nid." 
-  ORDER BY n.title"; 
+  INNER JOIN field_data_field_programm_type pt ON pt.entity_id = n.nid 
+  INNER JOIN taxonomy_term_data td ON pt.field_programm_type_tid = td.tid 
+  ORDER BY td.weight, n.title"; 
   $result = db_query($query);
 
   $nodes = array(); 

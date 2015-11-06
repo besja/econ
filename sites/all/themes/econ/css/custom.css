@@ -172,6 +172,21 @@ img {
 #block-system-main table {
   margin-bottom: 1.25rem;
 }
+#block-system-main table td {
+  padding-right:1.25rem;
+}
+#block-system-main  .table-width-4 td {
+  width:25%;
+}
+#block-system-main  .table-width-3 td {
+  width:33%;
+}
+#block-system-main  .table-width-2 td {
+  width:50%;
+}
+#block-system-main  .table-width-1 td {
+  width:100%;
+}
 .common-table {
   width:100%;
 }
@@ -198,6 +213,12 @@ img {
     width: 100%;
     padding: 0.3125rem 0;
   }
+  #block-system-main  .table-width-3 td, 
+  #block-system-main  .table-width-1 td, 
+  #block-system-main  .table-width-2 td, 
+  #block-system-main  .table-width-4 td  {
+    width:100%;
+  }
   .visible-xs.common-table td {
     display: table-cell;
     width: 1%;
@@ -215,6 +236,7 @@ img {
 tbody, table, thead {
   border:none;
 }
+
 .page__content p a.download, a.download{
   display: block; 
   background: url(../spbgu/app/img/icons/download.svg);

@@ -50,5 +50,15 @@
                      })
               }
 
+              $('.contacts__table').each(function() {
+                     var total = $(this).find("td").length;
+                     //var size = Math.round(100/total);
+                     $('.contacts__table').addClass('table-width-'+total);
+              }) 
+              $('.common-table--person').each(function() {
+                     var total = $(this).find("td").length;
+                     //var size = Math.round(100/total);
+                     $('.common-table--person').addClass('table-width-'+total);
+              }) 
 	 })
 })(jQuery);

@@ -8,13 +8,11 @@
                 'path' => $node->field_leadimage['und'][0]['uri'], 'alt'=>$node->title, "attributes"=>array("class"=>"admission-card__image")));
             ?> 
         <?php endif;?>
-        <h2 class="admission-card__title"><?php print $node->title;?></h2>
-        <p class="admission-card__text"><?php print $node->field_leadtext['und'][0]['value'];?></p>
+        <h2 class="admission-card__title"><?php if (isset($node->field_programm_type['und'][0]['taxonomy_term']->name)):?><?php print $node->field_programm_type['und'][0]['taxonomy_term']->name.'. ';?><?php endif;?><?php print $node->title;?></h2>
     </a>
     <?php print l("Подробнее", "node/".$node->nid, array("attributes"=>array("class"=>"big-btn")));?>
 </div>
 <?php else:?>
-
 
 <?php if (isset($node->field_leadtext['und'][0]['value'])):?>
 <div class="page__lead">
@@ -24,11 +22,13 @@
 <div class="contact">
     <table class="common-module common-table contacts__table">
         <tr class="common-table__row">
+            <?php if (isset($node->field_programm_type['und'][0]['taxonomy_term']->name)):?>
             <td class="common-table__cell">
                 <span class="common-table__cell--header">Тип программы</span>
-                <?php $types= list_allowed_values($all_fields_on_my_website["field_programm_type"]); ?>
-                <?php print $types[$node->field_programm_type['und'][0]['value']];?>
+
+                <?php print $node->field_programm_type['und'][0]['taxonomy_term']->name;?>
             </td>
+             <?php endif;?>
             <?php if (isset($node->field_programm_base['und'])):?>
             <td class="common-table__cell">
                 <span class="common-table__cell--header">Основа обучения</span>

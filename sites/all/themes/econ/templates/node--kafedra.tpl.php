@@ -12,7 +12,7 @@
     </a>
 </div>
 <?php else:?>
-
+<?php //drupal_set_message(print_R($node, 1));?>
 
 <?php if (isset($node->field_leadtext['und'][0]['value'])):?>
 <div class="page__lead">
@@ -45,7 +45,7 @@
                 <?php endif;?>
             </td>
             <?php endif;?>
-            <?php if (isset($node->field_email['und'][0]['value'])):?>
+            <?php if (isset($node->field_email['und'][0]['email']) or isset($node->field_web['und'][0]['value'])):?>
             <td class="common-table__cell common-table__cell--accent">
                 <span class="common-table__cell--header">E-MAIL <?php if (isset($node->field_web['und'][0]['value'])):?>, WEB<?php endif;?></span>
                 <a href="mailto:<?php print $node->field_email['und'][0]['email'];?>"><?php print $node->field_email['und'][0]['email'];?></a>

@@ -12,7 +12,9 @@
             <?php if (isset($node->field_leadtext['und'][0]['value'])):?>
             <span class="staff-card__job"><?php print $node->field_leadtext['und'][0]['value'];?></span>
             <?php endif;?>
+            <?php if (isset($node->field_email['und'][0]['email'])):?>
             <span class="staff-card__email"><?php print $node->field_email['und'][0]['email'];?></span>
+            <?php endif;?>
         </span>
     </a>
 </div>

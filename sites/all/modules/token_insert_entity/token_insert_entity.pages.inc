@@ -31,12 +31,16 @@ function token_insert_entity_form_data() {
   $view_modes = array();
   foreach (entity_get_info() as $entity_type => $entity_info) {
     $entity_view_modes = array();
+   
     foreach($entity_info['view modes'] as $key => $view_mode) {
+      if (isset($view_mode['is_wysiwyg'])) {
       $entity_view_modes[$key] = $view_mode['label'];
+      }
     }
+    if (count($entity_view_modes)) {
     $view_modes[$entity_type] = $entity_view_modes;
+    }
   }
-
   return array(
     'markup' => $markup,
     'view_modes' => $view_modes,

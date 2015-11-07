@@ -308,10 +308,12 @@ function econ_pages_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['wysiwyg_teaser'] = array(
     'label' => t('WYSIWYG teaser'),
     'custom settings' => TRUE,
+    'is_wysiwyg'=>True
   );
   $entity_info['node']['view modes']['wysiwyg_teaser_person'] = array(
     'label' => t('Person card'),
     'custom settings' => FALSE,
+    'is_wysiwyg'=>True
   );
 }
 

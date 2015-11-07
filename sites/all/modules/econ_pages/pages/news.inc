@@ -84,7 +84,7 @@ function econ_pages_news_page() {
     $exclude = " and n.nid <> ".$featured->nid;
   }
 
-  $limit = 1;
+  $limit = 10;
   if (isset($_REQUEST['page'])) {
     $start = $_REQUEST['page'] * $limit;
   } else {

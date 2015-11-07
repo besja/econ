@@ -47,8 +47,11 @@ function econ_pages_people_structure_page() {
 		if ($struct_node) { 
 
 			$query = "SELECT n.nid, n.title FROM field_data_field_struct_ref r 
-			INNER JOIN field_data_field_perston_structures s ON s.field_perston_structures_value = r.entity_id  AND r.field_struct_ref_nid = ".$current_structure." 
-			INNER JOIN node n ON n.nid = s.entity_id AND n.type = 'person' AND n.status = 1 AND n.language IN ('und', '".$language->language."') GROUP BY n.nid ORDER by n.title"; 
+			INNER JOIN node n ON n.nid = r.entity_id 
+			INNER JOIN field_data_field_show_in_people p ON p.entity_id = n.nid AND p.field_show_in_people_value = 1 
+			AND r.field_struct_ref_nid = ".$current_structure." 
+			AND n.type = 'person' 
+			AND n.status = 1 AND n.language IN ('und', '".$language->language."') GROUP BY n.nid ORDER by n.title"; 
 
 			$result = db_query($query); 
 
@@ -82,11 +85,10 @@ function econ_pages_people_structure_page() {
 			while($row=$result->fetchObject()) {
 				$current_structure= $row->nid; 
 				$query = "SELECT n.nid, n.title 
-				FROM field_data_field_struct_ref r 
-				INNER JOIN field_data_field_perston_structures s 
-				ON s.field_perston_structures_value = r.entity_id  
-				AND r.field_struct_ref_nid = ".$current_structure." 
-				INNER JOIN node n ON n.nid = s.entity_id AND n.type = 'person' 
+				FROM field_data_field_struct_ref r 				
+				INNER JOIN node n ON n.nid = r.entity_id  
+				INNER JOIN field_data_field_show_in_people p ON p.entity_id = n.nid AND p.field_show_in_people_value = 1 
+				AND n.type = 'person' AND r.field_struct_ref_nid = ".$current_structure." 
 				AND n.status = 1 AND n.language IN ('und', '".$language->language."') GROUP BY n.nid ORDER by n.title"; 
 
 				$result2 = db_query($query); 

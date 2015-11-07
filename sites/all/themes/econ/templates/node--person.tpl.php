@@ -82,7 +82,7 @@
 	</div>
 <?php endif;?>
 
-<?php $links = _econ_pages_load_structures($node->nid);?> 
+<?php $links = _econ_pages_load_structures($node);?> 
 	<?php if ($links):?>
 		 <div class="common-module common-tabs">
 		 	<?php print $links;?>

@@ -57,7 +57,10 @@
         </tr>
     </table>   
 </div>
-<?php $people = _econ_pages_load_people($node->nid) ;?>
+<?php 
+//$people = array();
+//drupal_set_message(print_r($node->field_structure_people,1));
+$people = _econ_pages_load_people($node->nid) ;?>
 <?php if (count($people)):?>
     <h2>Сотрудники</h2>
     <?php 

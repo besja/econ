@@ -127,26 +127,24 @@ function _econ_event_date($node) {
 }
 
 // возвращает список подразделений с которым связана персоналия
-function _econ_pages_load_structures($nid) {
+function _econ_pages_load_structures($node) {
 
-  $links= array(); 
-  $query = "SELECT n.nid, n.title, t.field_structure_type_value as struct_type FROM field_data_field_perston_structures s 
-  INNER JOIN field_data_field_struct_ref r ON s.field_perston_structures_value = r.entity_id 
-  INNER JOIN node n ON n.nid = r.field_struct_ref_nid 
-  INNER JOIN field_data_field_structure_type t ON t.entity_id = n.nid 
-  WHERE s.entity_id = ".$nid." and n.status = 1 ORDER BY s.delta"; 
+  if (isset($node->field_struct_ref) && isset($node->field_struct_ref['und'][0]['node'])) {
 
-  $result = db_query($query);
+    $links= array(); 
+    $paths = _econ_pages_get_people_path(); 
+    foreach ($node->field_struct_ref['und'] as $k) {
+      $structure = $k['node']; 
+      $path = "people";
+      $type = $structure->field_structure_type['und'][0]['value']; 
 
-  $paths = _econ_pages_get_people_path(); 
-  while($row = $result->fetchObject()) {
-    $path = "people";
-    if (isset($paths[$row->struct_type])) {
-      $path = "people/".$paths[$row->struct_type]; 
-    }
-    $links[] = l($row->title, $path, array("attributes"=>array("class"=>array("common-tabs__tab")), "query"=>array("structure"=>$row->nid))); 
-  }  
-  return implode("", $links);
+      if (isset($paths[$type])) {
+        $path = "people/".$paths[$type]; 
+      }
+      $links[] = l($structure->title, $path, array("attributes"=>array("class"=>array("common-tabs__tab")), "query"=>array("structure"=>$structure ->nid))); 
+    }  
+    return implode("", $links);
+  }
   
 }
 
@@ -154,16 +152,14 @@ function _econ_pages_load_structures($nid) {
 function _econ_pages_load_people($nid) {
   global $language;
   $links= array(); 
-  $query = "SELECT n.nid, n.title, pr.field_person_role_value as role  
-  FROM field_data_field_perston_structures s
-  INNER JOIN field_data_field_struct_ref r ON s.field_perston_structures_value = r.entity_id 
-  INNER JOIN  field_data_field_show_on_page op ON s.field_perston_structures_value = op.entity_id 
-  LEFT JOIN field_data_field_person_role pr ON s.field_perston_structures_value = pr.entity_id 
-
-  INNER JOIN node n ON n.nid = s.entity_id AND n.type = 'person' 
+  $query = "SELECT n.nid, n.title, pr.field_structure_people_role_value as role  
+  FROM field_data_field_structure_people sp
+  INNER JOIN field_data_field_structure_people_person pp ON pp.entity_id = sp.field_structure_people_value
+  INNER JOIN field_data_field_structure_people_role pr ON pr.entity_id = sp.field_structure_people_value 
+  INNER JOIN node n ON n.nid = pp.field_structure_people_person_nid AND n.type = 'person' 
   AND n.language IN ('und', '".$language->language."') AND n.status = 1 
-  AND r.field_struct_ref_nid = ".$nid." 
-  ORDER BY n.title "; 
+  AND sp.entity_id = ".$nid." 
+  ORDER BY sp.delta "; 
 
   $result = db_query($query);
 

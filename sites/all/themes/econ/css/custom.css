@@ -175,6 +175,12 @@ img {
 #block-system-main table td {
   padding-right:1.25rem;
 }
+#block-system-main  .table-width-3, 
+#block-system-main  .table-width-1, 
+#block-system-main  .table-width-2, 
+#block-system-main  .table-width-4 {
+    width:100%;
+}
 #block-system-main  .table-width-4 td {
   width:25%;
 }
@@ -325,4 +331,10 @@ input.form-submit:hover {
 }
 #contact-site-form .form-required {
   display: none;
+}
+.events-widget__event span, .staff-card span {
+  display: block;
+}
+.page__content p a.events-widget__event {
+  color:#5d5d5d;
 }

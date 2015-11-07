@@ -155,7 +155,7 @@ function _econ_pages_load_people($nid) {
   $query = "SELECT n.nid, n.title, pr.field_structure_people_role_value as role  
   FROM field_data_field_structure_people sp
   INNER JOIN field_data_field_structure_people_person pp ON pp.entity_id = sp.field_structure_people_value
-  INNER JOIN field_data_field_structure_people_role pr ON pr.entity_id = sp.field_structure_people_value 
+  LEFT JOIN field_data_field_structure_people_role pr ON pr.entity_id = sp.field_structure_people_value 
   INNER JOIN node n ON n.nid = pp.field_structure_people_person_nid AND n.type = 'person' 
   AND n.language IN ('und', '".$language->language."') AND n.status = 1 
   AND sp.entity_id = ".$nid." 

@@ -30,7 +30,7 @@ function econ_pages_events_page() {
   $result = db_query($query);
   $featured = $result->fetchObject();
 
-  $limit = 1;
+  $limit = 10;
   if (isset($_REQUEST['page'])) {
     $start = $_REQUEST['page'] * $limit;
   } else {

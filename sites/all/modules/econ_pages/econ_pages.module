@@ -309,12 +309,19 @@ function econ_pages_entity_info_alter(&$entity_info) {
     'label' => t('WYSIWYG teaser'),
     'custom settings' => TRUE,
   );
+  $entity_info['node']['view modes']['wysiwyg_teaser_person'] = array(
+    'label' => t('Person card'),
+    'custom settings' => FALSE,
+  );
 }
 
 function econ_pages_preprocess_node(&$vars) {
  // drupal_set_message(print_R($vars['view_mode'], 1));
    if($vars['view_mode'] == 'wysiwyg_teaser') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__wysiwyg';
+  }
+   if($vars['view_mode'] == 'wysiwyg_teaser_person') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__wysiwyg2';
   }
 }
 function econ_pages_form_contact_site_form_alter(&$form, &$form_state, $form_id) {

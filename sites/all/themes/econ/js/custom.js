@@ -51,13 +51,12 @@
               }
 
               $('.contacts__table').each(function() {
-                     var total = $(this).find("td").length;
-                     //var size = Math.round(100/total);
+                     var total = $(this).find("tr:first td").length;
                      $('.contacts__table').addClass('table-width-'+total);
               }) 
               $('.common-table--person').each(function() {
-                     var total = $(this).find("td").length;
-                     //var size = Math.round(100/total);
+                     //var total = $(this).find("tr td").length;
+                     var total = $(this).find("tr:first td").length;
                      $('.common-table--person').addClass('table-width-'+total);
               }) 
 	 })

@@ -84,11 +84,16 @@ $people = _econ_pages_load_people($node->nid) ;?>
                 <?php endif;?>
 
                 <div class="col-xs-6 staff-card__text">
-                <div class="staff-card__name"><?php print $person->title;?></div>
-                <?php if (isset($people[$k]->role)):?>
-                <div class="staff-card__job"><?php print $people[$k]->role;?></div>
-                <?php endif;?>
-                <div class="staff-card__email"><?php print $person->field_email['und'][0]['email'];?></div>
+                    <div class="staff-card__name"><?php print $person->title;?></div>
+                    <?php if (isset($person->field_leadtext['und'][0]['value'])):?>
+                    <div class="staff-card__job"><?php print $person->field_leadtext['und'][0]['value'];?></div>
+                    <?php endif;?>
+                    <?php if (isset($people[$k]->role)):?>
+                    <div class="staff-card__job"><?php print $people[$k]->role;?></div>
+                    <?php endif;?>
+                    <?php if (isset($person->field_email['und'][0]['email'])):?>
+                    <div class="staff-card__email"><?php print $person->field_email['und'][0]['email'];?></div>
+                    <?php endif;?>
                 </div>
                 </a>
             </div>

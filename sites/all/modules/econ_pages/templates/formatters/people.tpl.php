@@ -1,5 +1,4 @@
 <?php $people = _econ_pages_load_structure_people($items) ;?>
-<?php drupal_Set_message(print_r($people, 1));?>
 <?php if (count($people)):?>
     <?php 
      $total = 2.0;

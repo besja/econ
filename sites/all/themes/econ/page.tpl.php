@@ -243,16 +243,17 @@
                     <div class="row">
                     <div class="col-xs-12 col-md-12 col-sm-5">
                       <ul class="footer__menu">
-                        <li class="footer__menu__item"><a href="#" class="li footer__menu__link">полезные ссылки</a></li>
-                        <li class="footer__menu__item"><a href="#" class="li footer__menu__link">программа развития спбгу</a></li>
-                        <li class="footer__menu__item"><a href="#" class="li footer__menu__link">виртуальная приемная спбгу</a></li>
+                        <li class="footer__menu__item"><a href="http://spbu.ru/links/" class="li footer__menu__link">полезные ссылки</a></li>
+                        <li class="footer__menu__item"><a href="http://csr.spbu.ru/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8F-%D1%81%D0%BF%D0%B1%D0%B3%D1%83" class="li footer__menu__link">программа развития спбгу</a></li>
+                        <li class="footer__menu__item"><a href="http://guestbook.spbu.ru/" class="li footer__menu__link">виртуальная приемная спбгу</a></li>
                       </ul>
                     </div>
                     <div class="col-xs-12 col-md-12 col-sm-7">
                       <ul class="footer__menu">
-                        <li class="footer__menu__item"><a href="#" class="li footer__menu__link">бесплатная юридическая консультация</a></li>
-                        <li class="footer__menu__item"><a href="#" class="li footer__menu__link">бесплатная психологическая помощь</a></li>
-                        <li class="footer__menu__item"><a href="#" class="li footer__menu__link">центр защиты прав абитуриентов</a></li>
+                        <li class="footer__menu__item"><a href="http://law.spbu.ru/ru/Structure/JurClinic/VirtualnayaPriemnaya.aspx" class="li footer__menu__link">бесплатная юридическая консультация</a></li>
+                        <li class="footer__menu__item"><a href="http://www.psy.spbu.ru/psychcentre/sluzhba" class="li footer__menu__link">бесплатная психологическая помощь</a></li>
+                        <li class="footer__menu__item"><a href="http://guestbook.spbu.ru/ru/tsentr-zashchity-prav-abiturienta.html" class="li footer__menu__link">центр защиты прав абитуриентов</a></li>
+                        <li class="footer__menu__item"><a href="http://spbu.ru/science/expert/centr" class="li footer__menu__link">центр экспертиз СПбГУ</a></li>                      
                       </ul>
                     </div>
                     </div>

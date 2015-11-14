@@ -64,13 +64,14 @@
                         </div>
                     </div>
                     <div class="row">
+                        <?php $active_mlids = _econ_pages_get_active_mlids();?>
                         <div id="main-menu" class="main-menu col-md-10 visible-md visible-lg">
                             <ul role="tablist" class="main-menu__list cf">
                                 <?php $i = 1;?>
                                 <?php foreach ($mainmenu as $m):?>
                                 <?php if (!$m['link']['hidden']):?>
                                 <li <?php if ($i==1):?> data-tab="1" <?php endif;?> class="main-menu__item 
-                                    <?php if ($m['link']['in_active_trail']):?> current <?php endif;?>">
+                                    <?php if (in_array($m['link']['mlid'],  $active_mlids)):?> current <?php endif;?>">
 
                                     <a href="#main-menu-<?php print $i;?>" role="tab" id="main-menu-tab-<?php print $i;?>" 
                                         data-toggle="tab" 

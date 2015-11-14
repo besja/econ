@@ -42,7 +42,10 @@
     <tr class="common-table__row">
         <td class="common-table__cell common-table__cell--accent">
             <span class="common-table__cell--header">E-MAIL</span>
-            <a href="mailto:<?php print $node->field_email['und'][0]['email'];?>"><?php print $node->field_email['und'][0]['email'];?></a></td>
+            <?php if (isset($node->field_email['und'][0]['email'])):?>
+            <a href="mailto:<?php print $node->field_email['und'][0]['email'];?>"><?php print $node->field_email['und'][0]['email'];?></a>
+             <?php endif;?>
+        </td>
          <?php if (isset($node->field_web['und'][0]['value'])):?>
         <td class="common-table__cell common-table__cell--accent">
             <span class="common-table__cell--header">WEB</span>

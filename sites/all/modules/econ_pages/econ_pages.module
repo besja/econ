@@ -362,6 +362,8 @@ function econ_pages_field_formatter_view($entity_type, $entity, $field, $instanc
   $element = array(); // Initialize the var
 
   $settings = $display['settings'];
+
+
   $element = array();
 
   if ($display['type'] == 'leadtext') {
@@ -371,16 +373,13 @@ function econ_pages_field_formatter_view($entity_type, $entity, $field, $instanc
   }
   if ($display['type'] == 'people') {
     $html = theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/formatters/people.tpl.php", 
-    array("nid"=>$entity->nid));
-
+    array("items"=>$items));
     $element[0]=array("#markup"=>$html);
-    //drupal_set_message(print_R($entity, 1));
+    return $element;
   }
   if ($display['type'] == 'files') {
-   // drupal_set_message(print_R($entity, 1));
     $html = theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/formatters/files.tpl.php", 
     array("node"=>$entity));
-
     $element[0]=array("#markup"=>$html);
   }
   return $element;

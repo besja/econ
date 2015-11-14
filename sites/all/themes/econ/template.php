@@ -232,3 +232,30 @@ function _econ_get_rating($nid) {
   return $nodes; 
 
 }
+
+function _econ_pages_load_structure_people($items) {
+  global $language;
+  $uids = array(); 
+  foreach ($items as $item) {
+    $uids[] = $item['value']; 
+  }
+  if (count($uids)) {
+
+    $links= array(); 
+    $query = "SELECT n.nid, n.title, pr.field_structure_people_role_value as role  
+    FROM field_data_field_structure_people sp
+    INNER JOIN field_data_field_structure_people_person pp ON pp.entity_id = sp.field_structure_people_value
+    LEFT JOIN field_data_field_structure_people_role pr ON pr.entity_id = sp.field_structure_people_value 
+    INNER JOIN node n ON n.nid = pp.field_structure_people_person_nid AND n.type = 'person' 
+    AND n.language IN ('und', '".$language->language."') AND n.status = 1 
+    AND sp.field_structure_people_value IN (".implode(' ,' , $uids).") ORDER BY sp.delta "; 
+
+    $result = db_query($query);
+
+    $nodes = array(); 
+    while($row = $result->fetchObject()) {
+     $nodes[] = $row; 
+    }  
+    return $nodes; 
+  }
+}

@@ -52,12 +52,20 @@
 
               $('.contacts__table').each(function() {
                      var total = $(this).find("tr:first td").length;
-                     $('.contacts__table').addClass('table-width-'+total);
+                     $(this).addClass('table-width-'+total);
               }) 
               $('.common-table--person').each(function() {
                      //var total = $(this).find("tr td").length;
                      var total = $(this).find("tr:first td").length;
-                     $('.common-table--person').addClass('table-width-'+total);
+                     $(this).addClass('table-width-'+total);
               }) 
+              $('.spbgu-portal__search input[type="submit"]').click(function() {
+                     alert("1");
+                     var value= $('.spbgu-portal__search input[name="search"]').val();
+                     var formsValue = "http://spbu.ru/gsearch?searchid=1928682&web=0&text="+value.replace(" ","%20");
+                     window.location.href = formsValue; 
+                     return false;
+              })
+
 	 })
 })(jQuery);

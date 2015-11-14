@@ -319,10 +319,24 @@
                         </h4>
                         <div id="spbgu-portal__collapse-1" class=" collapse">
                             <ul class="spbgu-portal__list">
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Руководство</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">История факультета</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Документы</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Телефоны и адреса</a></li>
+                                <li class="spbgu-portal__item"><a href="http://spbu.ru/structure/" class="spbgu-portal__link">Администрация</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.library.spbu.ru/" class="spbgu-portal__link">Библиотека</a></li>
+                                <li class="spbgu-portal__item"><a href="http://guestbook.spbu.ru/" class="spbgu-portal__link">Виртуальная приемная</a></li>
+                                <li class="spbgu-portal__item"><a href="http://students.spbu.ru/" class="spbgu-portal__link">Внеучебная деятельность</a></li>
+                                <li class="spbgu-portal__item"><a href="http://spbu.ru/structure/dekanskie/" class="spbgu-portal__link">Ректорские совещания</a></li>
+                                <li class="spbgu-portal__item"><a href="http://spbu.ru/structure/dekanskie/" class="spbgu-portal__link">Журнал "Санкт-Петербургский Университет"</a></li>
+                                <li class="spbgu-portal__item"><a href="http://spbu.ru/contacts/" class="spbgu-portal__link">Контакты</a></li>
+                                <li class="spbgu-portal__item"><a href="http://ifea.spbu.ru/" class="spbgu-portal__link">Международная деятельность</a></li>
+                                <li class="spbgu-portal__item"><a href="http://spbu.ru/about/" class="spbgu-portal__link">Наш Университет</a></li>
+                                <li class="spbgu-portal__item"><a href="http://spbu.ru/obrashcheniya-k-rektoru" class="spbgu-portal__link">Обращения к ректору</a></li>
+                                <li class="spbgu-portal__item"><a href="http://forum.spbu.ru/" class="spbgu-portal__link">Общественное обсуждение</a></li>
+                                <li class="spbgu-portal__item"><a href="http://abiturient.spbu.ru/" class="spbgu-portal__link">Приемная комиссия</a></li>
+                                <li class="spbgu-portal__item"><a href="http://spbu.ru/smi/" class="spbgu-portal__link">СМИ о нас</a></li>
+                                <li class="spbgu-portal__item"><a href="http://spbu.ru/contacts/telsp/" class="spbgu-portal__link">Телефонный справочние</a></li>
+                                <li class="spbgu-portal__item"><a href="http://campus.spbu.ru/" class="spbgu-portal__link">Студгородок</a></li>
+                                <li class="spbgu-portal__item"><a href="http://it.spbu.ru/" class="spbgu-portal__link">Управление-служба информационных технологий</a></li>
+                                <li class="spbgu-portal__item"><a href="http://edu.spbu.ru/" class="spbgu-portal__link">Учебная деятельность</a></li>
+                                <li class="spbgu-portal__item"><a href="http://timetable.spbu.ru/" class="spbgu-portal__link">Электронное расписание</a></li>
                             </ul>
                         </div>
                     </div>
@@ -333,43 +347,43 @@
                         </h4>
                         <div id="spbgu-portal__collapse-2" class="collapse">
                             <ul class="spbgu-portal__list">
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Биологический</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Восточный</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Высшая школа менеджмента</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Институт наук о Земле</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Журналистики и массовых коммуникаций</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Искусств</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Институт истории</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Математико-механический</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Медицинский</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Международных отношений</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Политологии</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Прикладной математики - процессов управления</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Психологии</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Свободных искусств и наук</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Социологии</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Стоматологии и медицинских технологий</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Физический</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Филологический</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Институт философии</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Институт химии</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Экономический</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Юридический</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Академическая гимназия имени Д.К. Фаддеева СПбГУ</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Факультет Военного обучения</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Общеуниверситетская кафедpа физической культуpы и споpта</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Медицинский колледж</a></li>
-                                <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Колледж физической культуры и спорта, экономики и технологии</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.bio.spbu.ru/" class="spbgu-portal__link">Биологический</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.orient.spbu.ru/" class="spbgu-portal__link">Восточный</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.gsom.spbu.ru/" class="spbgu-portal__link">Высшая школа менеджмента</a></li>
+                                <li class="spbgu-portal__item"><a href="http://earth.spbu.ru/" class="spbgu-portal__link">Институт наук о Земле</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.jf.spbu.ru/" class="spbgu-portal__link">Журналистики и массовых коммуникаций</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.arts.spbu.ru/" class="spbgu-portal__link">Искусств</a></li>
+                                <li class="spbgu-portal__item"><a href="https://history.spbu.ru/" class="spbgu-portal__link">Институт истории</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.math.spbu.ru/rus/" class="spbgu-portal__link">Математико-механический</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.med.spbu.ru/" class="spbgu-portal__link">Медицинский</a></li>
+                                <li class="spbgu-portal__item"><a href="http://sir.spbu.ru/" class="spbgu-portal__link">Международных отношений</a></li>
+                                <li class="spbgu-portal__item"><a href="http://politology.spbu.ru/" class="spbgu-portal__link">Политологии</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.apmath.spbu.ru/ru/" class="spbgu-portal__link">Прикладной математики - процессов управления</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.psy.spbu.ru/" class="spbgu-portal__link">Психологии</a></li>
+                                <li class="spbgu-portal__item"><a href="http://artesliberales.spbu.ru/" class="spbgu-portal__link">Свободных искусств и наук</a></li>
+                                <li class="spbgu-portal__item"><a href="http://soc.spbu.ru/" class="spbgu-portal__link">Социологии</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.dent.spbu.ru/" class="spbgu-portal__link">Стоматологии и медицинских технологий</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.phys.spbu.ru/" class="spbgu-portal__link">Физический</a></li>
+                                <li class="spbgu-portal__item"><a href="http://phil.spbu.ru/" class="spbgu-portal__link">Филологический</a></li>
+                                <li class="spbgu-portal__item"><a href="http://philosophy.spbu.ru/" class="spbgu-portal__link">Институт философии</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.chem.spbu.ru/" class="spbgu-portal__link">Институт химии</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.econ.spbu.ru/" class="spbgu-portal__link">Экономический</a></li>
+                                <li class="spbgu-portal__item"><a href="http://law.spbu.ru/Home.aspx" class="spbgu-portal__link">Юридический</a></li>
+                                <li class="spbgu-portal__item"><a href="http://agym.spbu.ru/" class="spbgu-portal__link">Академическая гимназия имени Д.К. Фаддеева СПбГУ</a></li>
+                                <li class="spbgu-portal__item"><a href="http://fvo.spbu.ru/" class="spbgu-portal__link">Факультет Военного обучения</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.sport.spbu.ru/main.php" class="spbgu-portal__link">Общеуниверситетская кафедpа физической культуpы и споpта</a></li>
+                                <li class="spbgu-portal__item"><a href="http://medcollege.med.spbu.ru/" class="spbgu-portal__link">Медицинский колледж</a></li>
+                                <li class="spbgu-portal__item"><a href="http://www.sc.spbu.ru/" class="spbgu-portal__link">Колледж физической культуры и спорта, экономики и технологии</a></li>
                             </ul>
                         </div>
                     </div>
                     <ul class="spbgu-portal__list">
-                        <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Новости</a></li>
-                        <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Анонсы</a></li>
-                        <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Виртуальная приемная</a></li>
-                        <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Сми о нас </a></li>
-                        <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Ректорские совещания</a></li>
-                        <li class="spbgu-portal__item"><a href="#" class="spbgu-portal__link">Видео</a></li>
+                        <li class="spbgu-portal__item"><a href="http://spbu.ru/news-spsu/" class="spbgu-portal__link">Новости</a></li>
+                        <li class="spbgu-portal__item"><a href="http://spbu.ru/anonsy/list/2" class="spbgu-portal__link">Анонсы</a></li>
+                        <li class="spbgu-portal__item"><a href="http://guestbook.spbu.ru/" class="spbgu-portal__link">Виртуальная приемная</a></li>
+                        <li class="spbgu-portal__item"><a href="http://spbu.ru/smi/" class="spbgu-portal__link">СМИ о нас </a></li>
+                        <li class="spbgu-portal__item"><a href="http://spbu.ru/structure/dekanskie/" class="spbgu-portal__link">Ректорские совещания</a></li>
+                        <li class="spbgu-portal__item"><a href="http://video.spbu.ru/" class="spbgu-portal__link">Видео</a></li>
                     </ul>
                     <div class="spbgu-portal__search">
                         <form action="/">
@@ -381,10 +395,10 @@
                         </form>
                     </div>
                     <ul class="spbgu-portal__social-links">
-                        <li class="spbgu-portal__social-item"><a href="#">MAIL.SPBU.RU</a></li>
-                        <li class="spbgu-portal__social-item"><a href="#">TWITTER</a></li>
-                        <li class="spbgu-portal__social-item"><a href="#">YOUTUBE</a></li>
-                        <li class="spbgu-portal__social-item"><a href="#">RSS</a></li>
+                        <li class="spbgu-portal__social-item"><a href="http://mail.spbu.ru">MAIL.SPBU.RU</a></li>
+                        <li class="spbgu-portal__social-item"><a href="https://twitter.com/Spb_university">TWITTER</a></li>
+                        <li class="spbgu-portal__social-item"><a href="http://www.youtube.com/user/wwwspburu">YOUTUBE</a></li>
+                        <li class="spbgu-portal__social-item"><a href="http://spbu.ru/rss/anons.php">RSS</a></li>
                     </ul>
                 </div>
             </div>        

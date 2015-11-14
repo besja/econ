@@ -192,52 +192,7 @@ function _econ_pages_load_programms($nid) {
 }
 
 
-function _econ_pages_get_sublinks() {
 
-  global $language; 
-
-  $current_mlid = _econ_pages_get_current_mlid(); 
-
-  $current_link = menu_link_load($current_mlid); 
-
-  menu_build_tree('menu-econ-mainmenu');
-
-  $parameters = array(
-    'active_trail' => array( $current_link['plid']),
-    'only_active_trail' => FALSE,
-    'min_depth' =>  $current_link['depth']+1,
-    'max_depth' =>  $current_link['depth']+1,
-    'conditions' => array('plid' =>  $current_link['mlid']),
-  );
-  $children = menu_build_tree($current_link['menu_name'], $parameters);
-
-  //Reset menu cache since 'menu_build_tree' will cause trouble later on after 
-  //you call pathauto to update paths as it can only be called once. 
-  //Check: https://www.drupal.org/node/1697570
-  
-  menu_reset_static_cache();
-  $data = array();
-  if (count($children)) {
-    foreach ($children as $value) {
-      $path = explode("/", $value['link']['link_path']); 
-
-      $value['img_uri']= '';
-      if (count($path) == 2 && $path[0]=='node' && is_numeric($path[1])) {
-        $node = node_load($path[1]);
-
-        if (isset($node->field_leadimage['und'][0]['uri'])) {
-          $value['img_uri']= $node->field_leadimage['und'][0]['uri']; 
-        }
-      } 
-
-      $data[] = $value;
-    }
-  }
-  return theme_render_template(drupal_get_path('theme', 'econ')."/templates/econ-contents.tpl.php", 
-    array("data"=>$data));
-
-
-}
 function _econ_get_rating($nid) {
 
   $parameters = drupal_get_query_parameters();

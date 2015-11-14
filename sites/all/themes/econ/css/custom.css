@@ -338,3 +338,6 @@ input.form-submit:hover {
 .page__content p a.events-widget__event, .page__content p a.news-widget__item , .page__content p a.staff-card{
   color:#5d5d5d;
 }
+#modal-content img {
+  width: auto !important;
+}

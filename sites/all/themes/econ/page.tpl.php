@@ -1,7 +1,7 @@
 <?php  global $theme_path;  global $base_url;  global $language; ?>
 <?php
     $shortcuts = menu_build_tree("menu-shortcatmenu");
-    $shortcuts = i18n_menu_localize_tree($shortcuts); 
+    //$shortcuts = i18n_menu_localize_tree($shortcuts); 
 
     $mainmenu = econ_pages_submenu_tree_all_data(0, $menu = "menu-econ-mainmenu");
 

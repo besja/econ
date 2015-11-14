@@ -341,3 +341,11 @@ input.form-submit:hover {
 #modal-content img {
   width: auto !important;
 }
+.full-menu__featured a {
+  color:white;
+}
+.full-menu__featured:hover a{
+  color: #9b9b9b;
+  text-decoration: none;
+  outline: none;
+}

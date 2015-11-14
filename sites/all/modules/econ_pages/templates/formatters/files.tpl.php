@@ -1,6 +1,6 @@
-<?php if (isset($node->field_files) && count($node->field_files)):?>
+<?php if (count($items)):?>
 	<div class="row">
-		<?php foreach ($node->field_files['und'] as $file):?>
+		<?php foreach ($items as $file):?>
 		<a href="<?php print file_create_url($file['uri']);?>" class="common-module download-module col-xs-12 col-sm-5">
             <i class="download-module__icon">
             	<?php  // global $theme_path; // не работает в этом шаблоне, хз почему ?>

@@ -379,7 +379,7 @@ function econ_pages_field_formatter_view($entity_type, $entity, $field, $instanc
   }
   if ($display['type'] == 'files') {
     $html = theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/formatters/files.tpl.php", 
-    array("node"=>$entity));
+    array("items"=>$items));
     $element[0]=array("#markup"=>$html);
   }
   return $element;

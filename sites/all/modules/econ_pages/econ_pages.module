@@ -355,6 +355,18 @@ function econ_pages_field_formatter_info() {
     'files' => array( //Machine name of the formatter
       'label' => t('Files'),
       'field types' => array('file')
+    ), 
+    'contacts' => array( //Machine name of the formatter
+      'label' => t('Таблица с контактами'),
+      'field types' => array('text') 
+    ),
+    'programm_meta' => array( //Machine name of the formatter
+      'label' => t('Описание программы'),
+      'field types' => array('list_integer') 
+    ),
+    'admission_link' => array( //Machine name of the formatter
+      'label' => t('Ссылка на правила приема'),
+      'field types' => array('url') 
     )
   );
 }
@@ -381,6 +393,28 @@ function econ_pages_field_formatter_view($entity_type, $entity, $field, $instanc
     $html = theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/formatters/files.tpl.php", 
     array("items"=>$items));
     $element[0]=array("#markup"=>$html);
+  }
+  if ($display['type'] == 'contacts') {
+    $html = theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/formatters/files.tpl.php", 
+    array("node"=>$entity));
+    $element[0]=array("#markup"=>$html);
+  }
+  if ($display['type'] == 'programm_meta') {
+    $html = theme_render_template(drupal_get_path('module', 'econ_pages')."/templates/formatters/programm_meta.tpl.php", 
+    array("node"=>$entity));
+    $element[0]=array("#markup"=>$html);
+  }
+  if ($display['type'] == 'admission_link') {
+    $title = "Условия поступления на сайте СПбГУ"; 
+    if (isset($entity->field_web['und'][0]['title']) && $entity->field_web['und'][0]['title']) {
+      $title = $entity->field_web['und'][0]['title']; 
+    }
+    if  (url_is_external($entity->field_web['und'][0]['value'])) {
+      $url = '<a href="'.url('node/'.$entity->nid.'/iframe'). '" class="common-module big-btn">'.$title.'</a>'; 
+    } else {
+      $url = '<a href="'.$entity->field_web['und'][0]['value']. '" class="common-module big-btn">'.$title.'</a>'; 
+    }
+    $element[0]=array("#markup"=>$url);
   }
   return $element;
 }

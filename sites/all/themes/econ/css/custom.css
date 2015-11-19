@@ -349,3 +349,7 @@ input.form-submit:hover {
   text-decoration: none;
   outline: none;
 }
+
+#contact-site-form input[type="checkbox"] {
+  margin: -4px 0 0 0;
+}

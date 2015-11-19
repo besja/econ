@@ -70,6 +70,20 @@ function econ_pages_menu() {
     'access arguments' => array('access content'), 
     'type' => MENU_CALLBACK,
   ); 
+  $items['admission'] = array(
+    'page callback' => 'econ_pages_admission_page',
+    'page arguments' => array('20'),
+    'file' => 'pages/admission.inc', 
+    'access arguments' => array('access content'), 
+    'type' => MENU_LOCAL_TASK,
+  ); 
+  $items['admission/result'] = array(
+    'page callback' => 'econ_pages_admission_page_result',
+    'page arguments' => array('20'),
+    'file' => 'pages/admission.inc', 
+    'access arguments' => array('access content'), 
+    'type' => MENU_LOCAL_TASK,
+  ); 
   return $items;
 }
 function econ_pages_iframe_page() {

@@ -66,6 +66,15 @@
                      window.location.href = formsValue; 
                      return false;
               })
+              var mobileHover = function () {
+                  $('*').on('touchstart', function () {
+                      $(this).trigger('hover');
+                  }).on('touchend', function () {
+                      $(this).trigger('hover');
+                  });
+              };
+
+              mobileHover();
 
 	 })
 })(jQuery);

@@ -2013,7 +2013,7 @@ input[type="search"].spbgu-portal__search__input {
   transition: background-color 0.3s;
   border-bottom: 1px solid #e3e3e3;
 }
-.news-widget__item:hover {
+.news-widget__item:hover, .news-widget__item:focus {
   color: #2d2d2d;
   background: #cfcfcf;
 }

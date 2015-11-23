@@ -38,6 +38,12 @@ function econ_breadcrumb($variables) {
 }
 
 function _econ_page_class() {
+  //drupal_set_message(print_r(arg(), 1)); 
+  $args = arg(); 
+  if (count($args) == 1 && arg(0) == 'node') {
+    //главная 
+    return "main-content";
+  }
   if (arg(0) == 'node' && is_numeric(arg(1))) {
       $node = node_load(arg(1));
       switch ($node->type) {

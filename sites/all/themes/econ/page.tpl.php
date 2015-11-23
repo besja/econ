@@ -27,7 +27,7 @@
                                 <span class="hidden-xs hidden-sm">САНКТ-ПЕТЕРБУРГСКИЙ<br>ГОСУДАРСТВЕННЫЙ<br> УНИВЕРСИТЕТ</span>
                             </div>
                         </div>
-                        <a href="#" class="header-spbgu__backside">
+                        <a href="http://spbu.ru" class="header-spbgu__backside">
                             <div class="header-spbgu__arrow">
                                  <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/common/arrow.svg');?>
                              </div>

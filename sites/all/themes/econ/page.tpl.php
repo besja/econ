@@ -73,7 +73,7 @@
                                         <?php if (count($children)):?>
                                             <a href="#main-menu-<?php print $m['link']['mlid'];?>" role="tab" id="main-menu-tab-<?php print $m['link']['mlid'];?>" 
                                                 data-toggle="tab" 
-                                                aria-controls="#main-menu-<?php print $i;?>" 
+                                                aria-controls="#main-menu-<?php print $m['link']['mlid'];?>" 
                                                 aria-expanded="true" 
                                                 class="main-menu__link">
                                                 <?php print $m['link']['title'];?>

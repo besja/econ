@@ -4,16 +4,17 @@ function econ_pages_phones_page() {
 	drupal_set_title('Телефонный справочник'); 
 	$terms = taxonomy_get_tree(3); 
 
-	$data = '<div class="common-module common-tabs">
-    <a href="'.url('fakultet/contacts').'" class="common-tabs__tab common-tabs__tab--big-text">Местоположение</a>
-    <a href="'.url('fakultet/contacts/phones').'" class="common-tabs__tab common-tabs__tab--big-text current">Телефонный справочник</a>
-</div>
-<h1 class="page__title">Телефонный справочник</h1>';
+	$data = 
+		'<div class="common-module common-tabs">
+    	<a href="'.url('fakultet/contacts').'" class="common-tabs__tab common-tabs__tab--big-text">Местоположение</a>
+    	<a href="'.url('fakultet/contacts/phones').'" class="common-tabs__tab common-tabs__tab--big-text current">Телефонный справочник</a>
+		</div>
+	<h1 class="page__title">Телефонный справочник</h1>';
 
 	foreach($terms as $term) {
 		if ($term->parents[0] == 0) {
 			//корпуса
-			$data .= "<h2>".$term->name."</h2>"; 
+			$data .= "<div class='contacts__corp'><h2>".$term->name."</h2>"; 
 			$tid = $term->tid;  
 			foreach($terms as $child) {
 				if ($child->parents[0] == $tid) {
@@ -39,6 +40,7 @@ function econ_pages_phones_page() {
 					}
 				}
 			}
+			$data .= "</div>";
 		}
 	}
 	//drupal_set_message("<pre>".print_R($terms, 1)."</pre>");

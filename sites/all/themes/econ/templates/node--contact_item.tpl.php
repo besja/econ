@@ -1,11 +1,9 @@
 
 <?php if ($teaser) :?>
-    <div class="contacts__name">
-    <?php print $node->title;?></div>
+    <div class="contacts__name"><?php print $node->title;?></div>
     <?php if (isset($node->field_leadtext['und'][0]['value'])):?>
     <div class="contacts__job"><?php print $node->field_leadtext['und'][0]['value'];?></div>
     <?php endif;?>
-    <div>
     <?php if (isset($node->field_working_hours['und'][0]['value'])):?>
     <div class="contacts__working_hours">
     <span class="common-table__cell--header">Часы приема</span>

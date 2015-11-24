@@ -76,5 +76,13 @@
 
               mobileHover();
 
+              $("#main-menu a").click(function(e) {
+                if ($(this).attr('role') != 'tab') {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  window.location.href = $(this).attr('href'); 
+                }
+              })
+
 	 })
 })(jQuery);

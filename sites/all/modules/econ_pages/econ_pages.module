@@ -272,34 +272,31 @@ function _econ_pages_menu_block_view($template) {
 }
 
 function _econ_pages_render_featured($i) {
-  // i - порядковый номер пункта меню
+  // i - id пункта меню
 
   switch($i) {
-    case 1:
+    case 329:
       $delta = 2;
     break;
-    case 2:
+    case 359:
       $delta = 3;
     break;
-    case 3:
+    case 360:
       $delta = 4;
     break;
-    case 4:
+    case 361:
       $delta = 5;
     break;
-    case 5:
+    case 632:
       $delta = 6;
     break;
-    case 6:
+    case 363:
       $delta = 7;
     break;
-    default:
-      $delta = 2;
-    break;
   }
-  if ($delta) {
-  $block = module_invoke('block', 'block_view', $delta);
-  return render($block['content']);
+  if (isset($delta)) {
+   $block = module_invoke('block', 'block_view', $delta);
+   return render($block['content']);
   }
 }
 /** для адресов вида people/centri/ **/

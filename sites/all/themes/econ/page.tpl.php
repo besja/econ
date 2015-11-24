@@ -70,16 +70,24 @@
                                 <?php $i = 1;?>
                                 <?php foreach ($mainmenu as $m):?>
                                 <?php if (!$m['link']['hidden']):?>
-                                <li <?php if ($i==1):?> data-tab="1" <?php endif;?> class="main-menu__item 
-                                    <?php if (in_array($m['link']['mlid'],  $active_mlids)):?> current <?php endif;?>">
-
-                                    <a href="#main-menu-<?php print $i;?>" role="tab" id="main-menu-tab-<?php print $i;?>" 
+                                <li class="main-menu__item <?php if (in_array($m['link']['mlid'],  $active_mlids)):?> current <?php endif;?>">
+                                    <?php  
+                                    $children = array_values($m['below']);
+                                    _econ_pages_remove_hidden($children);
+                                    ?>
+                                    <?php if (count($children)):?>
+                                    <a href="#main-menu-<?php print $m['link']['mlid'];?>" role="tab" id="main-menu-tab-<?php print $m['link']['mlid'];?>" 
                                         data-toggle="tab" 
                                         aria-controls="#main-menu-<?php print $i;?>" 
                                         aria-expanded="true" 
                                         class="main-menu__link">
-                                     <?php print $m['link']['title'];?>
+                                        <?php print $m['link']['title'];?>
                                     </a>
+                                    <?php else:?>
+                                    <a href="<?php print url($m['link']['link_path']) ;?>" class="main-menu__link">
+                                        <?php print $m['link']['title'];?>
+                                    </a>
+                                    <?php endif;?>
                                  </li>
                                 <?php $i++;?>
                                 <?php endif;?>
@@ -104,18 +112,18 @@
                 </div>
             </div>
             <div id="full-menu" class="row tab-content full-menu">
-                <?php $i = 1;?>
-                 <?php foreach ($mainmenu as $m):?>
-                 <?php if (!$m['link']['hidden']):?>
-                    <?php 
+
+                <?php foreach ($mainmenu as $m):?>
+                    <?php if (!$m['link']['hidden']):?>
+                        <?php 
                         $children = array_values($m['below']);
                         _econ_pages_remove_hidden($children);
-                        ?>                   
-                        <div id="main-menu-<?php print $i;?>"  role="tabpanel" 
-                            class="full-menu__tab-pane tab-pane fade active">
-                        <div class="col-md-7">
-                            <div class="row">
-                                <?php if (count($children)):?>
+                            ?>       
+                        <?php if (count($children)):?>            
+                        <div id="main-menu-<?php print $m['link']['mlid'];?>"  role="tabpanel" class="full-menu__tab-pane tab-pane fade active">
+                            <div class="col-md-7">
+                                <div class="row">
+                                   
                                     <?php 
                                     $total = 7;
                                     $colums = ceil(count($children)/$total);
@@ -135,24 +143,22 @@
                                             </ul>
                                         </div>
                                     <?php endfor;?>
-                                <?php endif;?>
-                            </div>
-                        </div>
-                        <?php if ($page['header']):?>
-                            <div class="full-menu__featured col-md-5">
-                                <div class="row">
-                                  <?php 
-                                    print _econ_pages_render_featured($i);
-                                  ?>
+  
                                 </div>
                             </div>
-                        <?php endif;?>
-                    </div>
-
-                 <?php $i++;?>
-                <?php endif;?>
+                            <?php if ($page['header']):?>
+                                <div class="full-menu__featured col-md-5">
+                                    <div class="row">
+                                      <?php 
+                                        print _econ_pages_render_featured($m['link']['mlid']);
+                                      ?>
+                                    </div>
+                                </div>
+                            <?php endif;?>
+                        </div>
+                       <?php endif;?>
+                    <?php endif;?>
                 <?php endforeach;?>
-
             </div>
         </div>
     </header>

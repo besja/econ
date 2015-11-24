@@ -2,13 +2,9 @@
 <?php
     $shortcuts = menu_build_tree("menu-shortcatmenu");
     //$shortcuts = i18n_menu_localize_tree($shortcuts); 
-
     $mainmenu = econ_pages_submenu_tree_all_data(0, $menu = "menu-econ-mainmenu");
-
 ?>
-<?php 
-    print _econ_pages_menu_block_view("menu_mobile_block"); 
-?>
+<?php print _econ_pages_menu_block_view("menu_mobile_block"); ?>
 <div id="wrapper" class="wrapper">
     <header class="header">
         <div class="container">
@@ -67,30 +63,28 @@
                         <?php $active_mlids = _econ_pages_get_active_mlids();?>
                         <div id="main-menu" class="main-menu col-md-10 visible-md visible-lg">
                             <ul role="tablist" class="main-menu__list cf">
-                                <?php $i = 1;?>
                                 <?php foreach ($mainmenu as $m):?>
-                                <?php if (!$m['link']['hidden']):?>
-                                <li class="main-menu__item <?php if (in_array($m['link']['mlid'],  $active_mlids)):?> current <?php endif;?>">
-                                    <?php  
-                                    $children = array_values($m['below']);
-                                    _econ_pages_remove_hidden($children);
-                                    ?>
-                                    <?php if (count($children)):?>
-                                    <a href="#main-menu-<?php print $m['link']['mlid'];?>" role="tab" id="main-menu-tab-<?php print $m['link']['mlid'];?>" 
-                                        data-toggle="tab" 
-                                        aria-controls="#main-menu-<?php print $i;?>" 
-                                        aria-expanded="true" 
-                                        class="main-menu__link">
-                                        <?php print $m['link']['title'];?>
-                                    </a>
-                                    <?php else:?>
-                                    <a href="<?php print url($m['link']['link_path']) ;?>" class="main-menu__link">
-                                        <?php print $m['link']['title'];?>
-                                    </a>
+                                    <?php if (!$m['link']['hidden']):?>
+                                    <li class="main-menu__item <?php if (in_array($m['link']['mlid'],  $active_mlids)):?> current <?php endif;?>">
+                                        <?php  
+                                        $children = array_values($m['below']);
+                                        _econ_pages_remove_hidden($children);
+                                        ?>
+                                        <?php if (count($children)):?>
+                                            <a href="#main-menu-<?php print $m['link']['mlid'];?>" role="tab" id="main-menu-tab-<?php print $m['link']['mlid'];?>" 
+                                                data-toggle="tab" 
+                                                aria-controls="#main-menu-<?php print $i;?>" 
+                                                aria-expanded="true" 
+                                                class="main-menu__link">
+                                                <?php print $m['link']['title'];?>
+                                            </a>
+                                        <?php else:?>
+                                            <a href="<?php print url($m['link']['link_path']) ;?>" class="main-menu__link">
+                                                <?php print $m['link']['title'];?>
+                                            </a>
+                                        <?php endif;?>
+                                     </li>
                                     <?php endif;?>
-                                 </li>
-                                <?php $i++;?>
-                                <?php endif;?>
                                 <?php endforeach;?>
                             </ul>
                         </div>
@@ -105,63 +99,63 @@
                         </div>
                         <div class="header-lang">
                             <a class="header-lang__link" href="<?php print $base_url;?>/<?php if ($language->language=='ru'){ print 'en';}else{print 'ru';}?>"><?php if ($language->language=='ru'){ print 'EN';}else{print 'RU';}?></a></div>
-                        <a id="mobile-menu-button" href="#" class="mobile-menu-button visible-xs visible-sm" data-effect="st-effect-4">
-                             <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/icons/burger.svg');?>
-                         </a>
+                            <a id="mobile-menu-button" href="#" class="mobile-menu-button visible-xs visible-sm" data-effect="st-effect-4">
+                                 <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/icons/burger.svg');?>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="full-menu" class="row tab-content full-menu">
+                <div id="full-menu" class="row tab-content full-menu">
 
-                <?php foreach ($mainmenu as $m):?>
-                    <?php if (!$m['link']['hidden']):?>
-                        <?php 
-                        $children = array_values($m['below']);
-                        _econ_pages_remove_hidden($children);
-                            ?>       
-                        <?php if (count($children)):?>            
-                        <div id="main-menu-<?php print $m['link']['mlid'];?>"  role="tabpanel" class="full-menu__tab-pane tab-pane fade active">
-                            <div class="col-md-7">
-                                <div class="row">
-                                   
-                                    <?php 
-                                    $total = 7;
-                                    $colums = ceil(count($children)/$total);
-                                    ?>
-                                    <?php for ($j=0; $j<$colums; $j++):?>
-                                        <div class="col-md-6">
-                                            <ul class="full-menu__list">
-                                                <?php for ($k=$total*$j; $k<$total*$j + $total ; $k++) :?>
-                                                    <?php if (isset($children[$k])):?>
-                                                    <li class="full-menu__item">
-                                                        <?php print l($children[$k]['link']['title'],
-                                                         $children[$k]['link']['link_path'], 
-                                                         array("attributes"=>array("class"=>array("full-menu__item__link"))));?>
-                                                    </li>
-                                                    <?php endif;?>
-                                                <?php endfor;?>
-                                            </ul>
-                                        </div>
-                                    <?php endfor;?>
-  
-                                </div>
-                            </div>
-                            <?php if ($page['header']):?>
-                                <div class="full-menu__featured col-md-5">
+                    <?php foreach ($mainmenu as $m):?>
+                        <?php if (!$m['link']['hidden']):?>
+                            <?php 
+                            $children = array_values($m['below']);
+                            _econ_pages_remove_hidden($children);
+                                ?>       
+                            <?php if (count($children)):?>            
+                            <div id="main-menu-<?php print $m['link']['mlid'];?>"  role="tabpanel" class="full-menu__tab-pane tab-pane fade active">
+                                <div class="col-md-7">
                                     <div class="row">
-                                      <?php 
-                                        print _econ_pages_render_featured($m['link']['mlid']);
-                                      ?>
+                                       
+                                        <?php 
+                                        $total = 7;
+                                        $colums = ceil(count($children)/$total);
+                                        ?>
+                                        <?php for ($j=0; $j<$colums; $j++):?>
+                                            <div class="col-md-6">
+                                                <ul class="full-menu__list">
+                                                    <?php for ($k=$total*$j; $k<$total*$j + $total ; $k++) :?>
+                                                        <?php if (isset($children[$k])):?>
+                                                        <li class="full-menu__item">
+                                                            <?php print l($children[$k]['link']['title'],
+                                                             $children[$k]['link']['link_path'], 
+                                                             array("attributes"=>array("class"=>array("full-menu__item__link"))));?>
+                                                        </li>
+                                                        <?php endif;?>
+                                                    <?php endfor;?>
+                                                </ul>
+                                            </div>
+                                        <?php endfor;?>
+      
                                     </div>
                                 </div>
-                            <?php endif;?>
-                        </div>
-                       <?php endif;?>
-                    <?php endif;?>
-                <?php endforeach;?>
+                                <?php if ($page['header']):?>
+                                    <div class="full-menu__featured col-md-5">
+                                        <div class="row">
+                                          <?php 
+                                            print _econ_pages_render_featured($m['link']['mlid']);
+                                          ?>
+                                        </div>
+                                    </div>
+                                <?php endif;?>
+                            </div>
+                           <?php endif;?>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
     <div class="container main-content"> 
         <div class="row">
             <!--  end header --> 
@@ -169,7 +163,6 @@
                 <div class="row">
                     <?php if (!$is_front):?>
                         <main class="col-sm-12 col-md-9 no-paddings">
-
                             <?php if ($breadcrumb): ?>
                               <?php print $breadcrumb; ?>
                             <?php endif; ?>
@@ -198,16 +191,15 @@
                             <?php endif;?>
                            <!-- news search --> 
                         </main>
-                       <!-- sidebar --> 
+                        <!-- sidebar --> 
                         <?php if ($page['sidebar']):?>
                             <?php print render($page['sidebar']);?>
                         <?php endif;?>
-                       <!-- end sidebar --> 
+                        <!-- end sidebar --> 
                     <?php else:?>
                         <div id="index-page" class="index-page">
                             <div class="col-sm-12 col-md-7 no-paddings">
                                 <main>
-
                                     <?php $block = module_invoke("econ_pages", "block_view", "intro");?>
                                     <?php print $block['content'];?>
                                 </main>
@@ -236,7 +228,6 @@
             </div>
         </div> <!-- row -->
     </div> <!-- / container main-content -->
-
     <footer class="footer">
         <div class="container footer__container">
             <div class="row">
@@ -248,28 +239,28 @@
                         САНКТ-ПЕТЕРБУРГСКИЙ <br>ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ
                     </h3>
                     <div class="row">
-                    <div class="col-xs-12 col-md-12 col-sm-5">
-                      <ul class="footer__menu">
-                        <li class="footer__menu__item"><a href="http://spbu.ru/links/" class="li footer__menu__link">полезные ссылки</a></li>
-                        <li class="footer__menu__item"><a href="http://csr.spbu.ru/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8F-%D1%81%D0%BF%D0%B1%D0%B3%D1%83" class="li footer__menu__link">программа развития спбгу</a></li>
-                        <li class="footer__menu__item"><a href="http://guestbook.spbu.ru/" class="li footer__menu__link">виртуальная приемная спбгу</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-xs-12 col-md-12 col-sm-7">
-                      <ul class="footer__menu">
-                        <li class="footer__menu__item"><a href="http://law.spbu.ru/ru/Structure/JurClinic/VirtualnayaPriemnaya.aspx" class="li footer__menu__link">бесплатная юридическая консультация</a></li>
-                        <li class="footer__menu__item"><a href="http://www.psy.spbu.ru/psychcentre/sluzhba" class="li footer__menu__link">бесплатная психологическая помощь</a></li>
-                        <li class="footer__menu__item"><a href="http://guestbook.spbu.ru/ru/tsentr-zashchity-prav-abiturienta.html" class="li footer__menu__link">центр защиты прав абитуриентов</a></li>
-                        <li class="footer__menu__item"><a href="http://spbu.ru/science/expert/centr" class="li footer__menu__link">центр экспертиз СПбГУ</a></li>                      
-                      </ul>
-                    </div>
+                        <div class="col-xs-12 col-md-12 col-sm-5">
+                          <ul class="footer__menu">
+                            <li class="footer__menu__item"><a href="http://spbu.ru/links/" class="li footer__menu__link">полезные ссылки</a></li>
+                            <li class="footer__menu__item"><a href="http://csr.spbu.ru/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0-%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8F-%D1%81%D0%BF%D0%B1%D0%B3%D1%83" class="li footer__menu__link">программа развития спбгу</a></li>
+                            <li class="footer__menu__item"><a href="http://guestbook.spbu.ru/" class="li footer__menu__link">виртуальная приемная спбгу</a></li>
+                          </ul>
+                        </div>
+                        <div class="col-xs-12 col-md-12 col-sm-7">
+                          <ul class="footer__menu">
+                            <li class="footer__menu__item"><a href="http://law.spbu.ru/ru/Structure/JurClinic/VirtualnayaPriemnaya.aspx" class="li footer__menu__link">бесплатная юридическая консультация</a></li>
+                            <li class="footer__menu__item"><a href="http://www.psy.spbu.ru/psychcentre/sluzhba" class="li footer__menu__link">бесплатная психологическая помощь</a></li>
+                            <li class="footer__menu__item"><a href="http://guestbook.spbu.ru/ru/tsentr-zashchity-prav-abiturienta.html" class="li footer__menu__link">центр защиты прав абитуриентов</a></li>
+                            <li class="footer__menu__item"><a href="http://spbu.ru/science/expert/centr" class="li footer__menu__link">центр экспертиз СПбГУ</a></li>                      
+                          </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-7">
-                  <div class="footer__econ-logo">
+                    <div class="footer__econ-logo">
                         <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/common/logo.svg');?>
-                  </div>
-                  <div class="row">
+                    </div>
+                    <div class="row">
                         <div class="col-xs-12 col-md-4 col-sm-4">
                             <h3 class="footer__header footer__header--econ">ЭКОНОМИЧЕСКИЙ <br>ФАКУЛЬТЕТ</h3>
                             <ul class="footer__menu">
@@ -299,7 +290,7 @@
                                 <li class="footer__menu__item"><a href="#" class="li footer__menu__link">BLACKBOARD</a></li>
                             </ul>
                         </div>
-                </div>
+                    </div>
                 </div>
             </div>
             <div class="row footer__copy">
@@ -317,7 +308,7 @@
             <!-- portal -->
             <div class="spbgu-portal">
                 <div class="spbgu-portal__label">Портал СПбГУ <i><?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/icons/accordion-arrow.svg');?></i></div>
-                   <div class="spbgu-portal__accordion scrollable" id="spbgu-portal__accordion">
+                <div class="spbgu-portal__accordion scrollable" id="spbgu-portal__accordion">
                     <div class="spbgu-portal__panel panel">
                         <h4 class="spbgu-portal__header">
                             <a data-toggle="collapse" data-parent="#spbgu-portal__accordion" aria-expanded="true" href="#spbgu-portal__collapse-1">Основные разделы 

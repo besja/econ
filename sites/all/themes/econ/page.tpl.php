@@ -1,4 +1,4 @@
-<?php  global $theme_path;  global $base_url;  global $language; ?>
+<?php global $theme_path;  global $base_url;  global $language; ?>
 <?php
     $shortcuts = menu_build_tree("menu-shortcatmenu");
     //$shortcuts = i18n_menu_localize_tree($shortcuts); 

@@ -344,6 +344,11 @@ function econ_pages_entity_info_alter(&$entity_info) {
     'custom settings' => FALSE,
     'is_wysiwyg'=>True
   );
+  $entity_info['file']['view modes']['image_person'] = array(
+    'label' => t('Карточка персоналии'),
+    'custom settings' => FALSE,
+    'is_wysiwyg'=>True
+  );
 }
 
 function econ_pages_preprocess_node(&$vars) {

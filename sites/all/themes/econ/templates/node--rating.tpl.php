@@ -54,7 +54,7 @@
         <?php $i++;?>
         <?php endforeach;?>
     </table>
-    <?php if (user_access('add rating content')):?> 
+    <?php if (user_access('create rating content')):?> 
     <ul class="action-links action-links-field-collection-add">
         <li><a class="inline-manage" href="<?php print url('field-collection/field-rating-people/add/node/'.$node->nid, array('query'=>array('destination'=>'node/'.$node->nid.'?type='.$type)));?>">Добавить</a></li>
     </ul>

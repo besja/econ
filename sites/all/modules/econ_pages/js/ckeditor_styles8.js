@@ -6,7 +6,6 @@ CKEDITOR.stylesSet.add('mycustomstyleset',
     { name : 'Gallery', element : 'ul', attributes: { 'class' : 'gallery' } },
     { name : 'Large font', element : 'span', attributes: { 'class' : 'big' }}, 
     { name : 'Fancy table', element : 'table', attributes: { 'class' : 'common-table' }}, 
-    { name : 'Common table', element: 'table', attributes: {'class' : 'common-table--person'}}, 
     { name : 'Transparent table', element : 'table', attributes: { 'class' : 'transparent-table' }}, 
 
 

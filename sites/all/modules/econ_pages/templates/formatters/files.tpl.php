@@ -7,7 +7,7 @@
             	<?php include(DRUPAL_ROOT."/sites/all/themes/econ/spbgu/app/img/icons/download.svg");?>
             </i>
 		    <span class="download-module__text">
-		    	<?php if (isset($file['description'])):?>
+		    	<?php if (isset($file['description']) && $file['description']):?>
 		    		<?php print $file['description'];?>
 		    	<?php else:?>
 		    		<?php print $file['filename'];?>

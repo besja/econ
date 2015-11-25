@@ -323,6 +323,7 @@ function econ_pages_wysiwyg_editor_settings_alter(&$settings, $context) {
 }
 
 function econ_pages_entity_info_alter(&$entity_info) {
+  //drupal_set_message("<pre>".print_r($entity_info, 1)."</pre>");
   $entity_info['node']['view modes']['wysiwyg_teaser'] = array(
     'label' => t('WYSIWYG teaser'),
     'custom settings' => TRUE,
@@ -330,6 +331,16 @@ function econ_pages_entity_info_alter(&$entity_info) {
   );
   $entity_info['node']['view modes']['wysiwyg_teaser_person'] = array(
     'label' => t('Person card'),
+    'custom settings' => FALSE,
+    'is_wysiwyg'=>True
+  );
+  $entity_info['file']['view modes']['image_full'] = array(
+    'label' => t('Изображение на всю ширину страницы'),
+    'custom settings' => FALSE,
+    'is_wysiwyg'=>True
+  );
+  $entity_info['file']['view modes']['image_original'] = array(
+    'label' => t('Оригинальное изображение'),
     'custom settings' => FALSE,
     'is_wysiwyg'=>True
   );

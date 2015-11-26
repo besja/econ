@@ -1,5 +1,5 @@
 <div class="row">
-    <a href="<?php print url('node/'.$node->nid);?>" class="common-module staff-card col-xs-12 col-sm-6 col-md-6">
+    <a href="<?php print url('node/'.$node->nid);?>" class="common-module staff-card col-xs-12 col-sm-12 col-md-12">
         <?php if (isset($node->field_image['und'][0]['uri'])):?>
             <?php 
             print theme('image_style', array('style_name' => 'portret240_grey', 

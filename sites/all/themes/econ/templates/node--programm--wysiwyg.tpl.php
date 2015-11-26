@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-xs-12 col-sm-6 admission-card">
+<div class="col-xs-12 col-sm-12 admission-card">
     <a href="<?php print url("node/".$node->nid);?>" class="admission-card__link">
         <?php if (isset($node->field_leadimage['und'][0]['uri'])):?>
             <?php 

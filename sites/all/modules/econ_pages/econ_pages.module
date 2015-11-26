@@ -318,36 +318,36 @@ function econ_pages_wysiwyg_editor_settings_alter(&$settings, $context) {
   if ($context['profile']->editor == 'ckeditor') {
     $format = $context['profile']->format;
     $path = $base_url.'/'.drupal_get_path('module', 'econ_pages') . '/js';
-    $settings['stylesSet'] = "mycustomstyleset:$path/ckeditor_styles8.js";
+    $settings['stylesSet'] = "mycustomstyleset:$path/ckeditor_styles9.js";
   }
 }
 
 function econ_pages_entity_info_alter(&$entity_info) {
   //drupal_set_message("<pre>".print_r($entity_info, 1)."</pre>");
   $entity_info['node']['view modes']['wysiwyg_teaser'] = array(
-    'label' => t('WYSIWYG teaser'),
+    'label' => t('Внедренный контент'),
     'custom settings' => TRUE,
     'is_wysiwyg'=>True
   );
   $entity_info['node']['view modes']['wysiwyg_teaser_person'] = array(
-    'label' => t('Person card'),
+    'label' => t('Карточка персоналии'),
     'custom settings' => FALSE,
-    'is_wysiwyg'=>True
+    'is_wysiwyg'=>FALSE
   );
   $entity_info['file']['view modes']['image_full'] = array(
     'label' => t('Изображение на всю ширину страницы'),
     'custom settings' => FALSE,
-    'is_wysiwyg'=>True
+    'is_wysiwyg'=>FALSE
   );
   $entity_info['file']['view modes']['image_original'] = array(
     'label' => t('Оригинальное изображение'),
     'custom settings' => FALSE,
-    'is_wysiwyg'=>True
+    'is_wysiwyg'=>FALSE
   );
   $entity_info['file']['view modes']['image_person'] = array(
     'label' => t('Карточка персоналии'),
     'custom settings' => FALSE,
-    'is_wysiwyg'=>True
+    'is_wysiwyg'=>FALSE
   );
 }
 

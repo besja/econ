@@ -53,12 +53,17 @@
               $('.contacts__table').each(function() {
                      var total = $(this).find("tr:first td").length;
                      $(this).addClass('table-width-'+total);
-              }) 
+              }) ;
               $('.common-table--person').each(function() {
                      //var total = $(this).find("tr td").length;
                      var total = $(this).find("tr:first td").length;
                      $(this).addClass('table-width-'+total);
-              }) 
+              }) ;
+              $('.equal-rows-table').each(function() {
+                     //var total = $(this).find("tr td").length;
+                     var total = $(this).find("tr:first td").length;
+                     $(this).addClass('table-width-'+total);
+              });
               $('.spbgu-portal__search input[type="submit"]').click(function() {
                      alert("1");
                      var value= $('.spbgu-portal__search input[name="search"]').val();

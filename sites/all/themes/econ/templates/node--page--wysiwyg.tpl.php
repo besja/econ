@@ -1,5 +1,5 @@
 <div class="row">
-    <a href="<?php print url('node/'.$node->nid);?>" class="cafedra-big col-xs-12 col-sm-6 col-md-12">
+    <a href="<?php print url('node/'.$node->nid);?>" class="cafedra-big col-xs-12 col-sm-12 col-md-12">
          <?php if (isset($node->field_leadimage['und'][0]['uri'])):?>
             <?php 
             print theme('image_style', array('style_name' => 'thumb292', 

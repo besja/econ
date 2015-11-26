@@ -33,7 +33,7 @@ function token_insert_entity_form_data() {
     $entity_view_modes = array();
    
     foreach($entity_info['view modes'] as $key => $view_mode) {
-      if (isset($view_mode['is_wysiwyg'])) {
+      if (isset($view_mode['is_wysiwyg']) && $view_mode['is_wysiwyg']) {
       $entity_view_modes[$key] = $view_mode['label'];
       }
     }

@@ -9,6 +9,15 @@
  */
 define('TOKEN_INSERT_ENTITY_TYPE', 'embed');
 
+function token_insert_entity_permission() {
+  return array(
+    'insert entity' => array(
+      'title' => t('Insert entity into page'),
+      'description' => t('Insert entity into page'),
+    ),
+  );
+}
+
 /**
  * Implements hook_menu()
  *
@@ -19,7 +28,7 @@ function token_insert_entity_menu() {
 
   $items['token_insert_entity/insert'] = array(
     'page callback' => 'token_insert_entity_form_data',
-    'access arguments' => array('administer content'),
+    'access arguments' => array('insert entity'),
     'delivery callback' => 'token_insert_entity_deliver',
     'file' => 'token_insert_entity.pages.inc',
     'type' => MENU_CALLBACK,
@@ -27,7 +36,7 @@ function token_insert_entity_menu() {
 
   $items['token_insert_entity/autocomplete'] = array(
     'page callback' => '_token_insert_entity_autocomplete',
-    'access arguments' => array('administer content'),
+    'access arguments' => array('insert entity'),
     'file' => 'token_insert_entity.pages.inc',
     'type' => MENU_CALLBACK
   );

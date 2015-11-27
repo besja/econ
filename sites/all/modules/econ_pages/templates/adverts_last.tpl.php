@@ -3,9 +3,11 @@
     <div class='row'>
         <?php foreach ($nodes as $node):?>
         <a href="<?php print url('node/'.$node->nid);?>" class="notice-widget__notice cf col-xs-12 col-sm-4">
-        <?php 
-        print theme('image_style', array('style_name' => 'leadimage_preview', 'path' => $node->field_leadimage['und'][0]['uri'], 'alt'=>$node->title), array("attributes"=>array("class"=>array("notice-widget__image"))));
-        ?>
+            <?php if (isset($node->field_leadimage['und'][0]['uri'])):?>
+            <?php 
+                print theme('image_style', array('style_name' => 'leadimage_preview', 'path' => $node->field_leadimage['und'][0]['uri'], 'alt'=>$node->title), array("attributes"=>array("class"=>array("notice-widget__image"))));
+            ?>
+            <?php endif;?>
             <div class="notice-widget__text"><?php print $node->title;?></div>
         </a>
         <?php endforeach;?>

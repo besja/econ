@@ -11,7 +11,8 @@ $(document).ready(function(){
         autoPlay : true,
         stopOnHover : true,
         autoHeight : true
-    });    
+    });   
+
     // Расчитываем высоту блоков на главной
     function indexHeights() {
         $('#news-widget__inner')
@@ -47,5 +48,19 @@ $(document).ready(function(){
         $('#news-widget__inner').perfectScrollbar('update');
     },300);
     }
+    if($("#notice-widget__slider").length){
+        $("#notice-widget__slider").owlCarousel({
+            items : 1,
+            itemsDesktop: [1600,1],
+            itemsTablet: [768,3],
+            itemsScaleUp : true,
+            autoPlay : false,
+            autoHeight : true, 
+            afterAction: function() {
+              indexHeights();
+            }
+        });
+        var noticeWidgetSlider = $("#notice-widget__slider").data('owlCarousel');
+    } 
 });
 

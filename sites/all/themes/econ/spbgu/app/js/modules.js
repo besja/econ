@@ -1,17 +1,5 @@
 $(document).ready(function(){
 
-    if($("#notice-widget__slider").length){
-        $("#notice-widget__slider").owlCarousel({
-            items : 1,
-            itemsDesktop: [1600,1],
-            itemsTablet: [768,3],
-            itemsScaleUp : true,
-            autoPlay : false,
-            autoHeight : true
-        });
-        var noticeWidgetSlider = $("#notice-widget__slider").data('owlCarousel');
-    }
-
     if($(".common-slider__slides").length){
         owl = $(".common-slider__slides");
         function fillMeta () {

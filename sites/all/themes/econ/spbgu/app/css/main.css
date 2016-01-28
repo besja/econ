@@ -854,8 +854,7 @@ ol,
 li,
 button,
 input,
-small,
-em {
+small{
   margin: 0;
   padding: 0;
   font-size: inherit;
@@ -2455,9 +2454,11 @@ main+div {
 .contacts__name {
   font-size: 1.125rem;
 }
+/*
 .contacts__job {
   margin-bottom: -0.9375rem;
 }
+*/
 @media only screen and (max-width: 767px) {
   .contacts__job {
     margin-bottom: 0;

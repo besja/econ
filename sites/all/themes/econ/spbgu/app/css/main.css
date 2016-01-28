@@ -854,7 +854,6 @@ ol,
 li,
 button,
 input,
-strong,
 small,
 em {
   margin: 0;
@@ -863,12 +862,7 @@ em {
   font-weight: inherit;
   font-style: inherit;
 }
-b {
-  font-weight: inherit;
-}
-i {
-  font-style: inherit;
-}
+
 ul,
 ol,
 li {

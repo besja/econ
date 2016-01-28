@@ -283,7 +283,6 @@
                         <div class="col-xs-12 col-md-4 col-sm-4">
                             <h3 class="footer__header">КОНТАКТНАЯ <br>ИНФОРМАЦИЯ</h3>
                             <ul class="footer__menu">
-                                <li class="footer__menu__item"><a href="tel:+78122754966" class="li footer__menu__link">ОТДЕЛ ПО СВЯЗЯМ С ОБЩЕСТВЕННОСТЬЮ <br>+7 (812) 275 49 66</a></li>
                                 <li class="footer__menu__item"><a href="tel:+78123204050" class="li footer__menu__link">ПРИЕМНАЯ ДЕКАНА <br>+7 (812) 320 40 50</a></li>
                                 <li class="footer__menu__item"><a href="tel:+78122720803" class="li footer__menu__link">УЧЕБНЫЙ ОТДЕЛ <br>+7 (812) 272 08 03</a></li>
                                 <li class="footer__menu__item"><a href="#" class="li footer__menu__link">АДРЕСА ФАКУЛЬТЕТА</a></li>

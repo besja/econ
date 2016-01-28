@@ -33,6 +33,14 @@ function econ_pages_menu() {
     'type' => MENU_LOCAL_TASK,
     'menu_name' => 'menu-econ-mainmenu'
   );  
+  $items['people/abc'] = array(
+    'page callback' => 'econ_pages_people_abc_page',
+    'page arguments' => array('20'),
+    'access arguments' => array('access content'), 
+    'file' => 'pages/people.inc', 
+    'type' => MENU_LOCAL_TASK,
+    'menu_name' => 'menu-econ-mainmenu'
+  );
   $items['people/graduated'] = array(
     'page callback' => 'econ_pages_people_graduated_page',
     'page arguments' => array('20'),

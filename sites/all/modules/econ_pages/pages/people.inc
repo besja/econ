@@ -118,7 +118,8 @@ function econ_pages_people_abc_page() {
 	$parameters = drupal_get_query_parameters();
 
 	$current_letter = "А";
-	if (isset($parameters['letter'])){
+
+	if (isset($parameters['letter']) && $parameters['letter']){
 		$current_letter = $parameters['letter']; 
 	} 
 

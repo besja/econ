@@ -2260,7 +2260,7 @@ input[type="search"].spbgu-portal__search__input {
 .page__content p {
   padding-bottom: 0.9375rem;
 }
-.page__content a {
+.page__content p a {
   font-weight: 400;
   color: #1973bc;
 }

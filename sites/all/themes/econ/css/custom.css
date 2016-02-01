@@ -371,3 +371,10 @@ input.form-submit:hover {
 .notice-widget {
   background: #2d2d2d none repeat scroll 0 0;
 }
+ol li {
+  display: list-item; 
+  margin: 0 0 0 20px;
+}
+ol {
+  padding-bottom:0.9375rem;
+}

@@ -27,7 +27,7 @@
         <tr class="common-table__row">
             <?php if (isset($node->field_address['und'][0]['value'])):?>
             <td class="common-table__cell">
-                <span class="common-table__cell--header">АДРЕС КАФЕДРЫ</span>
+                <span class="common-table__cell--header">АДРЕС</span>
                 <?php print $node->field_address['und'][0]['value'];?></td>
             <?php endif;?>
             <?php if (isset($node->field_working_hours['und'][0]['value'])):?>

@@ -40,14 +40,18 @@
    		<?php endif;?>
     </div>
 </div>
+<?php if (isset($node->field_email['und'][0]['email']) 
+    or isset($node->field_web['und'][0]['value']) 
+    or isset($node->field_phone['und'][0]['value']) 
+    or isset($node->field_address['und'][0]['value'])):?>
 <table class="common-module common-table common-table--person">
     <tr class="common-table__row">
+        <?php if (isset($node->field_email['und'][0]['email'])):?>
         <td class="common-table__cell common-table__cell--accent">
             <span class="common-table__cell--header">E-MAIL</span>
-            <?php if (isset($node->field_email['und'][0]['email'])):?>
             <a href="mailto:<?php print $node->field_email['und'][0]['email'];?>"><?php print $node->field_email['und'][0]['email'];?></a>
-             <?php endif;?>
         </td>
+        <?php endif;?>
          <?php if (isset($node->field_web['und'][0]['value'])):?>
         <td class="common-table__cell common-table__cell--accent">
             <span class="common-table__cell--header">WEB</span>
@@ -65,6 +69,7 @@
         <?php endif;?> 
     </tr>
 </table>
+<?php endif;?>
 <?php print render($content['body']);?>
 
 <?php if (count($node->field_files)):?>

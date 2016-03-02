@@ -300,7 +300,7 @@
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <!-- <div class=""> -->
-                    Сделано <a href="http://whitescape.com/" class="footer__copy--whitescape" target="_blank">Whitescape</a> в сотрудничестве с СПбГУ
+                 <!-- Сделано <a href="http://whitescape.com/" class="footer__copy--whitescape" target="_blank">Whitescape</a> в сотрудничестве с СПбГУ -->
                   <!-- </div> -->
                 </div>
             </div>

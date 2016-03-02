@@ -124,7 +124,9 @@ function econ_pages_people_abc_page() {
 	} 
 
 	$query = "SELECT * FROM node n 
+	INNER JOIN field_data_field_show_in_people p ON p.entity_id = n.nid AND p.field_show_in_people_value = 1 
 	WHERE n.type = 'person' and n.status = 1 AND n.language IN ('und', '".$language->language."') 
+
 	and n.title LIKE '".$current_letter."%' ORDER BY n.title"; 
 
 	$result = db_query($query);

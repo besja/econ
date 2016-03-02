@@ -1,7 +1,7 @@
 <?php
 
 function econ_pages_admission_page() {
-	drupal_set_title('Поступающим'); 
+	drupal_set_title('Абитуриенту'); 
 	$all_fields_on_my_website = field_info_fields();
 
 	$bases = list_allowed_values($all_fields_on_my_website["field_programm_base"]); 

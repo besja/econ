@@ -200,6 +200,7 @@ img {
 .common-table td {
   padding: 1.875rem 1.25rem 1.875rem 0;
   border:none;
+  width: auto !important;
 }
 @media only screen and (max-width: 767px) {
  #block-system-main tr {

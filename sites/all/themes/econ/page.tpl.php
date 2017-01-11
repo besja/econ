@@ -258,16 +258,19 @@
                 </div>
                 <div class="col-xs-12 col-md-7">
                     <div class="footer__econ-logo">
-                        <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/common/logo.svg');?>
+                        <?php include(DRUPAL_ROOT."/".$theme_path.'/spbgu/app/img/common/logo_white.svg');?>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-md-4 col-sm-4">
                             <h3 class="footer__header footer__header--econ">ЭКОНОМИЧЕСКИЙ <br>ФАКУЛЬТЕТ</h3>
                             <ul class="footer__menu">
+
                                  <?php foreach ($mainmenu as $m):?>
+                                 <?php if (in_array($m['link']['language'], array($language->language, "und"))):?>
                                   <li class="footer__menu__item">
                                     <?php print l($m['link']['title'], $m['link']['link_path'], array("attributes"=>array("class"=>array("li footer__menu__link"))));?>
                                    </li>
+                                  <?php endif;?>
                                 <?php endforeach;?>
                             </ul>
                         </div>
@@ -295,7 +298,7 @@
             <div class="row footer__copy">
                 <div class="col-xs-12 col-md-5">
                   <!-- <div class="footer__copy"> -->
-                  © 2015 Санкт-Петербургский государственный университет
+                  © 2016 Санкт-Петербургский государственный университет
                   <!-- </div> -->
                 </div>
                 <div class="col-xs-12 col-md-6">

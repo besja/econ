@@ -378,3 +378,14 @@ ol li {
 ol {
   padding-bottom:0.9375rem;
 }
+@media only screen and (min-width: 1279px) {
+  .events-widget {
+    min-height: 550px;
+    position: relative;
+  }
+  .events-widget .big-btn  {
+    position: absolute;
+    bottom:0;
+    width:100%;
+  }
+}

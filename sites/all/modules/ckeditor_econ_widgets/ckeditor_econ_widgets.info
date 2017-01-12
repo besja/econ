@@ -1,0 +1,13 @@
+name = CKEditor Widgets for ECON 
+description = Adds widgets
+
+core = 7.x
+
+dependencies[] = ckeditor
+
+; Information added by Drupal.org packaging script on 2015-02-10
+version = "7.x-dev"
+core = "7.x"
+project = "ckeditor_econ_widgets"
+datestamp = "1423537685"
+

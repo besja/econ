@@ -1,0 +1,32 @@
+<?php
+
+
+/**
+ * Hook to register the CKEditor plugin - it would appear in the plugins list on the profile setting page.
+ */
+function ckeditor_econ_widgets_ckeditor_plugin() {
+  return array(
+    'widgetsecon' => array(
+      // Name of the plugin used to write it.
+      'name' => 'widgetsecon',
+      // Description of the plugin - it would be displayed in the plugins management section of profile settings.
+      'desc' => t('Plugin to add econ widgets'),
+      // The full path to the CKEditor plugins directory, with the trailing slash.
+      'path' => drupal_get_path('module', 'ckeditor_econ_widgets') . '/plugins/widgetsecon/',
+      'buttons' => array(
+        'widgetseconContact' => array(
+          'icon' => 'icons/widgetseconContact.png',
+          'label' => 'Insert contact',
+        ), 
+        /* 
+        'widgetcommonQuotebox' => array(
+          'icon' => 'icons/widgetcommonQuotebox.png',
+          'label' => 'Insert quote box',
+        ),
+        */ 
+
+      )
+    )
+  ); 
+}
+

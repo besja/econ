@@ -366,6 +366,10 @@ h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
+h2, h3 {
+    font-size: 1.25rem;
+    line-height: 1.375rem;
+  }
 a {
   text-decoration: none;
   outline: none;
@@ -455,6 +459,7 @@ p a.download, a.download{
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  margin-bottom: 1.25rem;
 }
 td,
 th {
@@ -466,7 +471,7 @@ td {
 }
 .common-table {
   width:100% !important;
-  border:0 !important;
+  border:0;
 }
 .common-table tr {
   border-top: 1px solid #5d5d5d;
@@ -487,3 +492,15 @@ td {
 .transparent-table tr,  .transparent-table td {
   border:1px dashed #5d5d5d;
 }
+
+.common-table.contacts__table {
+    border-bottom: 1px solid #9b9b9b;
+    border-top: none; 
+}
+.common-table.common-table tr {
+  border:none;
+}
+.contacts__name {
+    font-size: 1.125rem;
+}
+

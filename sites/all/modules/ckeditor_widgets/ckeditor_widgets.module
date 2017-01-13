@@ -53,6 +53,10 @@ function ckeditor_widgets_ckeditor_plugin() {
           'icon' => 'icons/widgetcommonContactFourColumns.png',
           'label' => 'Add Four Columns Contact',
         ),
+        'widgetcommonPerson' => array(
+          'icon' => 'icons/widgetcommonPerson.png',
+          'label' => 'Add Person',
+        ),
       )
     ),
     'widgetbootstrap' => array(

@@ -390,3 +390,7 @@ ol {
     width:100%;
   }
 }
+
+.panel-panel .pane-bundle-person h2 {
+  display: none; 
+}

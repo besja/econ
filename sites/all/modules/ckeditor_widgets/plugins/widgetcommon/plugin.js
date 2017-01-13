@@ -1,7 +1,7 @@
 CKEDITOR.plugins.add( 'widgetcommon', {
     requires: 'widget',
 
-    icons: 'widgetcommonContactTwoColumns,widgetcommonContactThreeColumns,widgetcommonContactFourColumns,widgetcommonQuotebox,widgetcommonBox',
+    icons: 'widgetcommonContactTwoColumns,widgetcommonContactThreeColumns,widgetcommonContactFourColumns,widgetcommonPerson,widgetcommonQuotebox,widgetcommonBox',
 
     defaults : {
         name: 'accordion',
@@ -195,6 +195,50 @@ CKEDITOR.plugins.add( 'widgetcommon', {
 
             upcast: function( element ) {
                 return element.name == 'div' && element.hasClass( '.ContactFourColumns.contact' );
+            }        
+        }); 
+       editor.widgets.add( 'widgetcommonPerson', {
+            button: showButtons ? 'Add Person' : undefined,
+            template:
+                '<div class="common-module person-card">'+
+                '    <div class="row">'+
+                '        <div class="col-xs-6 col-sm-4 person-card__image"><img alt="" src="http://new.econ.spbu.ru/sites/all/themes/econ/spbgu/app/img/temp/person-card.jpg"></div>'+        
+                '             <div class="col-xs-12 col-sm-8">'+
+                '            <h3 class="person-card__name">Александр Алексеевич Вознесенский</h3>'+
+                '            <div class="person-card__years">1898–1950</div>'+
+                '            <div class="person-card__lead">Кандидат экономических наук, профессор. Должность декана экономического факультета занимал в 1940—1941 гг.</div>'+
+                '        </div>'+
+                '    </div>'+
+                '    <div class="person-card__text">Несмотря на то, что преподавание экономической теории и статистики началось в Санкт-Петербургском университете в 1819 г., экономический факультет был создан только с 1 сентября 1940 г. Приказом ректора университета № 80 от 23.06.40 г. Его основание как самостоятельного подразделения Ленинградского университета связано с именем профессора А.А.Вознесенского, ставшего его первым деканом.</div>'+
+                '</div>',
+
+            editables: {
+                image: {
+                    selector: '.person-card .person-card__image',
+                    allowedContent: ""
+                },
+                name: {
+                    selector: '.person-card .person-card__name',
+                    allowedContent: ""
+                },
+                years: {
+                    selector: '.person-card .person-card__years',
+                    allowedContent: ""
+                },
+                lead: {
+                    selector: '.person-card .person-card__lead',
+                    allowedContent: allowedText
+                },
+                text: {
+                    selector: '.person-card .person-card__text',
+                    allowedContent: 'a[*];br;em;strong;b;p'
+                },
+ 
+            }, 
+            allowedContent: allowedFull, 
+
+            upcast: function( element ) {
+                return element.name == 'div' && element.hasClass( '.common-module.person-card' );
             }        
         }); 
         editor.widgets.add( 'widgetcommonBox', {

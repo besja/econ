@@ -19,6 +19,7 @@ CKEDITOR.plugins.add( 'widgettemplatemenu', {
             buttonData.widgetcommonContactTwoColumns = 'Add Two Columns Contact';
             buttonData.widgetcommonContactThreeColumns = 'Add Three Columns Contact';
             buttonData.widgetcommonContactFourColumns = 'Add Four Columns Contact';
+            buttonData.widgetcommonPerson = 'Add Person';
         }
         if (editor.plugins.widgetbootstrap != undefined) {
             buttonData.widgetbootstrapLeftCol = 'Insert left column template';
@@ -75,6 +76,7 @@ CKEDITOR.plugins.add( 'widgettemplatemenu', {
                     widgetcommonContactTwoColumns: editor.commands.widgetcommonContactTwoColumns == undefined ? false : editor.commands.widgetcommonContactTwoColumns.state,
                     widgetcommonContactThreeColumns: editor.commands.widgetcommonContactThreeColumns == undefined ? false : editor.commands.widgetcommonContactThreeColumns.state,
                     widgetcommonContactFourColumns: editor.commands.widgetcommonContactFourColumns == undefined ? false : editor.commands.widgetcommonContactFourColumns.state,
+                    widgetcommonPerson: editor.commands.widgetcommonPerson == undefined ? false : editor.commands.widgetcommonPerson.state,
                     widgetbootstrapLeftCol: editor.commands.widgetbootstrapLeftCol == undefined ? false : editor.commands.widgetbootstrapLeftCol.state,
                     widgetbootstrapRightCol: editor.commands.widgetbootstrapRightCol == undefined ? false : editor.commands.widgetbootstrapRightCol.state,
                     widgetbootstrapTwoCol: editor.commands.widgetbootstrapTwoCol == undefined ? false : editor.commands.widgetbootstrapTwoCol.state,

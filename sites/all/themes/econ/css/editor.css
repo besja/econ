@@ -431,6 +431,16 @@ p a {
   background-size: 100%;
 }
 
+ol li {
+  display: list-item; 
+  padding-bottom: 0.625rem;
+  padding-left: 1.25rem;
+}
+ol {
+  padding-bottom:0.9375rem;
+  margin-left:0.9375rem;
+}
+
 .big {
    font-size: 1.25rem;
 }
@@ -473,6 +483,15 @@ td {
   width:100% !important;
   border:0;
 }
+.common-table th {
+  margin-bottom: 0.625rem;
+  padding: 1.875rem 1.25rem 1.875rem 0;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 0.75rem;
+  border:none;
+  text-align: left; 
+}
 .common-table tr {
   border-top: 1px solid #5d5d5d;
   border-bottom: none;
@@ -489,7 +508,7 @@ td {
 .transparent-table {
   width: 100% !important;
 }
-.transparent-table tr,  .transparent-table td {
+.transparent-table tr,  .transparent-table td, .transparent-table th {
   border:1px dashed #5d5d5d;
 }
 
@@ -497,10 +516,27 @@ td {
     border-bottom: 1px solid #9b9b9b;
     border-top: none; 
 }
-.common-table.common-table tr {
+.common-table.contacts__table  tr {
   border:none;
 }
 .contacts__name {
     font-size: 1.125rem;
+}
+
+.big-btn {
+  display: block;
+  background: #454545;
+  padding: 1.25rem;
+  text-transform: uppercase;
+  color: #fff !important;
+  text-align: center;
+  font-family: Roboto, Helvetica, Arial, Sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  text-decoration: none !important;
+}
+.common-module {
+    margin-bottom: 1.25rem;
 }
 

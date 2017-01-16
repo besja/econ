@@ -19,10 +19,6 @@ li a.active {
     width: inherit;
 }
 
-tbody {
-  border-top:none;
-}
-
 .aside-menu__link.current {
   background: #2694ee;
 }
@@ -71,7 +67,7 @@ tbody {
 /* reset drupal default */
 
 .pager li > a, .pager li > span {
-	background-color: transparent;
+    background-color: transparent;
     border: none;
     border-radius: 0 !important;
     display: inline-block;
@@ -126,10 +122,6 @@ tbody {
 }
 .inline-manage {
   font-size:0.7rem;
-}
-
-td {
-  vertical-align: top;
 }
 
 aside ul.menu li a{
@@ -188,6 +180,15 @@ img {
 #block-system-main  .table-width-1 td {
   width:100%;
 }
+
+tbody {
+  border-top:none;
+}
+
+td {
+  vertical-align: top;
+}
+
 .common-table {
   width:100%;
 }
@@ -234,11 +235,21 @@ img {
   font-weight: 300;
   font-size: 0.75rem;
   border:none;
+
 }
 tbody, table, thead {
   border:none;
 }
-
+.transparent-table tr, .transparent-table td, .transparent-table th{
+  border:none;
+}
+.transparent-table {
+  width: 100% !important;
+}
+.transparent-table tr,  .transparent-table td {
+  border:none;
+  padding-right: 1.25rem;
+}
 .page__content p a.download, a.download{
   display: block; 
   background: url(../spbgu/app/img/icons/download.svg);
@@ -264,13 +275,6 @@ tbody, table, thead {
 .cke_show_borders table td {
   border:1px black solid;
 }
-.transparent-table {
-  width: 100% !important;
-}
-.transparent-table tr,  .transparent-table td {
-  border:none;
-  padding-right: 1.25rem;
-}
 .ui-widget-content {
   background: white;
 }
@@ -279,12 +283,12 @@ tbody, table, thead {
 }
 
 input.form-text {
-  border-bottom: 1px solid #9b9b9b;
+    border-bottom: 1px solid #9b9b9b;
     border-radius: 0;
     display: block;
     margin-bottom: 1.25rem;
     width: 21.875rem;
-  }
+}
 label {
   display: block;
     font-weight: 400;
@@ -295,7 +299,6 @@ textarea {
     resize: vertical;
     width: 100%;
 }
-
 
 input.form-submit{
   display: block;
@@ -374,10 +377,12 @@ input.form-submit:hover {
 }
 ol li {
   display: list-item; 
-  margin: 0 0 0 20px;
+  padding-bottom: 0.625rem;
+  padding-left: 1.25rem;
 }
 ol {
   padding-bottom:0.9375rem;
+  margin-left:0.9375rem;
 }
 @media only screen and (min-width: 1279px) {
   .front .events-widget {

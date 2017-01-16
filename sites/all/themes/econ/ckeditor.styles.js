@@ -33,6 +33,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
             { name : 'Large font', element : 'span', attributes: { 'class' : 'big' }}, 
             { name : 'Fancy table', element : 'table', attributes: { 'class' : 'common-table' }}, 
             { name : 'Transparent table', element : 'table', attributes: { 'class' : 'transparent-table' }}, 
+            { name : 'Big button', element : 'a', attributes: { 'class' : 'common-module big-btn' }}, 
             /* Inline Styles */
 
             // These are core styles available as toolbar buttons. You may opt enabling

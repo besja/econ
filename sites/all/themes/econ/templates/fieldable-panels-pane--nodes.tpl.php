@@ -7,7 +7,11 @@
 		foreach ($entity->field_pane_nodes['und'] as $key => $value) {
 			$node = $value['entity']; 
 			$render = node_view($node, "wysiwyg_teaser");
-    		print render($render);
+			?>
+			<div class="clearfix">
+			<?php print render($render);?>
+			</div>
+			<?php 
 		}
 	}
 }

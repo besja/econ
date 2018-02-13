@@ -5,27 +5,35 @@ function econ_pages_events_page() {
 
   // парамтеры для фильтров 
   $parameters = drupal_get_query_parameters();
+  $date_subquery  = ""; 
+  if (!isset($parameters['year']) && !isset($parameters['month'])) {
+
+    // текущие события 
+    $current_date = date('Y-m-d H:i:s');
+    $date_subquery = " and d.field_event_date_value > '".$current_date."'"; 
+
+  }
+  $year_subquery = ""; 
+
+  $current_year = date('Y', time());
 
   if (isset($parameters['year']) && is_numeric($parameters['year'])){
     $current_year = $parameters['year']; 
-  } else {
-    $current_year = date('Y', time());
-  }
-
-  $current_month = ''; 
-  if (isset($parameters['month']) && is_numeric($parameters['month'])){
-    $current_month = $parameters['month']; 
+    $year_subquery = " and YEAR(d.field_event_date_value) = ".$current_year; 
   } 
 
-  $month_subquery = "";
-  if ($current_month) {
+  $month_subquery = ""; 
+  if (isset($parameters['month']) && is_numeric($parameters['month'])){
+    $current_month = $parameters['month']; 
     $month_subquery = " and DATE_FORMAT (d.field_event_date_value, '%m') = ".$current_month;
-  }
+  } 
+
+
   //featured event
   
   $query = "SELECT * FROM node n 
         INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid  and n.language IN ('".$language->language."', 'und') 
-        AND n.type='event' and n.status = 1 and n.sticky = 1 and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery. " ORDER BY d.field_event_date_value DESC LIMIT 0,1"; 
+        AND n.type='event' and n.status = 1 and n.sticky = 1 and YEAR(d.field_event_date_value) = ".$current_year." ORDER BY d.field_event_date_value DESC LIMIT 0,1"; 
 
   $result = db_query($query);
   $featured = $result->fetchObject();
@@ -43,13 +51,14 @@ function econ_pages_events_page() {
 
   $query = "SELECT * FROM node n 
             INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid  and n.language IN ('".$language->language."', 'und') 
-            and n.type='event' and n.status = 1 ".$exclude."  and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery." 
-             ORDER BY d.field_event_date_value DESC"; 
+            and n.type='event' and n.status = 1 ".$exclude. $date_subquery. $year_subquery .  $month_subquery. " 
+             ORDER BY d.field_event_date_value ASC"; 
 
   $query_count =  "SELECT count(*) as total FROM node n 
             INNER JOIN field_data_field_event_date d ON d.entity_id = n.nid and n.language IN ('".$language->language."', 'und') 
-            and n.type='event' and n.status = 1 ".$exclude." and YEAR(d.field_event_date_value) = ".$current_year." ".$month_subquery. " 
-            ORDER BY d.field_event_date_value DESC"; 
+            and n.type='event' and n.status = 1 ".$exclude. $date_subquery. $year_subquery .  $month_subquery. " 
+            ORDER BY d.field_event_date_value ASC"; 
+
   $count_result = db_query($query_count);
   $query_items = db_query_range($query,$start,$limit);
 
